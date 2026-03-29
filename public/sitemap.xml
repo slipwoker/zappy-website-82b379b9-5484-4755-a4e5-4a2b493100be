@@ -25,12 +25,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://example.com/contact</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://example.com/blog</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>daily</changefreq>
@@ -61,9 +55,9 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://example.com/test</loc>
+    <loc>https://example.com/contact</loc>
     <lastmod>2026-03-29</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
