@@ -1,0 +1,51 @@
+# Business — Generative Engine Optimization Map
+
+---
+
+## Pages
+
+### בית
+https://example.com
+משרד עורכי דין המתמחה ביפוי כח מתמשך, גירושין, הסכמי ממון ומדיניות פרטיות. ליווי אישי, מקצועי ואמין לכל שלב בחיים. פנו אלינו עוד היום.
+
+### אודות
+https://example.com/about
+ורד לוי, עורכת דין עם גישה אישית ומקצועית, מביאה ניסיון עשיר בדיני משפחה, פרטיות ואכיפת חובות. הכירו את הפנים שתלווה אתכם בכל הליך משפטי.
+
+### תחומי עיסוק
+https://example.com/practice-areas
+מהסכם ממון ויפוי כח מתמשך ועד גירושין, ירושות, אפוטרופסות ומדיניות פרטיות עסקית — המשרד מציע פתרונות משפטיים מקיפים לפרטיים, משפחות וחברות.
+
+### מאמרים
+https://example.com/articles
+מאמרים מקצועיים ומעשיים בנושאי יפוי כח מתמשך, הסכמי ממון, גירושין ומדיניות פרטיות. ידע שמגן עליכם — קראו, למדו והיו מוכנים לכל מצב.
+
+### צור קשר
+https://example.com/contact
+רוצים לדבר על יפוי כח מתמשך, הסכם ממון או כל עניין משפטי אחר? צרו קשר עם ורד לוי עוד היום לייעוץ ראשוני אישי ומקצועי — אנחנו כאן בשבילכם.
+
+## Legal & Policy
+
+### Privacy Policy
+https://example.com/privacy
+Information about how user data is collected, stored, and protected.
+
+### Terms & Conditions
+https://example.com/terms
+Legal terms describing service usage, rights, and policies.
+
+### Accessibility Statement
+https://example.com/accessibility
+Information about WCAG compliance and accessibility features.
+
+---
+
+# Business Context (for LLM understanding)
+
+## About Business
+---
+
+# Additional Resources
+
+- **Sitemap**: https://example.com/sitemap.xml
+- **Robots.txt**: https://example.com/robots.txt
