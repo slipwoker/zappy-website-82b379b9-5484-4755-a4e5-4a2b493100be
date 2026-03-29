@@ -8530,6 +8530,15 @@ body.accessibility-widget-visible ._access-menu {
 /* /Zappy custom logo size */
 
 
+.home-values-section .value-item h3,
+.home-values-section .value-item p,
+.home-values-section .value-card h3,
+.home-values-section .value-card p,
+.home-values-section h3,
+.home-values-section p {
+  text-align: right !important;
+}
+
 /* ========== RTL MOBILE NAVBAR FIX (zappy-rtl-mobile-fix) ========== */
 /* High-specificity rules to ensure RTL positioning wins over any [lang="en"] conflicts */
 /* For RTL sites: hamburger on RIGHT, phone on LEFT (mirror of LTR layout) */
