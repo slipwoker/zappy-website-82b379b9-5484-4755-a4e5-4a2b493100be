@@ -783,10 +783,10 @@
 </script>
   
   <main>
-    <section class="index-hero-section" data-layout-spec="בית-hero" dir="rtl" data-hero-type="fullscreen-scrim">
+    <section class="index-hero-section" data-layout-spec="בית-hero" dir="rtl" data-hero-type="fullscreen-scrim" id="zappy-section-0">
   <!-- Background Image -->
   <div class="index-hero-bg">
-    <img data-hero-bg="true" data-placeholder="index-hero-image-1" data-context="Professional studio portrait of a female Israeli attorney in her 40s, elegant and approachable, wearing a dark navy blazer, photographed against a soft dark background. The attorney faces slightly left so her face occupies the upper-left third of the frame (which is the upper-END in RTL), leaving the right side (START in RTL) darker with negative space for text overlay. Cinematic lighting with warm highlights, premium legal photography style, high contrast, polished and authoritative." width="1400" height="900" src="/assets/site-index-hero-image-1.webp" alt="עו&quot;ד ורד לוי - משרד עורכי דין" class="index-hero-portrait">
+    <div data-zappy-zoom-wrapper="true" data-element-id="img-1774782342393-cmw38mnu7" data-element-type="image" data-zappy-zoom-wrapper-width-mode="full" data-zappy-zoom-clip="true" data-zappy-wrapper-margins-applied="true" style="position: absolute !important; top: 0px !important; left: 0px !important; width: 1861px !important; height: 943px !important; max-width: 100% !important; margin-left: 0px !important; margin-right: 0px !important; display: block !important; z-index: 1 !important; overflow: hidden !important;" data-zappy-zoom-wrapper-width="1861px" data-zappy-zoom-wrapper-height="943px"><img data-hero-bg="true" data-placeholder="index-hero-image-1" data-context="Professional studio portrait of a female Israeli attorney in her 40s, elegant and approachable, wearing a dark navy blazer, photographed against a soft dark background. The attorney faces slightly left so her face occupies the upper-left third of the frame (which is the upper-END in RTL), leaving the right side (START in RTL) darker with negative space for text overlay. Cinematic lighting with warm highlights, premium legal photography style, high contrast, polished and authoritative." width="1400" height="900" src="/assets/site-index-hero-image-1-1774782711285-1tel9r.webp?v=1774782713102" alt="עו&quot;ד ורד לוי - משרד עורכי דין" class="index-hero-portrait zappy-editable-image" data-hero-background="true" data-element-type="image" data-element-id="img-1774782342393-cmw38mnu7" data-resize-handler-attached="true" data-zappy-zoom="1" data-zappy-original-width="1861" data-zappy-original-height="943" style="object-position: 30% 50%; position: absolute !important; margin: 0px !important; left: 0% !important; top: -23.6769% !important; width: 100%; height: 100%; max-width: none !important; max-height: none !important; display: block !important; object-fit: cover;"></div>
   </div>
 
   <!-- Scrim Overlay -->
@@ -800,10 +800,10 @@
     <div class="index-hero-content">
 
       <!-- Eyebrow Label -->
-      <span class="index-hero-eyebrow">משרד עורכי דין</span>
+      <p><span class="index-hero-eyebrow">משרד עורכי דין</span>
 
-      <!-- Main Headline -->
-      <h1 class="index-hero-h1">ייעוץ משפטי אישי,<br>מקצועי ומדויק</h1>
+      
+      </p><!-- Main Headline --><h1 class="index-hero-h1" >ייעוץ משפטי אישי,<br>מקצועי ומדויק</h1>
 
       <!-- Gold Divider Rule -->
       <div class="index-hero-rule" aria-hidden="true"></div>
@@ -813,8 +813,8 @@
 
       <!-- CTA Buttons -->
       <div class="index-hero-ctas">
-        <a href="#contact" class="index-hero-btn-primary">צרו קשר</a>
-        <a href="#practice-areas" class="index-hero-btn-secondary">תחומי עיסוק</a>
+        <a href="#contact" class="index-hero-btn-primary" data-element-type="button" data-element-id="btn-1774782342382-6bzgrojvz" data-native-element="true">צרו קשר</a>
+        <a href="#practice-areas" class="index-hero-btn-secondary" data-element-type="button" data-element-id="btn-1774782342382-x8wvxsibs" data-native-element="true">תחומי עיסוק</a>
       </div>
 
     </div>
@@ -1386,6 +1386,34 @@
       if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileLangMenu); }
       else { initMobileLangMenu(); }
       window.addEventListener('resize', function() { clearTimeout(window._mlrt); window._mlrt = setTimeout(initMobileLangMenu, 250); });
+    })();
+    </script>
+
+    <script>
+    (function(){
+      if(window.innerWidth>768)return;
+      function fixZW(){
+        document.querySelectorAll('[data-zappy-zoom-wrapper="true"]').forEach(function(w){
+          var cw=w.style.getPropertyValue('width');
+          if(!cw||cw==='100%')return;
+          w.style.setProperty('width','100%','important');
+          w.style.setProperty('max-width','100%','important');
+          w.style.setProperty('height','auto','important');
+          var img=w.querySelector('img');
+          if(img){
+            img.style.setProperty('position','relative','important');
+            img.style.setProperty('width','100%','important');
+            img.style.setProperty('height','auto','important');
+            img.style.setProperty('max-width','100%','important');
+            img.style.setProperty('max-height','400px','important');
+            img.style.setProperty('object-fit','cover','important');
+            img.style.setProperty('left','0','important');
+            img.style.setProperty('top','0','important');
+          }
+        });
+      }
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fixZW);
+      else setTimeout(fixZW,50);
     })();
     </script>
 </body>
