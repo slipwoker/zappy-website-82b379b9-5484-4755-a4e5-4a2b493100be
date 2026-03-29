@@ -48,6 +48,9 @@ https://example.com/contact
 https://example.com/blog/divorce-costs
 ורד לוי משרד עורכי דין - כמה עולה להתגרש? | ורד לוי משרד עורכי דין
 
+### Page
+https://example.com/workplace-privacy-violation
+
 ## Legal & Policy
 
 ### Privacy Policy
