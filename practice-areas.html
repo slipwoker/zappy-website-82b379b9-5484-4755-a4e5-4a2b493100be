@@ -737,85 +737,101 @@
             })();
           </script>
         
+
+
 <style data-zappy-section-v2-css="true">
 /* V2 Regenerated Section CSS */
 .practice-areas-overview-section {
+  position: relative;
   background-color: #F6F4EF;
   background-image: linear-gradient(180deg, #FBF8F2 0%, #F2EBDD 100%);
   color: var(--text-dark);
   padding: 120px 24px 80px;
-  position: relative;
+  overflow: hidden;
   direction: rtl;
-  font-family: 'Heebo', sans-serif;
-  overflow: visible;
+}
+
+/* ── Decorative Background Ornaments ── */
+.practice-areas-overview-section .paos-bg-ornament {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+.practice-areas-overview-section .paos-bg-ornament--top {
+  top: -60px;
+  inset-inline-end: -80px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 162, 74, 0.14);
+  background: radial-gradient(circle, rgba(200,162,74,0.07) 0%, transparent 70%);
+}
+.practice-areas-overview-section .paos-bg-ornament--bottom {
+  bottom: -40px;
+  inset-inline-start: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 1px solid rgba(31, 49, 86, 0.1);
+  background: radial-gradient(circle, rgba(31,49,86,0.06) 0%, transparent 70%);
 }
 
 /* ── Container ── */
-.practice-areas-overview-section .pao-container {
+.practice-areas-overview-section .paos-container {
+  position: relative;
+  z-index: 1;
   max-width: 1100px;
   margin: 0 auto;
-  width: 100%;
 }
 
-/* ── Header ── */
-.practice-areas-overview-section .pao-header {
+/* ── Section Header ── */
+.practice-areas-overview-section .paos-header {
   text-align: center;
   margin-bottom: 56px;
 }
-
-.practice-areas-overview-section .pao-eyebrow {
+.practice-areas-overview-section .paos-eyebrow {
   display: inline-block;
   font-family: 'Heebo', sans-serif;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--secondary);
-  background: rgba(200, 162, 74, 0.12);
-  border: 1px solid rgba(200, 162, 74, 0.35);
-  padding: 5px 18px;
-  border-radius: 2px;
-  margin-bottom: 20px;
+  background: linear-gradient(180deg, #E0BE68 0%, #C89F47 52%, #A97822 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
 }
-
-.practice-areas-overview-section .pao-title {
+.practice-areas-overview-section .paos-main-title {
   font-family: 'Frank Ruhl Libre', serif;
-  font-size: clamp(26px, 4vw, 38px);
+  font-size: clamp(26px, 3.5vw, 40px);
   font-weight: 700;
   line-height: 1.25;
-  color: var(--primary);
-  max-width: 760px;
-  margin: 0 auto 24px;
-  text-align: center;
+  color: var(--text-dark);
+  margin: 0 auto 28px;
+  max-width: 720px;
 }
-
-/* Ornament */
-.practice-areas-overview-section .pao-title-ornament {
+.practice-areas-overview-section .paos-header-rule {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: 4px;
+  gap: 14px;
 }
-
-.practice-areas-overview-section .ornament-line {
+.practice-areas-overview-section .paos-rule-line {
   display: block;
-  width: 60px;
+  width: 80px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+  background: linear-gradient(90deg, transparent, rgba(200,162,74,0.5), transparent);
+}
+.practice-areas-overview-section .paos-rule-diamond {
+  font-size: 9px;
+  color: var(--secondary);
+  line-height: 1;
 }
 
-.practice-areas-overview-section .ornament-diamond {
-  display: block;
-  width: 8px;
-  height: 8px;
-  background: var(--secondary);
-  transform: rotate(45deg);
-  flex-shrink: 0;
-}
-
-/* ── Grid ── */
-.practice-areas-overview-section .pao-grid {
+/* ── Cards Grid ── */
+.practice-areas-overview-section .paos-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 28px;
@@ -823,97 +839,93 @@
   direction: rtl;
 }
 
-/* ── Card ── */
-.practice-areas-overview-section .pao-card {
+/* ── Individual Card ── */
+.practice-areas-overview-section .paos-card {
+  position: relative;
   background: #FFFFFF;
   border: 1px solid var(--border-light);
   border-radius: 2px;
-  position: relative;
   overflow: hidden;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(15, 27, 49, 0.06);
 }
-
-.practice-areas-overview-section .pao-card:hover {
-  box-shadow: 0 18px 42px rgba(15, 27, 49, 0.13);
+.practice-areas-overview-section .paos-card:hover {
+  box-shadow: 0 18px 48px rgba(15, 27, 49, 0.14);
   transform: translateY(-4px);
 }
-
-.practice-areas-overview-section .pao-card-inner {
-  display: flex;
-  flex-direction: column;
-  padding: 36px 32px 28px;
-  flex: 1;
-  gap: 0;
+.practice-areas-overview-section .paos-card-inner {
+  padding: 40px 36px 36px;
+  position: relative;
+  z-index: 1;
 }
 
-/* Icon wrap */
-.practice-areas-overview-section .pao-card-icon-wrap {
-  margin-bottom: 20px;
+/* ── Card Accent Bar (top border highlight) ── */
+.practice-areas-overview-section .paos-card-accent-bar {
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #E0BE68 0%, #C89F47 52%, #A97822 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.practice-areas-overview-section .paos-card:hover .paos-card-accent-bar {
+  opacity: 1;
 }
 
-.practice-areas-overview-section .pao-card-icon {
+/* ── Card Icon ── */
+.practice-areas-overview-section .paos-card-icon-wrap {
   width: 64px;
   height: 64px;
+  background: linear-gradient(135deg, #F6F4EF 0%, #EDE6D8 100%);
+  border: 1px solid var(--border-light);
   border-radius: 2px;
-  background: linear-gradient(145deg, #1F3156 0%, #2a4272 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 24px;
+  color: var(--primary);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.practice-areas-overview-section .paos-card:hover .paos-card-icon-wrap {
+  background: linear-gradient(135deg, #1F3156 0%, #2B4070 100%);
   color: var(--secondary);
-  box-shadow: 0 8px 24px rgba(31, 49, 86, 0.22);
+  border-color: var(--primary);
+}
+.practice-areas-overview-section .paos-icon {
+  width: 28px;
+  height: 28px;
   flex-shrink: 0;
 }
 
-.practice-areas-overview-section .pao-card-icon svg {
-  display: block;
-}
-
-/* Card Content */
-.practice-areas-overview-section .pao-card-content {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  text-align: right;
-}
-
-.practice-areas-overview-section .pao-card-tag {
+/* ── Card Content ── */
+.practice-areas-overview-section .paos-card-tag {
   font-family: 'Heebo', sans-serif;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.08em;
-  color: var(--secondary);
   text-transform: uppercase;
-  margin-bottom: 10px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
 }
-
-.practice-areas-overview-section .pao-card-title {
+.practice-areas-overview-section .paos-card-title {
   font-family: 'Frank Ruhl Libre', serif;
   font-size: 24px;
   font-weight: 700;
   line-height: 1.3;
-  color: var(--primary);
+  color: var(--text-dark);
   margin: 0 0 14px;
-  text-align: right;
 }
-
-.practice-areas-overview-section .pao-card-desc {
+.practice-areas-overview-section .paos-card-desc {
   font-family: 'Heebo', sans-serif;
   font-size: 16px;
+  font-weight: 400;
   line-height: 1.75;
   color: var(--text-muted);
   margin: 0 0 24px;
-  text-align: right;
-  flex: 1;
 }
-
-/* Card Footer */
-.practice-areas-overview-section .pao-card-footer {
-  margin-top: auto;
-}
-
-.practice-areas-overview-section .pao-card-link {
+.practice-areas-overview-section .paos-card-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -922,134 +934,143 @@
   font-weight: 700;
   color: var(--primary);
   text-decoration: none;
-  border-bottom: 1px solid var(--secondary);
+  border-bottom: 1px solid rgba(31, 49, 86, 0.25);
   padding-bottom: 2px;
   transition: color 0.25s ease, border-color 0.25s ease;
 }
-
-.practice-areas-overview-section .pao-card-link:hover {
+.practice-areas-overview-section .paos-card-link:hover {
   color: var(--secondary);
-  border-color: var(--primary);
+  border-color: var(--secondary);
 }
-
-.practice-areas-overview-section .pao-arrow {
-  font-size: 12px;
+.practice-areas-overview-section .paos-link-arrow {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1;
   transition: transform 0.2s ease;
 }
-
-.practice-areas-overview-section .pao-card-link:hover .pao-arrow {
+.practice-areas-overview-section .paos-card-link:hover .paos-link-arrow {
   transform: translateX(-4px);
 }
 
-/* Accent bar at bottom of card */
-.practice-areas-overview-section .pao-card-accent-bar {
-  height: 3px;
-  background: linear-gradient(90deg, var(--secondary) 0%, #A97822 100%);
-  width: 100%;
-  flex-shrink: 0;
-}
-
 /* ── CTA Strip ── */
-.practice-areas-overview-section .pao-cta-strip {
-  background: linear-gradient(135deg, #1F3156 0%, #2a4272 100%);
+.practice-areas-overview-section .paos-cta-strip {
+  background-color: #1F3156;
+  background-image: linear-gradient(180deg, #16223A 0%, #0F1B31 100%);
+  border: 1px solid var(--border-dark);
   border-radius: 2px;
-  padding: 40px 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  box-shadow: 0 18px 42px rgba(15, 27, 49, 0.18);
+  padding: 48px 40px;
+  text-align: center;
   position: relative;
   overflow: hidden;
 }
-
-.practice-areas-overview-section .pao-cta-strip::before {
+.practice-areas-overview-section .paos-cta-strip::before {
   content: '';
   position: absolute;
-  inset-inline-end: -60px;
   top: -60px;
-  width: 200px;
-  height: 200px;
+  inset-inline-end: -60px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
-  background: rgba(200, 162, 74, 0.08);
+  background: radial-gradient(circle, rgba(200,162,74,0.1) 0%, transparent 70%);
   pointer-events: none;
 }
-
-.practice-areas-overview-section .pao-cta-text {
-  font-family: 'Frank Ruhl Libre', serif;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--text-light);
-  margin: 0;
-  text-align: right;
-  max-width: 540px;
-  position: relative;
-  z-index: 1;
+.practice-areas-overview-section .paos-cta-icon-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: var(--secondary);
 }
-
-.practice-areas-overview-section .pao-cta-btn {
+.practice-areas-overview-section .paos-cta-icon-row svg {
+  width: 18px;
+  height: 18px;
+  opacity: 0.75;
+}
+.practice-areas-overview-section .paos-cta-text {
+  font-family: 'Heebo', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text-light);
+  margin: 0 auto 28px;
+  max-width: 520px;
+}
+.practice-areas-overview-section .paos-cta-btn {
+  display: inline-block;
+  font-family: 'Heebo', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
   background: linear-gradient(180deg, #E0BE68 0%, #C89F47 52%, #A97822 100%);
   color: #101A2F;
-  padding: 14px 34px;
-  border-radius: 4px;
+  padding: 14px 38px;
+  border-radius: 999px;
   border: 1px solid #B78B35;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
-  text-decoration: none;
-  white-space: nowrap;
-  flex-shrink: 0;
-  transition: opacity 0.25s ease, transform 0.2s ease;
-  display: inline-block;
-  position: relative;
-  z-index: 1;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 4px 16px rgba(183,139,53,0.3);
+  transition: box-shadow 0.25s ease, transform 0.25s ease, filter 0.25s ease;
   cursor: pointer;
 }
-
-.practice-areas-overview-section .pao-cta-btn:hover {
-  opacity: 0.9;
+.practice-areas-overview-section .paos-cta-btn:hover {
   transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 8px 28px rgba(183,139,53,0.4);
+  filter: brightness(1.06);
 }
 
-/* ── Responsive ── */
+/* ── Responsive: Tablet ── */
+@media (max-width: 900px) {
+  .practice-areas-overview-section .paos-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .practice-areas-overview-section .paos-card-inner {
+    padding: 30px 24px 28px;
+  }
+}
+
+/* ── Responsive: Mobile ── */
 @media (max-width: 768px) {
   .practice-areas-overview-section {
     padding: 100px 16px 60px;
   }
-
-  .practice-areas-overview-section .pao-grid {
-    grid-template-columns: 1fr !important;
-    gap: 20px;
+  .practice-areas-overview-section .paos-header {
+    margin-bottom: 36px;
   }
-
-  .practice-areas-overview-section .pao-title {
+  .practice-areas-overview-section .paos-main-title {
     font-size: 24px;
   }
-
-  .practice-areas-overview-section .pao-card-inner {
-    padding: 24px 20px 20px;
-  }
-
-  .practice-areas-overview-section .pao-cta-strip {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 28px 24px;
-    gap: 20px;
-  }
-
-  .practice-areas-overview-section .pao-cta-text {
-    font-size: 17px;
-  }
-
-  .practice-areas-overview-section .pao-cta-btn {
-    width: 100%;
-    text-align: center;
-  }
-
-  .practice-areas-overview-section .pao-header {
+  .practice-areas-overview-section .paos-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
     margin-bottom: 36px;
+  }
+  .practice-areas-overview-section .paos-card-inner {
+    padding: 28px 20px 24px;
+  }
+  .practice-areas-overview-section .paos-card-title {
+    font-size: 20px;
+  }
+  .practice-areas-overview-section .paos-cta-strip {
+    padding: 36px 20px;
+  }
+  .practice-areas-overview-section .paos-cta-text {
+    font-size: 16px;
+  }
+  .practice-areas-overview-section .paos-rule-line {
+    width: 50px;
+  }
+  .practice-areas-overview-section .paos-bg-ornament--top {
+    width: 200px;
+    height: 200px;
+    top: -30px;
+    inset-inline-end: -40px;
+  }
+  .practice-areas-overview-section .paos-bg-ornament--bottom {
+    width: 160px;
+    height: 160px;
+    bottom: -20px;
+    inset-inline-start: -30px;
   }
 }
 </style>
@@ -1551,81 +1572,95 @@
 </script>
   
   <main>
-    <section class="practice-areas-overview-section" dir="rtl" data-layout-spec="תחומי עיסוק-overview" data-zappy-section="true" id="zappy-section-0">
-  <div class="pao-container">
+    <section class="practice-areas-overview-section" data-layout-spec="תחומי עיסוק-overview" dir="rtl" data-zappy-section="true" id="zappy-section-0">
+
+  <!-- Background decorative elements -->
+  <div class="paos-bg-ornament paos-bg-ornament--top" aria-hidden="true"></div>
+  <div class="paos-bg-ornament paos-bg-ornament--bottom" aria-hidden="true"></div>
+
+  <div class="paos-container">
 
     <!-- Section Header -->
-    <div class="pao-header">
-      <span class="pao-eyebrow">תחומי עיסוק</span>
-      <h1 class="pao-title">גביית חוב עסקי: צעדים משפטיים שכדאי להכיר</h1>
-      <div class="pao-title-ornament">
-        <span class="ornament-line"></span>
-        <span class="ornament-diamond"></span>
-        <span class="ornament-line"></span>
+    <div class="paos-header">
+      <span class="paos-eyebrow">תחומי עיסוק</span>
+      <h1 class="paos-main-title">גביית חוב עסקי: צעדים משפטיים שכדאי להכיר</h1>
+      <div class="paos-header-rule">
+        <span class="paos-rule-line"></span>
+        <span class="paos-rule-diamond" aria-hidden="true">◆</span>
+        <span class="paos-rule-line"></span>
       </div>
     </div>
 
     <!-- Practice Areas Grid -->
-    <div class="pao-grid">
+    <div class="paos-grid">
 
       <!-- Card 1: Family Law -->
-      <article class="pao-card pao-card--family">
-        <div class="pao-card-inner">
-          <div class="pao-card-icon-wrap">
-            <div class="pao-card-icon">
-              <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-            </div>
+      <article class="paos-card paos-card--family">
+        <div class="paos-card-inner">
+          <div class="paos-card-icon-wrap">
+            <svg class="paos-icon" data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="24" cy="12" r="6"></circle>
+              <path d="M12 36c0-6.627 5.373-12 12-12s12 5.373 12 12"></path>
+              <circle cx="10" cy="20" r="4"></circle>
+              <path d="M2 34c0-4.418 3.582-8 8-8"></path>
+              <circle cx="38" cy="20" r="4"></circle>
+              <path d="M46 34c0-4.418-3.582-8-8-8"></path>
+            </svg>
           </div>
-          <div class="pao-card-content">
-            <div class="pao-card-tag">לקוחות פרטיים ומשפחות</div>
-            <h3 class="pao-card-title">דיני משפחה</h3>
-            <p class="pao-card-desc">דיני משפחה, גירושין, צוואות, ירושות, יפוי כח מתמשך, אפוטרופסות, הסכמי ממון, הסכמי הורות, ידועים בציבור ומשפחה חדשה (להט"ב)</p>
-            <div class="pao-card-footer">
-              <a href="#contact" class="pao-card-link">לפרטים נוספים <i class="fa fa-arrow-left pao-arrow" aria-hidden="true"></i></a>
-            </div>
+          <div class="paos-card-content">
+            <div class="paos-card-tag">לקוחות פרטיים ומשפחות</div>
+            <h3 class="paos-card-title">דיני משפחה</h3>
+            <p class="paos-card-desc">דיני משפחה, גירושין, צוואות, ירושות, יפוי כח מתמשך, אפוטרופסות, הסכמי ממון, הסכמי הורות, ידועים בציבור ומשפחה חדשה (להט"ב)</p>
+            <a href="#contact" class="paos-card-link">לפרטים נוספים <span class="paos-link-arrow" aria-hidden="true">←</span></a>
           </div>
+          <div class="paos-card-accent-bar" aria-hidden="true"></div>
         </div>
-        <div class="pao-card-accent-bar"></div>
       </article>
 
       <!-- Card 2: Debt Collection -->
-      <article class="pao-card pao-card--debt">
-        <div class="pao-card-inner">
-          <div class="pao-card-icon-wrap">
-            <div class="pao-card-icon">
-              <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-              </svg>
-            </div>
+      <article class="paos-card paos-card--debt">
+        <div class="paos-card-inner">
+          <div class="paos-card-icon-wrap">
+            <svg class="paos-icon" data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="6" y="10" width="36" height="28" rx="2"></rect>
+              <path d="M16 10V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"></path>
+              <path d="M24 22v4"></path>
+              <circle cx="24" cy="20" r="2" fill="currentColor" stroke="none"></circle>
+              <path d="M14 30h20"></path>
+              <path d="M14 34h12"></path>
+            </svg>
           </div>
-          <div class="pao-card-content">
-            <div class="pao-card-tag">חברות, עסקים ונושים</div>
-            <h3 class="pao-card-title">גביית חובות</h3>
-            <p class="pao-card-desc">הוצאה לפועל וגביית חובות עבור נושים מוסדיים ופרטיים, ליווי עסקי שוטף ומדיניות פרטיות</p>
-            <div class="pao-card-footer">
-              <a href="#contact" class="pao-card-link">לפרטים נוספים <i class="fa fa-arrow-left pao-arrow" aria-hidden="true"></i></a>
-            </div>
+          <div class="paos-card-content">
+            <div class="paos-card-tag">חברות, עסקים ונושים</div>
+            <h3 class="paos-card-title">גביית חובות</h3>
+            <p class="paos-card-desc">הוצאה לפועל וגביית חובות עבור נושים מוסדיים ופרטיים, ליווי עסקי שוטף ומדיניות פרטיות</p>
+            <a href="#contact" class="paos-card-link">לפרטים נוספים <span class="paos-link-arrow" aria-hidden="true">←</span></a>
           </div>
+          <div class="paos-card-accent-bar" aria-hidden="true"></div>
         </div>
-        <div class="pao-card-accent-bar"></div>
       </article>
 
     </div>
-    <!-- End Grid -->
 
-    <!-- Bottom CTA strip -->
-    <div class="pao-cta-strip">
-      <p class="pao-cta-text">מעוניינים לקבל ייעוץ משפטי מקצועי ואישי? אנחנו כאן בשבילכם.</p>
-      <a href="#contact" class="btn-primary pao-cta-btn">צרו קשר עכשיו</a>
+    <!-- Bottom CTA Strip -->
+    <div class="paos-cta-strip">
+      <div class="paos-cta-icon-row" aria-hidden="true">
+        <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 2l3.09 6.26L26 9.27l-5 4.87 1.18 6.88L16 17.77l-6.18 3.25L11 14.14 6 9.27l6.91-1.01z"></path>
+        </svg>
+        <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 2l3.09 6.26L26 9.27l-5 4.87 1.18 6.88L16 17.77l-6.18 3.25L11 14.14 6 9.27l6.91-1.01z"></path>
+        </svg>
+        <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 2l3.09 6.26L26 9.27l-5 4.87 1.18 6.88L16 17.77l-6.18 3.25L11 14.14 6 9.27l6.91-1.01z"></path>
+        </svg>
+      </div>
+      <p class="paos-cta-text">מעוניינים לקבל ייעוץ משפטי מקצועי ואישי? אנחנו כאן בשבילכם.</p>
+      <a href="#contact" class="paos-cta-btn btn-primary btn-pill">צרו קשר עכשיו</a>
     </div>
 
   </div>
+
 </section>
 
 <section class="practice-areas-family-services-section" data-layout-spec="תחומי עיסוק-family-services" dir="rtl">
