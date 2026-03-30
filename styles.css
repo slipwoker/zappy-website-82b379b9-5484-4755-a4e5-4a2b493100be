@@ -68,7 +68,6 @@
   src: url('assets/fonts/Rubik-Bold.woff2') format('woff2');
 }
 
-
 /* Self-hosted fonts (Inter + Rubik for multi-language support) */
 
 /* Inter font (English / LTR languages) */
@@ -1127,7 +1126,6 @@ a:hover {
   }
 }
 
-
 /* ============================================
    NAVBAR LAYOUT - POST-GENERATION FIXES
    Structural layout only - colors from Claude
@@ -1972,7 +1970,6 @@ html[lang="ar"] .nav-cta-btn {
 /* Post-generation fix: Remove main element margin-top and padding-top */
 main { margin-top: 0 !important; padding-top: 0 !important; }
 
-
 /* Footer Styles */
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap');
 
@@ -2322,7 +2319,6 @@ main { margin-top: 0 !important; padding-top: 0 !important; }
     font-size: 0.8125rem;
   }
 }
-
 
 /* Footer Contrast Guard — overrides dark-on-dark text */
 .site-footer .contact-list a,
@@ -2914,7 +2910,6 @@ main { margin-top: 0 !important; padding-top: 0 !important; }
   }
 }
 /* ZAPPY_POSTGEN_GUARD_RTL_ORDER:בית-story — stripped 1 order declaration(s) conflicting with RTL grid */
-
 
 /* index-services */
 .index-services-section {
@@ -5376,7 +5371,6 @@ main { margin-top: 0 !important; padding-top: 0 !important; }
 }
 /* ZAPPY_POSTGEN_GUARD_RTL_ORDER:תחומי עיסוק-legacy-services — stripped 1 order declaration(s) conflicting with RTL grid */
 
-
 /* practice-areas-privacy-services */
 .practice-areas-privacy-services-section {
   background-color: #0F1B31;
@@ -7667,16 +7661,10 @@ main { margin-top: 0 !important; padding-top: 0 !important; }
   }
 }
 
-
-
 /* Global font override - exclude icon fonts and special elements */
 *:not(.fas):not(.far):not(.fab):not(.fa):not([class*="fa-"]):not(.iconify):not([class*="icon"]):not(code):not(pre):not(i[class*="fa"]) {
   font-family: 'Rubik', sans-serif !important;
 }
-
-
-
-
 
 /* Hide WhatsApp float button on desktop (mobile-only) */
 @media (min-width: 769px) {
@@ -7687,7 +7675,6 @@ main { margin-top: 0 !important; padding-top: 0 !important; }
     pointer-events: none !important;
   }
 }
-
 
 /* ============================================
    MOBILE RESPONSIVE FIXES (Auto-generated)
@@ -8197,7 +8184,6 @@ nav.navbar .sub-menu li a:hover { color: #C8A24A !important; background-color: r
   opacity: 0.8;
 }
 
-
 /* Cookie Consent Styles */
 
 /* Cookie Consent Customizations */
@@ -8294,7 +8280,6 @@ nav.navbar .sub-menu li a:hover { color: #C8A24A !important; background-color: r
   white-space: nowrap !important;
   border: 0 !important;
 }
-
 
 /* Custom Accessibility Toolbar Styling - Zappy Style */
 
@@ -8530,13 +8515,445 @@ body.accessibility-widget-visible ._access-menu {
 /* /Zappy custom logo size */
 
 
-.home-values-section .value-item h3,
-.home-values-section .value-item p,
-.home-values-section .value-card h3,
-.home-values-section .value-card p,
-.home-values-section h3,
-.home-values-section p {
-  text-align: right !important;
+/* ═══════════════════════════════════════════════════════════
+   V2 REGENERATED SECTION CSS (גביית חוב עסקי: צעדים משפטיים שכדאי להכיר-blog-article)
+   Added: 2026-03-29T18:45:10.710Z
+   ═══════════════════════════════════════════════════════════ */
+.blog-business-debt-collection-steps-blog-article-section {
+  background: linear-gradient(180deg, #FBF8F2 0%, #F2EBDD 100%);
+  color: var(--text-dark);
+  padding: 140px 24px 80px;
+  direction: rtl;
+  font-family: 'Heebo', sans-serif;
+  min-height: 100vh;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .blog-article-container {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* ── Back Link ── */
+.blog-business-debt-collection-steps-blog-article-section .blog-back-link-top,
+.blog-business-debt-collection-steps-blog-article-section .blog-back-link-bottom {
+  margin-bottom: 24px;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .blog-back-link-bottom {
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  font-family: 'Heebo', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .back-link:hover {
+  color: var(--secondary);
+}
+
+.blog-business-debt-collection-steps-blog-article-section .back-link i {
+  font-size: 13px;
+}
+
+/* ── Share Bar ── */
+.blog-business-debt-collection-steps-blog-article-section .blog-share-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 36px;
+  justify-content: flex-start;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .blog-share-bar-bottom {
+  margin-bottom: 0;
+  margin-top: 48px;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .share-label {
+  font-family: 'Heebo', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .share-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .share-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  background: #fff;
+  color: var(--primary);
+  font-size: 15px;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(15,27,49,0.06);
+}
+
+.blog-business-debt-collection-steps-blog-article-section .share-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(15,27,49,0.12);
+}
+
+.blog-business-debt-collection-steps-blog-article-section .share-whatsapp:hover {
+  background: #25D366;
+  border-color: #25D366;
+  color: #fff;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .share-facebook:hover {
+  background: #1877F2;
+  border-color: #1877F2;
+  color: #fff;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .share-twitter:hover {
+  background: #1DA1F2;
+  border-color: #1DA1F2;
+  color: #fff;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .share-linkedin:hover {
+  background: #0A66C2;
+  border-color: #0A66C2;
+  color: #fff;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .share-copy:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+/* ── Hero Image ── */
+.blog-business-debt-collection-steps-blog-article-section .blog-hero-image {
+  margin: 0 0 40px;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 18px 42px rgba(15,27,49,0.14);
+  line-height: 0;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .blog-hero-image img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
+}
+
+/* ── Article Header ── */
+.blog-business-debt-collection-steps-blog-article-section .blog-article-header {
+  margin-bottom: 40px;
+  text-align: right;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .blog-tag {
+  display: inline-block;
+  background: linear-gradient(180deg, #E0BE68 0%, #C89F47 52%, #A97822 100%);
+  color: #101A2F;
+  font-family: 'Heebo', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .blog-article-title {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--primary);
+  margin: 0 0 20px;
+  text-align: right;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .blog-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Heebo', sans-serif;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.blog-business-debt-collection-steps-blog-article-section .blog-meta-item i {
+  color: var(--secondary);
+  font-size: 13px;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .blog-meta-divider {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--border-light);
+  display: inline-block;
+}
+
+/* ── Article Body ── */
+.blog-business-debt-collection-steps-blog-article-section .blog-article-body {
+  text-align: right;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .blog-article-body p {
+  font-family: 'Heebo', sans-serif;
+  font-size: 16px;
+  line-height: 1.85;
+  color: #3B352E;
+  margin: 0 0 22px;
+  text-align: right;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .blog-lead {
+  font-size: 18px !important;
+  line-height: 1.8;
+  color: var(--text-dark) !important;
+  font-weight: 400;
+  border-inline-start: 3px solid var(--secondary);
+  padding-inline-start: 20px;
+  margin-bottom: 36px !important;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .blog-article-body h2 {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--primary);
+  margin: 44px 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-light);
+  text-align: right;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .blog-article-body h2:first-of-type {
+  margin-top: 0;
+}
+
+/* ── Highlight Block ── */
+.blog-business-debt-collection-steps-blog-article-section .blog-highlight-block {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-inline-start: 4px solid var(--secondary);
+  border-radius: 2px;
+  padding: 28px 28px 10px;
+  margin: 28px 0 32px;
+  box-shadow: 0 10px 30px rgba(15,27,49,0.06);
+}
+
+.blog-business-debt-collection-steps-blog-article-section .highlight-item {
+  margin-bottom: 20px;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .highlight-label {
+  font-family: 'Heebo', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 6px;
+  text-align: right;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .highlight-item p {
+  margin-bottom: 0 !important;
+  font-size: 15px !important;
+}
+
+/* ── Blog List ── */
+.blog-business-debt-collection-steps-blog-article-section .blog-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .blog-list li {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  padding: 18px 20px;
+  box-shadow: 0 4px 12px rgba(15,27,49,0.05);
+  text-align: right;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .list-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(180deg, #E0BE68 0%, #C89F47 52%, #A97822 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #101A2F;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .list-content {
+  font-family: 'Heebo', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #3B352E;
+  text-align: right;
+  flex: 1;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .list-content strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* ── Firm Callout ── */
+.blog-business-debt-collection-steps-blog-article-section .blog-firm-callout {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+  background: linear-gradient(135deg, #1F3156 0%, #162444 100%);
+  border-radius: 2px;
+  margin: 40px 0 8px;
+  overflow: hidden;
+  box-shadow: 0 18px 42px rgba(15,27,49,0.18);
+}
+
+.blog-business-debt-collection-steps-blog-article-section .firm-callout-bar {
+  width: 5px;
+  background: linear-gradient(180deg, #E0BE68 0%, #C89F47 52%, #A97822 100%);
+  flex-shrink: 0;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .firm-callout-content {
+  padding: 28px 28px 12px;
+  flex: 1;
+}
+
+.blog-business-debt-collection-steps-blog-article-section .firm-callout-content p {
+  color: var(--text-light) !important;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 16px !important;
+  text-align: right;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .blog-business-debt-collection-steps-blog-article-section {
+    padding: 100px 16px 60px;
+  }
+
+  .blog-business-debt-collection-steps-blog-article-section .blog-article-title {
+    font-size: 26px;
+  }
+
+  .blog-business-debt-collection-steps-blog-article-section .blog-hero-image img {
+    height: 240px;
+  }
+
+  .blog-business-debt-collection-steps-blog-article-section .blog-article-body h2 {
+    font-size: 22px;
+  }
+
+  .blog-business-debt-collection-steps-blog-article-section .blog-meta {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .blog-business-debt-collection-steps-blog-article-section .blog-highlight-block {
+    padding: 20px 16px 8px;
+  }
+
+  .blog-business-debt-collection-steps-blog-article-section .blog-list li {
+    padding: 14px 14px;
+    gap: 12px;
+  }
+
+  .blog-business-debt-collection-steps-blog-article-section .firm-callout-content {
+    padding: 20px 18px 8px;
+  }
+
+  .blog-business-debt-collection-steps-blog-article-section .blog-lead {
+    font-size: 16px !important;
+  }
+
+  .blog-business-debt-collection-steps-blog-article-section .share-icons {
+    gap: 6px;
+  }
+
+  .blog-business-debt-collection-steps-blog-article-section .share-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+}
+
+#zappy-section-1 .contact-info-card {
+  background: rgba(255,255,255,0.1) !important;
+  border-color: rgba(200,162,74,0.3) !important;
+}
+
+#zappy-section-1 .contact-info-value,
+#zappy-section-1 .contact-info-address {
+  color: var(--secondary) !important;
+}
+
+#zappy-section-1 .contact-info-value:hover {
+  color: var(--text-light) !important;
+}
+
+#zappy-section-1 .contact-map-link {
+  color: var(--secondary) !important;
+}
+
+#zappy-section-1 .contact-map-link:hover {
+  color: var(--text-light) !important;
+}
+
+#zappy-section-1 .contact-info-icon-wrap {
+  background: rgba(242,231,201,0.15) !important;
+  color: var(--secondary) !important;
 }
 
 /* ========== RTL MOBILE NAVBAR FIX (zappy-rtl-mobile-fix) ========== */
