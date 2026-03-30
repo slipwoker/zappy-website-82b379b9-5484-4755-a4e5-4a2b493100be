@@ -1234,7 +1234,78 @@
 </script>
   
   <main>
-    <section class="contact-intro-section" dir="rtl" data-layout-spec="צור קשר-intro" id="zappy-section-0">
+    <section class="contact-inquiry-form-section" data-layout-spec="צור קשר-inquiry-form" dir="rtl" id="zappy-section-2">
+  <div class="contact-inquiry-form-section__container">
+
+    <!-- Form Column (START = RIGHT in RTL) -->
+    <div class="contact-inquiry-form-section__form-col">
+      <form class="contact-form" novalidate="">
+
+        <div class="contact-form__field">
+          <label class="contact-form__label" for="inq-name">שם מלא</label>
+          <input class="contact-form__input" type="text" id="inq-name" name="name" placeholder="שם פרטי ושם משפחה" required="">
+        </div>
+
+        <div class="contact-form__field">
+          <label class="contact-form__label" for="inq-email">דוא"ל</label>
+          <input class="contact-form__input" type="email" id="inq-email" name="email" placeholder="כתובת הדוא&quot;ל שלך" required="">
+        </div>
+
+        <div class="contact-form__field">
+          <label class="contact-form__label" for="inq-phone">טלפון</label>
+          <input class="contact-form__input" type="tel" id="inq-phone" name="phone" placeholder="מספר טלפון ליצירת קשר">
+        </div>
+
+        <div class="contact-form__field">
+          <label class="contact-form__label" for="inq-message">תיאור הפנייה</label>
+          <textarea class="contact-form__input contact-form__textarea" id="inq-message" name="message" rows="5" placeholder="תארו בקצרה את עניינכם המשפטי ואת אופן יצירת הקשר המועדף עליכם" required=""></textarea>
+        </div>
+
+        <div class="privacy-consent">
+          <label class="privacy-consent-label">
+            <input type="checkbox" name="privacy_consent" class="privacy-consent-checkbox" required="">
+            <span>קראתי ואני מסכים/ה ל<a href="/terms" target="_blank">תנאי השימוש</a> ול<a href="/privacy" target="_blank">מדיניות הפרטיות</a></span>
+          </label>
+        </div>
+
+        <button type="submit" class="contact-form__submit btn-primary" data-element-type="button" data-element-id="btn-1774790160236-19qeubpg7" data-native-element="true">שליחת הפנייה</button>
+
+      </form>
+    </div>
+
+    <!-- Explanatory Column (END = LEFT in RTL) -->
+    <aside class="contact-inquiry-form-section__info-col">
+      <div class="contact-inquiry-form-section__info-inner">
+        <div class="contact-inquiry-form-section__gold-rule"></div>
+        <h2 class="contact-inquiry-form-section__info-heading">כיצד נוכל לסייע לכם?</h2>
+        <p class="contact-inquiry-form-section__info-text" >מלאו את הטופס עם פרטי הקשר שלכם ותיאור קצר של עניינכם — אין צורך בפרטים מלאים בשלב זה. מספיק לציין את תחום הפנייה (כגון מדיניות פרטיות, גירושין, <strong>הסכם ממון</strong>, <strong>יפוי כח מתמשך</strong>, גביית חובות וכד') ואת אופן יצירת הקשר המועדף עליכם.</p>
+        <p class="contact-inquiry-form-section__info-text" >נציג ממשרדה של ורד לוי, <strong>עורכת דין מדיניות פרטיות</strong> ומשפחה, תחזור אליכם בהקדם לתיאום פגישת ייעוץ ראשונית.</p>
+        <ul class="contact-inquiry-form-section__trust-list" ><li>
+            <span class="contact-inquiry-form-section__trust-icon" aria-hidden="true">
+              <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>מענה מהיר — בדרך כלל תוך יום עסקים</span>
+          </li><li>
+            <span class="contact-inquiry-form-section__trust-icon" aria-hidden="true">
+              <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>שיחה ראשונה ללא התחייבות</span>
+          </li><li>
+            <span class="contact-inquiry-form-section__trust-icon" aria-hidden="true">
+              <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>טיפול אישי, מקצועי ודיסקרטי</span>
+          </li><li>
+            <span class="contact-inquiry-form-section__trust-icon" aria-hidden="true">
+              <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+            <span>ניסיון בתחומי פרטיות, משפחה, ליטיגציה והוצאה לפועל</span>
+          </li></ul>
+      </div>
+    </aside>
+
+  </div>
+</section><section class="contact-intro-section" dir="rtl" data-layout-spec="צור קשר-intro" id="zappy-section-0">
   <div class="contact-intro-container">
     <div class="contact-intro-content">
       
@@ -1352,78 +1423,7 @@
   </div>
 </section>
 
-<section class="contact-inquiry-form-section" data-layout-spec="צור קשר-inquiry-form" dir="rtl" id="zappy-section-2">
-  <div class="contact-inquiry-form-section__container">
 
-    <!-- Form Column (START = RIGHT in RTL) -->
-    <div class="contact-inquiry-form-section__form-col">
-      <form class="contact-form" novalidate="">
-
-        <div class="contact-form__field">
-          <label class="contact-form__label" for="inq-name">שם מלא</label>
-          <input class="contact-form__input" type="text" id="inq-name" name="name" placeholder="שם פרטי ושם משפחה" required="">
-        </div>
-
-        <div class="contact-form__field">
-          <label class="contact-form__label" for="inq-email">דוא"ל</label>
-          <input class="contact-form__input" type="email" id="inq-email" name="email" placeholder="כתובת הדוא&quot;ל שלך" required="">
-        </div>
-
-        <div class="contact-form__field">
-          <label class="contact-form__label" for="inq-phone">טלפון</label>
-          <input class="contact-form__input" type="tel" id="inq-phone" name="phone" placeholder="מספר טלפון ליצירת קשר">
-        </div>
-
-        <div class="contact-form__field">
-          <label class="contact-form__label" for="inq-message">תיאור הפנייה</label>
-          <textarea class="contact-form__input contact-form__textarea" id="inq-message" name="message" rows="5" placeholder="תארו בקצרה את עניינכם המשפטי ואת אופן יצירת הקשר המועדף עליכם" required=""></textarea>
-        </div>
-
-        <div class="privacy-consent">
-          <label class="privacy-consent-label">
-            <input type="checkbox" name="privacy_consent" class="privacy-consent-checkbox" required="">
-            <span>קראתי ואני מסכים/ה ל<a href="/terms" target="_blank">תנאי השימוש</a> ול<a href="/privacy" target="_blank">מדיניות הפרטיות</a></span>
-          </label>
-        </div>
-
-        <button type="submit" class="contact-form__submit btn-primary" data-element-type="button" data-element-id="btn-1774790160236-19qeubpg7" data-native-element="true">שליחת הפנייה</button>
-
-      </form>
-    </div>
-
-    <!-- Explanatory Column (END = LEFT in RTL) -->
-    <aside class="contact-inquiry-form-section__info-col">
-      <div class="contact-inquiry-form-section__info-inner">
-        <div class="contact-inquiry-form-section__gold-rule"></div>
-        <h2 class="contact-inquiry-form-section__info-heading">כיצד נוכל לסייע לכם?</h2>
-        <p class="contact-inquiry-form-section__info-text" >מלאו את הטופס עם פרטי הקשר שלכם ותיאור קצר של עניינכם — אין צורך בפרטים מלאים בשלב זה. מספיק לציין את תחום הפנייה (כגון מדיניות פרטיות, גירושין, <strong>הסכם ממון</strong>, <strong>יפוי כח מתמשך</strong>, גביית חובות וכד') ואת אופן יצירת הקשר המועדף עליכם.</p>
-        <p class="contact-inquiry-form-section__info-text" >נציג ממשרדה של ורד לוי, <strong>עורכת דין מדיניות פרטיות</strong> ומשפחה, תחזור אליכם בהקדם לתיאום פגישת ייעוץ ראשונית.</p>
-        <ul class="contact-inquiry-form-section__trust-list" ><li>
-            <span class="contact-inquiry-form-section__trust-icon" aria-hidden="true">
-              <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </span>
-            <span>מענה מהיר — בדרך כלל תוך יום עסקים</span>
-          </li><li>
-            <span class="contact-inquiry-form-section__trust-icon" aria-hidden="true">
-              <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </span>
-            <span>שיחה ראשונה ללא התחייבות</span>
-          </li><li>
-            <span class="contact-inquiry-form-section__trust-icon" aria-hidden="true">
-              <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </span>
-            <span>טיפול אישי, מקצועי ודיסקרטי</span>
-          </li><li>
-            <span class="contact-inquiry-form-section__trust-icon" aria-hidden="true">
-              <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </span>
-            <span>ניסיון בתחומי פרטיות, משפחה, ליטיגציה והוצאה לפועל</span>
-          </li></ul>
-      </div>
-    </aside>
-
-  </div>
-</section>
 
 <section class="contact-reassurance-section" data-layout-spec="צור קשר-reassurance" dir="rtl" id="zappy-section-3">
   <div class="contact-reassurance-container">
