@@ -1,77 +1,99 @@
-# Business — Generative Engine Optimization Map
+# ורד לוי משרד עורכי דין — Generative Engine Optimization Map
+
+> A law firm specializing in privacy policy law and family law — including divorce, wills, inheritances, lasting power of attorney, guardianship, prenuptial agreements, parenting agreements, common-law partnerships, and LGBTQ+ family matters. The firm also handles debt collection and enforcement proceedings for both corporate and individual creditors. The attorney provides a personal, professional image and has supplied a logo and personal photo to be integrated into the site. The desired website structure includes: About, Practice Areas, Articles, and Contact sections.
 
 ---
 
 ## Pages
 
 ### יפוי כח מתמשך בידיים בטוחות — ורד לוי משרד עורכי דין
-https://example.com
+https://vered-levi-law-office.zappy5.app
 משרד עורכי דין המתמחה ביפוי כח מתמשך, גירושין, הסכמי ממון ומדיניות פרטיות. ליווי אישי, מקצועי ואמין לכל שלב בחיים. פנו אלינו עוד היום.
 
 ### מי עומדת מאחורי המשרד שישנה לכם את החיים — ורד לוי משרד עורכי דין
-https://example.com/about
+https://vered-levi-law-office.zappy5.app/about
 ורד לוי, עורכת דין עם גישה אישית ומקצועית, מביאה ניסיון עשיר בדיני משפחה, פרטיות ואכיפת חובות. הכירו את הפנים שתלווה אתכם בכל הליך משפטי.
 
 ### כל תחום משפטי שתצטרכו — תחת קורת גג אחת — ורד לוי משרד עורכי דין
-https://example.com/practice-areas
+https://vered-levi-law-office.zappy5.app/practice-areas
 מהסכם ממון ויפוי כח מתמשך ועד גירושין, ירושות, אפוטרופסות ומדיניות פרטיות עסקית — המשרד מציע פתרונות משפטיים מקיפים לפרטיים, משפחות וחברות.
 
 ### מאמרים מקצועיים | ורד לוי משרד עורכי דין
-https://example.com/blog
+https://vered-levi-law-office.zappy5.app/blog
 ורד לוי משרד עורכי דין - מאמרים מקצועיים | ורד לוי משרד עורכי דין
 
 ### מה חשוב לבדוק לפני חתימה על הסכם ממון
-https://example.com/blog/premarital-agreement-checklist
+https://vered-levi-law-office.zappy5.app/blog/premarital-agreement-checklist
 מדריך מקצועי המסביר אילו סעיפים, בדיקות ושיקולים חשובים לפני חתימה על הסכם ממון, כדי למנוע מחלוקות ולשמור על בהירות משפטית.
 
 ### מינוי ייפוי כוח מתמשך: מתי נכון להתחיל
-https://example.com/blog/enduring-power-of-attorney-timing
+https://vered-levi-law-office.zappy5.app/blog/enduring-power-of-attorney-timing
 מאמר מקצועי על ייפוי כוח מתמשך, מתי נכון לערוך אותו, מה הוא כולל, וכיצד הוא מסייע לשמור על רצון האדם ועל ניהול נכון של ענייניו בעתיד.
 
 ### ירושה ללא צוואה: איך מתחלק העיזבון בפועל
-https://example.com/blog/inheritance-without-will
+https://vered-levi-law-office.zappy5.app/blog/inheritance-without-will
 הסבר בהיר על חלוקת עיזבון כאשר לא קיימת צוואה, מי היורשים לפי דין, אילו הליכים נדרשים, ומה חשוב לדעת כדי למנוע מחלוקות ועיכובים.
 
 ### גביית חוב עסקי: צעדים משפטיים שכדאי להכיר
-https://example.com/blog/business-debt-collection-steps
+https://vered-levi-law-office.zappy5.app/blog/business-debt-collection-steps
 מדריך קצר לעסקים ולנושים על התנהלות נכונה בגביית חוב, החל מתיעוד והתרעה ועד בחירת המסלול המשפטי המתאים והפחתת סיכונים.
 
 ### הצעד הראשון לפתרון מתחיל בשיחה אחת — ורד לוי משרד עורכי דין
-https://example.com/contact
+https://vered-levi-law-office.zappy5.app/contact
 רוצים לדבר על יפוי כח מתמשך, הסכם ממון או כל עניין משפטי אחר? צרו קשר עם ורד לוי עוד היום לייעוץ ראשוני אישי ומקצועי — אנחנו כאן בשבילכם.
 
 ### עלות גירושין
-https://example.com/blog/divorce-costs
+https://vered-levi-law-office.zappy5.app/blog/divorce-costs
 ורד לוי משרד עורכי דין - כמה עולה להתגרש? | ורד לוי משרד עורכי דין
 
 ### Page
-https://example.com/workplace-privacy-violation
+https://vered-levi-law-office.zappy5.app/workplace-privacy-violation
 
 ### Page
-https://example.com/prenuptial-agreement
+https://vered-levi-law-office.zappy5.app/prenuptial-agreement
 
 ## Legal & Policy
 
 ### Privacy Policy
-https://example.com/privacy
+https://vered-levi-law-office.zappy5.app/privacy
 Information about how user data is collected, stored, and protected.
 
 ### Terms & Conditions
-https://example.com/terms
+https://vered-levi-law-office.zappy5.app/terms
 Legal terms describing service usage, rights, and policies.
 
 ### Accessibility Statement
-https://example.com/accessibility
+https://vered-levi-law-office.zappy5.app/accessibility
 Information about WCAG compliance and accessibility features.
 
 ---
 
 # Business Context (for LLM understanding)
 
-## About Business
+## About ורד לוי משרד עורכי דין
+A law firm specializing in privacy policy law and family law — including divorce, wills, inheritances, lasting power of attorney, guardianship, prenuptial agreements, parenting agreements, common-law partnerships, and LGBTQ+ family matters. The firm also handles debt collection and enforcement proceedings for both corporate and individual creditors. The attorney provides a personal, professional image and has supplied a logo and personal photo to be integrated into the site. The desired website structure includes: About, Practice Areas, Articles, and Contact sections.
+
+## Services/Products
+- מדיניות פרטיות
+- דיני משפחה - גירושין
+- צוואות וירושות
+- יפוי כח מתמשך
+- אפוטרופוס
+- הסכמי ממון
+- הסכמי הורות
+- ידועים בציבור
+- משפחה חדשה (להט"ב)
+- הוצאה לפועל - נושים (חברות ויחידים)
+
+## Target Audience
+יחידים, משפחות, חברות, נושים
+
+## Industry
+משפטי / לגאל
+
 ---
 
 # Additional Resources
 
-- **Sitemap**: https://example.com/sitemap.xml
-- **Robots.txt**: https://example.com/robots.txt
+- **Sitemap**: https://vered-levi-law-office.zappy5.app/sitemap.xml
+- **Robots.txt**: https://vered-levi-law-office.zappy5.app/robots.txt
