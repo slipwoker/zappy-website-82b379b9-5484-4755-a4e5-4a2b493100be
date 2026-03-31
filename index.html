@@ -1036,25 +1036,27 @@
 
 
 
+
+
 <style data-zappy-section-v2-css="true">
 /* V2 Regenerated Section CSS */
 .index-cta-section {
   position: relative;
-  overflow: visible;
   background-color: #101A2F;
   background-image:
-    radial-gradient(ellipse at 80% 0%, rgba(200,162,74,0.13) 0%, transparent 55%),
-    radial-gradient(ellipse at 10% 100%, rgba(200,162,74,0.08) 0%, transparent 50%),
-    linear-gradient(160deg, #16223A 0%, #0F1B31 100%);
+    radial-gradient(ellipse at 80% 20%, rgba(200,162,74,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 10% 80%, rgba(200,162,74,0.07) 0%, transparent 50%),
+    linear-gradient(165deg, #1a2840 0%, #101A2F 60%, #0d1626 100%);
   color: var(--text-light);
-  padding: 80px 24px 96px;
+  padding: 80px 24px 90px;
+  overflow: visible;
   direction: rtl;
 }
 
-.index-cta-section .index-cta-bg-layer {
+.index-cta-section .index-cta-bg-pattern {
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 0;
 }
@@ -1062,81 +1064,114 @@
 .index-cta-section .index-cta-gold-line {
   position: absolute;
   top: 0;
-  right: 0;
   left: 0;
+  right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent 0%, #C8A24A 40%, #E0BE68 60%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, #C8A24A 30%, #E0BE68 50%, #C8A24A 70%, transparent 100%);
   z-index: 2;
 }
 
 .index-cta-section .index-cta-container {
   position: relative;
-  z-index: 3;
+  z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: 56px;
+  grid-template-columns: 1fr 380px;
+  gap: 60px;
   align-items: center;
   direction: rtl;
 }
 
-/* ── CONTENT (right column) ── */
+/* ── Left: CTA Content ── */
 .index-cta-section .index-cta-content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
   text-align: right;
 }
 
-.index-cta-section .index-cta-eyebrow {
-  display: inline-flex;
+.index-cta-section .index-cta-label {
+  display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
-  font-family: 'Heebo', sans-serif;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--secondary);
-  text-transform: uppercase;
+  gap: 12px;
 }
 
-.index-cta-section .index-cta-eyebrow i {
-  font-size: 0.9rem;
-  color: var(--secondary);
+.index-cta-section .index-cta-label-line {
+  display: block;
+  width: 36px;
+  height: 2px;
+  background: linear-gradient(90deg, #E0BE68, #C8A24A);
+  flex-shrink: 0;
+}
+
+.index-cta-section .index-cta-label-text {
+  font-family: 'Heebo', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C8A24A;
 }
 
 .index-cta-section .index-cta-heading {
   font-family: 'Frank Ruhl Libre', serif;
-  font-size: 2.5rem;
+  font-size: clamp(28px, 4vw, 40px);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   color: var(--text-light);
   margin: 0;
 }
 
-.index-cta-section .index-cta-body {
+.index-cta-section .index-cta-desc {
   font-family: 'Heebo', sans-serif;
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.8;
-  color: rgba(246, 244, 239, 0.82);
-  max-width: 560px;
+  color: rgba(246,244,239,0.82);
   margin: 0;
+  max-width: 560px;
 }
 
-/* ── ACTION BUTTONS ── */
-.index-cta-section .index-cta-actions {
+.index-cta-section .index-cta-services {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 24px;
+}
+
+.index-cta-section .index-cta-services li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Heebo', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.index-cta-section .index-cta-services li i {
+  color: #C8A24A;
+  font-size: 15px;
+  flex-shrink: 0;
+  width: 18px;
+  text-align: center;
+}
+
+.index-cta-section .index-cta-buttons {
   display: flex;
   flex-direction: row;
   gap: 16px;
+  align-items: center;
   flex-wrap: wrap;
+  margin-top: 8px;
 }
 
-.index-cta-section .index-cta-btn-main {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.index-cta-section .index-cta-btn-primary {
+  display: inline-block;
   background: linear-gradient(180deg, #E0BE68 0%, #C89F47 52%, #A97822 100%);
   color: #101A2F;
   padding: 14px 36px;
@@ -1144,268 +1179,264 @@
   border: 1px solid #B78B35;
   font-family: 'Heebo', sans-serif;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1;
   text-decoration: none;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 4px 18px rgba(200,162,74,0.3);
-  transition: filter 0.2s ease, transform 0.2s ease;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 4px 16px rgba(200,162,74,0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   white-space: nowrap;
 }
 
-.index-cta-section .index-cta-btn-main:hover {
-  filter: brightness(1.08);
+.index-cta-section .index-cta-btn-primary:hover {
   transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 8px 24px rgba(200,162,74,0.38);
 }
 
-.index-cta-section .index-cta-btn-wa {
+.index-cta-section .index-cta-btn-whatsapp {
   display: inline-flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
   gap: 8px;
   background: transparent;
-  color: var(--secondary);
-  padding: 13px 28px;
+  color: #C8A24A;
+  padding: 13px 30px;
   border-radius: 4px;
-  border: 1px solid var(--secondary);
+  border: 1px solid #C8A24A;
   font-family: 'Heebo', sans-serif;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1;
   text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
   white-space: nowrap;
 }
 
-.index-cta-section .index-cta-btn-wa:hover {
+.index-cta-section .index-cta-btn-whatsapp i {
+  font-size: 18px;
+}
+
+.index-cta-section .index-cta-btn-whatsapp:hover {
   background: rgba(200,162,74,0.12);
-  transform: translateY(-2px);
+  color: #E0BE68;
 }
 
-.index-cta-section .index-cta-btn-wa i {
-  font-size: 1.1rem;
+/* ── Right: Contact Card ── */
+.index-cta-section .index-cta-card {
+  position: relative;
 }
 
-/* ── CONTACT ROW ── */
-.index-cta-section .index-cta-contact-row {
+.index-cta-section .index-cta-card-deco {
+  position: absolute;
+  inset-inline-end: -18px;
+  bottom: -18px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(200,162,74,0.22);
+  border-radius: 8px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.index-cta-section .index-cta-card-inner {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+  border: 1px solid rgba(200,162,74,0.30);
+  border-radius: 8px;
+  padding: 36px 32px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 18px 42px rgba(15,27,49,0.35);
+}
+
+.index-cta-section .index-cta-attorney {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding-top: 4px;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
-.index-cta-section .index-cta-contact-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 7px;
-  text-decoration: none;
-  color: rgba(246,244,239,0.75);
-  font-family: 'Heebo', sans-serif;
-  font-size: 0.9rem;
-  transition: color 0.2s ease;
-}
-
-.index-cta-section .index-cta-contact-item:hover {
-  color: var(--secondary);
-}
-
-.index-cta-section .index-cta-contact-icon {
+.index-cta-section .index-cta-attorney-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(200,162,74,0.25) 0%, rgba(200,162,74,0.10) 100%);
+  border: 1.5px solid rgba(200,162,74,0.50);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: rgba(200,162,74,0.12);
-  border: 1px solid rgba(200,162,74,0.25);
   flex-shrink: 0;
+  color: #C8A24A;
+  font-size: 22px;
 }
 
-.index-cta-section .index-cta-contact-icon i {
-  font-size: 0.75rem;
-  color: var(--secondary);
-}
-
-.index-cta-section .index-cta-contact-text {
-  direction: ltr;
-  unicode-bidi: embed;
-}
-
-.index-cta-section .index-cta-divider-dot {
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: rgba(200,162,74,0.4);
-  flex-shrink: 0;
-}
-
-/* ── PRACTICE CARD (left column) ── */
-.index-cta-section .index-cta-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(200,162,74,0.25);
-  border-radius: 8px;
-  padding: 36px 32px;
-  box-shadow: 0 18px 42px rgba(15,27,49,0.35);
-  backdrop-filter: blur(6px);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  text-align: right;
-}
-
-.index-cta-section .index-cta-card-header {
+.index-cta-section .index-cta-attorney-info {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  text-align: right;
 }
 
-.index-cta-section .index-cta-attorney-name {
+.index-cta-section .index-cta-attorney-info strong {
   font-family: 'Frank Ruhl Libre', serif;
-  font-size: 1.5rem;
+  font-size: 20px;
   font-weight: 700;
   color: var(--text-light);
   line-height: 1.2;
 }
 
-.index-cta-section .index-cta-attorney-title {
+.index-cta-section .index-cta-attorney-info span {
   font-family: 'Heebo', sans-serif;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--secondary);
-  letter-spacing: 0.06em;
+  font-size: 13px;
+  color: #C8A24A;
+  letter-spacing: 0.05em;
 }
 
-.index-cta-section .index-cta-card-divider {
+.index-cta-section .index-cta-divider {
   height: 1px;
-  background: linear-gradient(90deg, rgba(200,162,74,0.5) 0%, transparent 100%);
+  background: linear-gradient(90deg, transparent, rgba(200,162,74,0.30), transparent);
+  margin-bottom: 24px;
 }
 
-.index-cta-section .index-cta-practice-list {
+.index-cta-section .index-cta-contacts {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
-.index-cta-section .index-cta-practice-list li {
+.index-cta-section .index-cta-contacts li {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 12px;
-  font-family: 'Heebo', sans-serif;
-  font-size: 0.95rem;
-  color: rgba(246,244,239,0.88);
+  text-align: right;
 }
 
-.index-cta-section .index-cta-practice-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
-  background: rgba(200,162,74,0.1);
-  border: 1px solid rgba(200,162,74,0.2);
+.index-cta-section .index-cta-contacts li i {
+  color: #C8A24A;
+  font-size: 15px;
   flex-shrink: 0;
-  color: var(--secondary);
-  font-size: 0.85rem;
+  width: 18px;
+  text-align: center;
+}
+
+.index-cta-section .index-cta-contacts li a {
+  font-family: 'Heebo', sans-serif;
+  font-size: 15px;
+  color: rgba(246,244,239,0.85);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  direction: ltr;
+  display: inline-block;
+}
+
+.index-cta-section .index-cta-contacts li a:hover {
+  color: #E0BE68;
 }
 
 .index-cta-section .index-cta-card-cta {
-  display: block;
-  text-align: center;
-  background: linear-gradient(180deg, #E0BE68 0%, #C89F47 52%, #A97822 100%);
-  color: #101A2F;
-  padding: 13px 24px;
-  border-radius: 4px;
-  border: 1px solid #B78B35;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(200,162,74,0.18);
+  text-align: right;
+}
+
+.index-cta-section .index-cta-card-link {
   font-family: 'Heebo', sans-serif;
+  font-size: 14px;
   font-weight: 700;
-  font-size: 0.95rem;
+  color: #C8A24A;
   text-decoration: none;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
-  transition: filter 0.2s ease, transform 0.2s ease;
-  margin-top: 4px;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.2s ease, color 0.2s ease;
+  letter-spacing: 0.04em;
 }
 
-.index-cta-section .index-cta-card-cta:hover {
-  filter: brightness(1.08);
-  transform: translateY(-2px);
+.index-cta-section .index-cta-card-link:hover {
+  color: #E0BE68;
+  gap: 12px;
 }
 
-/* ── BOTTOM DIVIDER ── */
-.index-cta-section .index-cta-divider-wrapper {
+.index-cta-section .index-cta-card-link i {
+  font-size: 13px;
+}
+
+/* Bottom accent */
+.index-cta-section .index-cta-bottom-accent {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
-  height: 64px;
-  pointer-events: none;
-  z-index: 5;
-}
-
-.index-cta-section .index-cta-divider-wrapper svg {
-  display: block;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(200,162,74,0.40) 40%, rgba(200,162,74,0.40) 60%, transparent 100%);
+  z-index: 2;
 }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .index-cta-section .index-cta-container {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 48px;
   }
 
   .index-cta-section .index-cta-card {
     max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
   .index-cta-section {
-    padding: 64px 16px 80px;
+    padding: 60px 16px 72px;
+  }
+
+  .index-cta-section .index-cta-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
   .index-cta-section .index-cta-heading {
-    font-size: 1.75rem;
+    font-size: 26px;
   }
 
-  .index-cta-section .index-cta-actions {
-    flex-direction: column;
+  .index-cta-section .index-cta-services {
+    grid-template-columns: 1fr;
     gap: 12px;
   }
 
-  .index-cta-section .index-cta-btn-main,
-  .index-cta-section .index-cta-btn-wa {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .index-cta-section .index-cta-contact-row {
+  .index-cta-section .index-cta-buttons {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 12px;
   }
 
-  .index-cta-section .index-cta-divider-dot {
-    display: none;
+  .index-cta-section .index-cta-btn-primary,
+  .index-cta-section .index-cta-btn-whatsapp {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
   }
 
   .index-cta-section .index-cta-card {
     max-width: 100%;
-    padding: 28px 20px;
   }
 
-  .index-cta-section .index-cta-divider-wrapper {
-    height: 40px;
+  .index-cta-section .index-cta-card-deco {
+    display: none;
+  }
+
+  .index-cta-section .index-cta-card-inner {
+    padding: 28px 20px;
   }
 }
+
 </style>
     <link rel="stylesheet" href="/styles.css">
 
@@ -2307,82 +2338,80 @@
 </section>
 
 <section class="index-cta-section" data-layout-spec="בית-cta" dir="rtl" data-zappy-section="true" id="zappy-section-4">
-  <div class="index-cta-bg-layer"></div>
+  <div class="index-cta-bg-pattern"></div>
   <div class="index-cta-gold-line"></div>
 
   <div class="index-cta-container">
 
-    <!-- Right: Text + CTAs -->
+    <!-- Right: Main CTA Content -->
     <div class="index-cta-content">
-      <span class="index-cta-eyebrow">
-        <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
-        ייעוץ משפטי אישי
-      </span>
-      <h2 class="index-cta-heading">מוכנים לדבר עם עורכת הדין?</h2>
-      <p class="index-cta-body">בין אם מדובר בהסכם ממון, יפוי כח מתמשך, גירושין, צוואה, מדיניות פרטיות או הליכי הוצאה לפועל המשרד מעניק ייעוץ משפטי ממוקד, אישי ומקצועי לכל לקוח ולקוחה.</p>
+      <div class="index-cta-label">
+        <span class="index-cta-label-line"></span>
+        <span class="index-cta-label-text">ייעוץ משפטי אישי</span>
+      </div>
 
-      <div class="index-cta-actions">
-        <a href="/contact" class="btn-primary index-cta-btn-main">צרו קשר</a>
-        <a href="https://wa.me/972506479210" target="_blank" rel="noopener" class="btn-secondary index-cta-btn-wa">
+      <h2 class="index-cta-heading">מוכנים לדבר עם עורכת הדין?</h2>
+
+      <p class="index-cta-desc">בין אם מדובר בהסכם ממון, יפוי כח מתמשך, גירושין, צוואה, מדיניות פרטיות או הליכי הוצאה לפועל המשרד מעניק ייעוץ משפטי ממוקד, אישי ומקצועי לכל לקוח ולקוחה.</p>
+
+      <ul class="index-cta-services">
+        <li><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i><span>דיני משפחה</span></li>
+        <li><i class="fa-solid fa-scroll" aria-hidden="true"></i><span>צוואות וירושות</span></li>
+        <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><span>מדיניות פרטיות</span></li>
+        <li><i class="fa-solid fa-gavel" aria-hidden="true"></i><span>הוצאה לפועל</span></li>
+      </ul>
+
+      <div class="index-cta-buttons">
+        <a href="/contact" class="btn-primary index-cta-btn-primary">צרו קשר</a>
+        <a href="https://wa.me/972506479210" class="btn-secondary index-cta-btn-whatsapp" target="_blank" rel="noopener noreferrer">
           <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
           WhatsApp
         </a>
       </div>
-
-      <div class="index-cta-contact-row">
-        <a href="tel:03-5255505" class="index-cta-contact-item">
-          <span class="index-cta-contact-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
-          <span class="index-cta-contact-text">03-5255505</span>
-        </a>
-        <span class="index-cta-divider-dot" aria-hidden="true"></span>
-        <a href="tel:050-6479210" class="index-cta-contact-item">
-          <span class="index-cta-contact-icon"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i></span>
-          <span class="index-cta-contact-text">050-6479210</span>
-        </a>
-        <span class="index-cta-divider-dot" aria-hidden="true"></span>
-        <a href="mailto:vered@vlb-law.com" class="index-cta-contact-item">
-          <span class="index-cta-contact-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
-          <span class="index-cta-contact-text">vered@vlb-law.com</span>
-        </a>
-      </div>
     </div>
 
-    <!-- Left: Practice Tags Card -->
+    <!-- Left: Contact Card -->
     <div class="index-cta-card">
-      <div class="index-cta-card-header">
-        <span class="index-cta-attorney-name">ורד לוי</span>
-        <span class="index-cta-attorney-title">עורכת דין</span>
+      <div class="index-cta-card-inner">
+        <div class="index-cta-attorney">
+          <div class="index-cta-attorney-avatar">
+            <i class="fa-solid fa-user-tie" aria-hidden="true"></i>
+          </div>
+          <div class="index-cta-attorney-info">
+            <strong>ורד לוי</strong>
+            <span>עורכת דין</span>
+          </div>
+        </div>
+
+        <div class="index-cta-divider"></div>
+
+        <ul class="index-cta-contacts">
+          <li>
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <a href="tel:03-5255505">03-5255505</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>
+            <a href="tel:050-6479210">050-6479210</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <a href="/cdn-cgi/l/email-protection#691f0c1b0c0d291f050b4405081e470a0604">[email&nbsp;protected]</a>
+          </li>
+        </ul>
+
+        <div class="index-cta-card-cta">
+          <a href="/contact" class="index-cta-card-link">צרו קשר <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
+        </div>
       </div>
-      <div class="index-cta-card-divider"></div>
-      <ul class="index-cta-practice-list" aria-label="תחומי עיסוק">
-        <li>
-          <span class="index-cta-practice-icon"><i class="fa-solid fa-people-roof" aria-hidden="true"></i></span>
-          <span>דיני משפחה</span>
-        </li>
-        <li>
-          <span class="index-cta-practice-icon"><i class="fa-solid fa-scroll" aria-hidden="true"></i></span>
-          <span>צוואות וירושות</span>
-        </li>
-        <li>
-          <span class="index-cta-practice-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
-          <span>מדיניות פרטיות</span>
-        </li>
-        <li>
-          <span class="index-cta-practice-icon"><i class="fa-solid fa-gavel" aria-hidden="true"></i></span>
-          <span>הוצאה לפועל</span>
-        </li>
-      </ul>
-      <a href="/contact" class="index-cta-card-cta">צרו קשר</a>
+
+      <div class="index-cta-card-deco"></div>
     </div>
 
   </div>
 
-  <!-- Bottom SVG divider -->
-  <div class="index-cta-divider-wrapper">
-    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1440 64" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,64 L0,28 Q120,10 240,26 T480,20 Q600,14 720,24 T960,18 Q1080,12 1200,22 T1440,20 L1440,64 Z" fill="var(--bg-dark)"></path>
-    </svg>
-  </div>
+  <!-- Bottom gold divider -->
+  <div class="index-cta-bottom-accent"></div>
 </section>
   </main>
   
