@@ -49,12 +49,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vered-levi-law-office.zappy5.app/workplace-privacy-violation</loc>
-    <lastmod>2026-04-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://vered-levi-law-office.zappy5.app/blog/divorce-costs</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>daily</changefreq>
@@ -62,6 +56,12 @@
   </url>
   <url>
     <loc>https://vered-levi-law-office.zappy5.app/prenuptial-agreement</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vered-levi-law-office.zappy5.app/workplace-privacy-violation</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
