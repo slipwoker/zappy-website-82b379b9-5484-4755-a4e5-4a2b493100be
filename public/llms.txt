@@ -1,6 +1,4 @@
-# ורד לוי משרד עורכי דין — Generative Engine Optimization Map
-
-> A law firm specializing in privacy policy law and family law — including divorce, wills, inheritances, lasting power of attorney, guardianship, prenuptial agreements, parenting agreements, common-law partnerships, and LGBTQ+ family matters. The firm also handles debt collection and enforcement proceedings for both corporate and individual creditors. The attorney provides a personal, professional image and has supplied a logo and personal photo to be integrated into the site. The desired website structure includes: About, Practice Areas, Articles, and Contact sections.
+# Business — Generative Engine Optimization Map
 
 ---
 
@@ -70,27 +68,7 @@ Information about WCAG compliance and accessibility features.
 
 # Business Context (for LLM understanding)
 
-## About ורד לוי משרד עורכי דין
-A law firm specializing in privacy policy law and family law — including divorce, wills, inheritances, lasting power of attorney, guardianship, prenuptial agreements, parenting agreements, common-law partnerships, and LGBTQ+ family matters. The firm also handles debt collection and enforcement proceedings for both corporate and individual creditors. The attorney provides a personal, professional image and has supplied a logo and personal photo to be integrated into the site. The desired website structure includes: About, Practice Areas, Articles, and Contact sections.
-
-## Services/Products
-- מדיניות פרטיות
-- דיני משפחה - גירושין
-- צוואות וירושות
-- יפוי כח מתמשך
-- אפוטרופוס
-- הסכמי ממון
-- הסכמי הורות
-- ידועים בציבור
-- משפחה חדשה (להט"ב)
-- הוצאה לפועל - נושים (חברות ויחידים)
-
-## Target Audience
-יחידים, משפחות, חברות, נושים
-
-## Industry
-משפטי / לגאל
-
+## About Business
 ---
 
 # Additional Resources
