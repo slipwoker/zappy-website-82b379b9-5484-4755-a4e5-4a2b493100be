@@ -258,155 +258,589 @@
 </head>
 <body>
  <nav class="navbar" dir="rtl"> <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"> <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"> <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path> </svg> <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;"> <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path> </svg> </button> <button class="phone-header-btn" data-phone="035255505" aria-label="Call"> <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"> <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path> </svg> </button> <div class="nav-container"> <div class="nav-right-group"><div class="nav-brand"> <a href="/" class="logo-link"> <img src="/assets/logo-1774782894048-xuck8l.webp?v=1774782894546-yv2klt" alt="ורד לוי משרד עורכי דין" class="logo"> </a> </div><ul class="nav-menu" id="navMenu"><li><a href="/about">אודות</a></li><li><a href="/practice-areas">תחומי עיסוק</a></li><li style="display: none !important;" class="zappy-hidden-menu-item"><a href="/thank-you">Thank You | Vered Levy Law Office</a></li><li class="nav-cta-item-mobile"><a href="/contact">צור קשר</a></li><li><a href="/business-privacy-policy" class="">מדיניות פרטיות לעסקים: מה החוק מחייב</a></li></ul></div> <div class="nav-cta-container"> <a href="/contact" class="nav-cta-btn">צור קשר</a> </div> </div> </nav> <script> // Navbar Mobile Menu Toggle and Contrast Fix (function() { // Use 'load' event instead of 'DOMContentLoaded' to ensure we run AFTER all other scripts window.addEventListener('load', function() { // FIX MOBILE BUTTON CONTRAST // Detect navbar background color and apply contrasting color to mobile buttons const navbar = document.querySelector('.navbar, nav, header'); if (!navbar) { console.log('[Navbar] Navbar element not found'); return; } // DECLARE VARIABLES EARLY to avoid Temporal Dead Zone errors // These are used in multiple places below let mobileToggle = document.getElementById('mobileToggle') || document.querySelector('.mobile-toggle') || document.querySelector('.hamburger') || document.querySelector('.hamburger-menu') || document.querySelector('.menu-toggle') || document.querySelector('.burger-menu') || document.querySelector('[aria-label="Menu"]') || document.querySelector('[aria-label="תפריט"]'); const phoneBtn = document.querySelector('.phone-header-btn'); const computedStyle = window.getComputedStyle(navbar); let bgColor = computedStyle.backgroundColor; console.log('[Navbar] Initial navbar background:', bgColor); // Check if background is transparent or rgba with 0 alpha const isTransparent = bgColor === 'transparent' || bgColor === 'rgba(0, 0, 0, 0)' || (bgColor.startsWith('rgba') && bgColor.includes(', 0)')); if (isTransparent) { // Check for background-image or gradient const bgImage = computedStyle.backgroundImage; if (bgImage && bgImage !== 'none') { console.log('[Navbar] Navbar has background image/gradient, using dark text'); bgColor = 'rgb(240, 240, 240)'; // Assume light background } else { // Transparent navbar - check body background const bodyBg = window.getComputedStyle(document.body).backgroundColor; console.log('[Navbar] Navbar transparent, using body background:', bodyBg); bgColor = bodyBg; } } // Calculate luminance to determine if background is light or dark const rgb = bgColor.match(/\d+/g); if (rgb && rgb.length >= 3) { const r = parseInt(rgb[0]); const g = parseInt(rgb[1]); const b = parseInt(rgb[2]); const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255; // Mobile button colors are set by Claude's AI-generated CSS (same as .nav-menu a) // No dynamic color overrides needed - colors come from the generated navbar CSS console.log('[Navbar] Mobile button colors preserved from Claude CSS (luminance:', luminance.toFixed(2) + ')'); // FIX ICON SIZES - Ensure SVGs are properly sized and visible // INJECT CRITICAL CSS TO OVERRIDE ANY CONFLICTING RULES const criticalCSS = document.createElement('style'); criticalCSS.id = 'zappy-mobile-nav-fix'; const htmlLang = document.documentElement.lang || 'en'; const htmlDir = document.documentElement.dir || 'ltr'; // Check both dir attribute AND lang for RTL detection // dir="rtl" is the most reliable indicator const isRTL = htmlDir === 'rtl' || htmlLang === 'he' || htmlLang === 'ar'; criticalCSS.textContent = ` /* Hide mobile buttons on desktop, show only on mobile */ @media (min-width: 769px) { .mobile-toggle, .phone-header-btn { display: none !important; } } /* Show and position mobile buttons correctly on mobile */ @media (max-width: 768px) { .mobile-toggle, .phone-header-btn { position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; z-index: 1001 !important; display: flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; border-radius: 50% !important; border: none !important; cursor: pointer !important; padding: 6px !important; background: none !important; color: var(--nav-text, var(--text-light)) !important; } /* LTR positioning (default): hamburger LEFT, phone RIGHT */ html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle, html[dir="ltr"] .mobile-toggle { left: 12px !important; right: auto !important; } html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn, html[dir="ltr"] .phone-header-btn { right: 12px !important; left: auto !important; } /* RTL positioning: hamburger RIGHT, phone LEFT */ html[dir="rtl"] .mobile-toggle, html[lang="he"] .mobile-toggle, html[lang="ar"] .mobile-toggle { right: 12px !important; left: auto !important; } html[dir="rtl"] .phone-header-btn, html[lang="he"] .phone-header-btn, html[lang="ar"] .phone-header-btn { left: 12px !important; right: auto !important; } /* CRITICAL: Ensure nav-container has min-height on mobile */ /* All children are positioned absolutely/fixed on mobile, so height:auto collapses to 0 */ .nav-container { min-height: 70px !important; position: relative !important; } /* Ensure SVG icons are properly sized and inherit color */ .mobile-toggle svg, .phone-header-btn svg { width: 24px !important; height: 24px !important; /* Don't force display - let JavaScript control hamburger/close toggle */ } /* Reset nav-cta-container on mobile - remove desktop box-shadow/padding */ /* that creates a visible ghost box when CTA button is hidden */ .nav-cta-container { box-shadow: none !important; padding: 0 !important; } /* Hide nav-cta-container entirely on mobile when there's no lang-switcher */ /* (only the CTA button is inside, and it's hidden on mobile) */ .nav-cta-container:not(:has(.lang-switcher)) { display: none !important; } /* CRITICAL: Prevent hero image fade gradient from bleeding over headline text */ /* The .image-fade-gradient has bottom: -30px (extends below parent) */ /* On mobile stacked layout, this overlaps the h1 text below the image */ .hero-image-column { overflow: hidden !important; } .image-fade-gradient { bottom: 0 !important; } /* Hide desktop language switcher on mobile - hamburger menu handles it */ /* High specificity to override stored CSS */ .lang-switcher, .nav-cta-container .lang-switcher, .nav-container .lang-switcher, .navbar .lang-switcher, .navbar .nav-cta-container .lang-switcher { display: none !important; } } `; // Remove existing fix if present and inject new one const existing = document.getElementById('zappy-mobile-nav-fix'); if (existing) existing.remove(); document.head.appendChild(criticalCSS); console.log('[Navbar] Critical CSS injected for mobile nav positioning'); // ONLY apply inline positioning styles on mobile viewport // On desktop, the CSS handles hiding these buttons with display: none // Inline styles were breaking desktop layout by overriding CSS const isMobileViewport = window.innerWidth <= 768; if (mobileToggle) { // Icon sizing applies to all viewports for consistency const hamburgerIcon = mobileToggle.querySelector('.hamburger-icon'); const closeIcon = mobileToggle.querySelector('.close-icon'); if (hamburgerIcon) { hamburgerIcon.style.setProperty('width', '24px', 'important'); hamburgerIcon.style.setProperty('height', '24px', 'important'); hamburgerIcon.style.setProperty('display', 'block', 'important'); // Show hamburger by default } if (closeIcon) { closeIcon.style.setProperty('width', '24px', 'important'); closeIcon.style.setProperty('height', '24px', 'important'); closeIcon.style.setProperty('display', 'none', 'important'); // Hide close icon by default } // ONLY set positioning inline styles on mobile if (isMobileViewport) { mobileToggle.style.setProperty('position', 'absolute', 'important'); mobileToggle.style.setProperty('top', '50%', 'important'); mobileToggle.style.setProperty('transform', 'translateY(-50%)', 'important'); mobileToggle.style.setProperty('z-index', '1001', 'important'); // Clear any inline left/right so CSS can take over based on html[dir] mobileToggle.style.removeProperty('left'); mobileToggle.style.removeProperty('right'); console.log('[Navbar] Mobile toggle positioning applied (mobile viewport)'); } else { // On desktop, clear any positioning styles to let CSS handle it mobileToggle.style.removeProperty('position'); mobileToggle.style.removeProperty('top'); mobileToggle.style.removeProperty('transform'); mobileToggle.style.removeProperty('z-index'); mobileToggle.style.removeProperty('left'); mobileToggle.style.removeProperty('right'); console.log('[Navbar] Desktop viewport - cleared mobile toggle inline positioning'); } } if (phoneBtn) { // Icon sizing applies to all viewports const phoneIcon = phoneBtn.querySelector('svg'); if (phoneIcon) { phoneIcon.style.width = '24px'; phoneIcon.style.height = '24px'; phoneIcon.setAttribute('width', '24'); phoneIcon.setAttribute('height', '24'); } // ONLY set positioning inline styles on mobile if (isMobileViewport) { phoneBtn.style.setProperty('position', 'absolute', 'important'); phoneBtn.style.setProperty('top', '50%', 'important'); phoneBtn.style.setProperty('transform', 'translateY(-50%)', 'important'); phoneBtn.style.setProperty('z-index', '1001', 'important'); // Clear any inline left/right so CSS can take over based on html[dir] phoneBtn.style.removeProperty('left'); phoneBtn.style.removeProperty('right'); console.log('[Navbar] Phone button positioning applied (mobile viewport)'); } else { // On desktop, clear any positioning styles to let CSS handle it phoneBtn.style.removeProperty('position'); phoneBtn.style.removeProperty('top'); phoneBtn.style.removeProperty('transform'); phoneBtn.style.removeProperty('z-index'); phoneBtn.style.removeProperty('left'); phoneBtn.style.removeProperty('right'); console.log('[Navbar] Desktop viewport - cleared phone button inline positioning'); } } } else { console.log('[Navbar] Could not parse background color:', bgColor); } // MOBILE MENU TOGGLE // Re-query in case DOM changed (mobileToggle already declared at top of function) mobileToggle = document.getElementById('mobileToggle') || document.querySelector('.mobile-toggle') || document.querySelector('.hamburger') || document.querySelector('.hamburger-menu') || document.querySelector('.menu-toggle') || document.querySelector('.burger-menu') || document.querySelector('[aria-label="Menu"]') || document.querySelector('[aria-label="תפריט"]'); // EXPANDED SEARCH: Find nav menu by ID or class const navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu') || document.querySelector('.nav-links') || document.querySelector('nav ul:not(.submenu)'); if (!mobileToggle || !navMenu) { console.log('[Navbar] Mobile toggle or menu not found:', { toggle: !!mobileToggle, menu: !!navMenu }); return; } // Ensure navMenu has ID for CSS targeting if (!navMenu.id) { navMenu.id = 'navMenu'; } console.log('[Navbar] Initializing mobile menu...'); // Remove any existing event listeners by cloning the button const newToggle = mobileToggle.cloneNode(true); mobileToggle.parentNode.replaceChild(newToggle, mobileToggle); // Toggle menu on button click - use newToggle now newToggle.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); const hamburgerIcon = this.querySelector('.hamburger-icon'); const closeIcon = this.querySelector('.close-icon'); const isActive = navMenu.classList.contains('active'); if (isActive) { // Close menu navMenu.classList.remove('active'); if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important'); if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important'); document.body.style.overflow = ''; console.log('[Navbar] Menu closed'); } else { // Open menu navMenu.classList.add('active'); if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'none', 'important'); if (closeIcon) closeIcon.style.setProperty('display', 'block', 'important'); document.body.style.overflow = 'hidden'; console.log('[Navbar] Menu opened'); } }); // Close menu when clicking nav links (but NOT dropdown toggles) const navLinks = navMenu.querySelectorAll('a'); navLinks.forEach(function(link) { link.addEventListener('click', function() { // Don't close if it's a dropdown child (unless it's a real navigation link) if (this.getAttribute('href') === '#') return; const hamburgerIcon = newToggle.querySelector('.hamburger-icon'); const closeIcon = newToggle.querySelector('.close-icon'); navMenu.classList.remove('active'); if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important'); if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important'); document.body.style.overflow = ''; console.log('[Navbar] Menu closed (link clicked)'); }); }); // DROPDOWN MENU TOGGLE (for mobile and touch devices) var dropdownToggles = navMenu.querySelectorAll('.dropdown-toggle'); dropdownToggles.forEach(function(toggle) { toggle.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); var parent = this.closest('.nav-dropdown'); if (!parent) return; // Close other open dropdowns at the same level var siblings = parent.parentNode.querySelectorAll('.nav-dropdown.open'); siblings.forEach(function(sib) { if (sib !== parent) sib.classList.remove('open'); }); parent.classList.toggle('open'); console.log('[Navbar] Dropdown toggled:', parent.classList.contains('open') ? 'open' : 'closed'); }); }); // Close dropdowns when clicking outside document.addEventListener('click', function(e) { if (!e.target.closest('.nav-dropdown')) { var openDropdowns = document.querySelectorAll('.nav-dropdown.open'); openDropdowns.forEach(function(dd) { dd.classList.remove('open'); }); } }); console.log('[Navbar] Dropdown handlers initialized for ' + dropdownToggles.length + ' dropdowns'); // Phone button functionality (phoneBtn already declared at top of function) if (phoneBtn) { phoneBtn.addEventListener('click', function() { // Get phone number from placeholder in page or use default const phoneLinks = document.querySelectorAll('a[href^="tel:"]'); const phoneNumber = phoneLinks.length > 0 ? phoneLinks[0].getAttribute('href').replace('tel:', '') : ' 03-5255505 </li> <li class="zappy-editable"> <a href="tel:035255505" style="display:flex;align-items:flex-start;gap:inherit" class="zappy-editable"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> 050-6479210'; window.location.href = 'tel:' + phoneNumber; console.log('[Navbar] Phone button clicked'); }); } console.log('[Navbar] Mobile menu initialized successfully'); // === WHATSAPP BUTTON VISIBILITY FIX === // Ensure WhatsApp floating button is hidden on desktop and visible on mobile // IMPORTANT: Only target the floating button by its class, NOT generic wa.me links const handleWhatsAppVisibility = function() { const whatsappBtn = document.querySelector('.whatsapp-float'); if (whatsappBtn) { const isDesktop = window.innerWidth >= 769; if (isDesktop) { whatsappBtn.style.setProperty('display', 'none', 'important'); whatsappBtn.style.setProperty('visibility', 'hidden', 'important'); whatsappBtn.style.setProperty('opacity', '0', 'important'); whatsappBtn.style.setProperty('pointer-events', 'none', 'important'); console.log('[WhatsApp] Button hidden on desktop'); } else { whatsappBtn.style.removeProperty('display'); whatsappBtn.style.removeProperty('visibility'); whatsappBtn.style.removeProperty('opacity'); whatsappBtn.style.removeProperty('pointer-events'); console.log('[WhatsApp] Button visible on mobile'); } } }; // Run on load handleWhatsAppVisibility(); // Run on resize with debouncing let resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(handleWhatsAppVisibility, 100); }); }); })(); </script> <main>
-      <section id="layout-1775390101536" class="py-16 md:py-24 bg-white layout-section" data-zappy-component="true" style="width: 100%; padding: 60px 0;">
-        <div class="container mx-auto px-4 md:px-8 text-center">
-          <h1 class="text-3xl md:text-4xl font-bold mb-4">מדיניות פרטיות לעסקים: מה החוק מחייב</h1>
-          <p class="text-gray-600 text-lg" >&nbsp; מדיניות פרטיות לאתרי עסקים: מה חייבים לכלול?<br>
-בעידן שבו כל פעולה כמעט מתבצעת אונליין, מידע אישי הפך לנכס רגיש ויקר ערך. כל אתר עסקי - בין אם מדובר בחנות מקוונת, אתר תדמית או אפליקציה - אוסף מידע על משתמשים. ברגע שזה קורה, חלה חובה משפטית ברורה: לפרסם מדיניות פרטיות.<br>
-זו לא רק דרישה טכנית. מדובר במסמך משפטי שמגן גם על העסק וגם על הלקוחות שלו. מניסיוני כעורך דין בתחום, עסקים רבים מתייחסים למדיניות פרטיות כאל "טקסט חובה" שמעתיקים מאתר אחר. זו טעות שעלולה להוביל לחשיפה משפטית ממשית.<br>
-למה בכלל צריך מדיניות פרטיות?<br>
-החובה לפרסם מדיניות פרטיות נובעת משני מקורות מרכזיים:<br>
+      <section style="width:100%;max-width:100%;box-sizing:border-box;background:var(--bg-light);direction:rtl;font-family:system-ui,sans-serif;position:relative;overflow:hidden;" data-zappy-section="true" class="section" id="layout-1775390101536">
+<style>
+  .privacy-article-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 32px 96px;
+    position: relative;
+    z-index: 10;
+  }
 
+  .privacy-article-accent-bar {
+    width: 4px;
+    height: 80px;
+    background: var(--gradient-primary);
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 2px;
+  }
 
-חוק הגנת הפרטיות, התשמ"א-1981 והתקנות מכוחו
-<br>
+  .privacy-article-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    border: 1px solid var(--secondary);
+    color: var(--primary);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: var(--radius-badge);
+    margin-bottom: 28px;
+  }
 
-רגולציות בינלאומיות, ובראשן ה־GDPR האירופי
+  .privacy-article-tag::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--secondary);
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
 
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
 
-גם עסק ישראלי שפועל רק בעברית עלול להיות כפוף ל־GDPR, למשל אם הוא מוכר מוצרים ללקוחות באירופה או משתמש בכלי מעקב בינלאומיים.<br>
-מעבר לחובה החוקית, מדיניות פרטיות יוצרת שקיפות. היא מסבירה ללקוחות מה נעשה עם המידע שלהם - וזה שיקול משמעותי באמון שהם נותנים בעסק.<br>
-אילו נתונים אתם אוספים - והאם אתם מודעים לזה?<br>
-אחת הטעויות הנפוצות היא חוסר מודעות להיקף איסוף המידע.<br>
-אתר ממוצע אוסף הרבה יותר ממה שנדמה:<br>
+  .privacy-article-h1 {
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1.18;
+    margin: 0 0 48px 0;
+    letter-spacing: -0.02em;
+    position: relative;
+    padding-bottom: 32px;
+  }
 
+  .privacy-article-h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+  }
 
-פרטים שמוזנים בטפסים (שם, טלפון, אימייל)
-<br>
+  /* BG decorative elements */
+  .privacy-bg-circle-1 {
+    position: absolute;
+    top: -120px;
+    left: -120px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(200,162,74,0.07) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-נתוני רכישה ואמצעי תשלום
-<br>
+  .privacy-bg-circle-2 {
+    position: absolute;
+    bottom: 0;
+    right: -80px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(31,49,86,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-כתובות IP ומידע טכני
-<br>
+  /* Text blocks */
+  .privacy-lead {
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+  }
 
-התנהגות גלישה באמצעות Cookies וכלי אנליטיקה
+  .privacy-body {
+    font-size: 1rem;
+    color: var(--text-dark);
+    line-height: 1.85;
+    margin: 0 0 28px 0;
+  }
 
+  /* Section headings inside article */
+  .privacy-section-heading {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 52px 0 18px;
+    padding-right: 18px;
+    border-right: 4px solid var(--secondary);
+    line-height: 1.4;
+  }
 
-בפרויקט של אתר איקומרס גדול כמו "מחסני תאורה", למשל, נאסף מידע גם לצורך תפעול הזמנות, גם לשירות לקוחות וגם לשיווק מותאם אישית. כל שימוש כזה חייב להיות מתועד ומוסבר במדיניות.<br>
-מה חייב להופיע במדיניות פרטיות תקינה?<br>
-מדיניות פרטיות מקצועית לא מסתפקת בהצהרות כלליות. היא צריכה להיות מדויקת, ברורה ומותאמת לפעילות העסק.<br>
-אלו המרכיבים המרכזיים שחייבים להיכלל:<br>
-1. סוגי המידע הנאסף<br>
-יש לפרט אילו נתונים נאספים בפועל, ולא להסתפק בניסוחים עמומים.<br>
-לדוגמה: "פרטי התקשרות", "נתוני רכישה", "מידע טכני על המכשיר".<br>
-2. מטרות השימוש במידע<br>
-למה המידע נאסף?<br>
-שירות לקוחות, שיפור האתר, דיוור שיווקי, התאמת פרסומות - כל מטרה צריכה להיות מוגדרת.<br>
-3. העברת מידע לצדדים שלישיים<br>
-האם המידע מועבר לגורמים חיצוניים?<br>
+  /* Numbered headings */
+  .privacy-numbered-block {
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-card);
+    padding: 28px 28px 24px;
+    margin-bottom: 20px;
+    position: relative;
+    box-shadow: var(--shadow-subtle);
+    transition: var(--transition-hover);
+  }
 
+  .privacy-numbered-block:hover {
+    box-shadow: var(--shadow-card);
+    transform: translateY(-3px);
+    border-color: var(--secondary);
+  }
 
-חברות סליקה
-<br>
+  .privacy-numbered-block-num {
+    position: absolute;
+    top: -16px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    font-weight: 900;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(200,162,74,0.35);
+  }
 
-מערכות דיוור
-<br>
+  .privacy-numbered-block-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 8px 0 10px 0;
+  }
 
-שירותי ענן
-<br>
+  .privacy-numbered-block-body {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    line-height: 1.75;
+    margin: 0;
+  }
 
-ספקי פרסום (כמו פייסבוק וגוגל)
+  /* Highlight box */
+  .privacy-highlight-box {
+    background: linear-gradient(135deg, rgba(31,49,86,0.05) 0%, rgba(200,162,74,0.09) 100%);
+    border: 1px solid var(--border-light);
+    border-right: 4px solid var(--secondary);
+    border-radius: var(--radius-card);
+    padding: 28px 28px;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
 
+  .privacy-highlight-box::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 100px;
+    color: rgba(200,162,74,0.12);
+    font-family: Georgia, serif;
+    line-height: 1;
+    pointer-events: none;
+  }
 
-באתרי מסחר, כמו במקרה של "מחסני תאורה", זה סעיף קריטי במיוחד.<br>
-4. שימוש בעוגיות (Cookies)<br>
-יש להסביר:<br>
+  /* Inline list in highlight box */
+  .privacy-highlight-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 
+  .privacy-highlight-list li {
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-badge);
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    color: var(--primary);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
 
-אילו עוגיות מופעלות
-<br>
+  .privacy-highlight-list li::before {
+    content: '✓';
+    color: var(--secondary);
+    font-weight: 900;
+    font-size: 0.85rem;
+  }
 
-האם מדובר בעוגיות חיוניות או שיווקיות
-<br>
+  /* Warning cards */
+  .privacy-warning-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 28px 0;
+  }
 
-כיצד ניתן לשלוט בהן
+  .privacy-warning-card {
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-top: 3px solid #c0392b;
+    border-radius: var(--radius-card);
+    padding: 20px 20px;
+    box-shadow: var(--shadow-subtle);
+    transition: var(--transition-hover);
+  }
 
+  .privacy-warning-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+  }
 
-במקרים מסוימים, נדרש גם מנגנון הסכמה (Cookie Banner).<br>
-5. זכויות המשתמשים<br>
-לפי החוק, למשתמשים יש זכויות כגון:<br>
+  .privacy-warning-card-icon {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    display: block;
+  }
 
+  .privacy-warning-card-text {
+    font-size: 0.92rem;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin: 0;
+  }
 
-עיון במידע
-<br>
+  /* Summary box */
+  .privacy-summary-box {
+    background: var(--bg-dark);
+    border-radius: var(--radius-card);
+    padding: 44px 40px;
+    margin-top: 56px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-elevated);
+  }
 
-תיקון מידע
-<br>
+  .privacy-summary-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(200,162,74,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
 
-מחיקה (במקרים מסוימים)
+  .privacy-summary-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #fff;
+    margin: 0 0 20px 0;
+  }
 
+  .privacy-summary-body {
+    font-size: 1rem;
+    color: rgba(246,244,239,0.85);
+    line-height: 1.8;
+    margin: 0 0 24px 0;
+  }
 
-המדיניות צריכה להסביר איך ניתן לממש את הזכויות הללו בפועל.<br>
-6. אבטחת מידע<br>
-אין חובה לחשוף את כל אמצעי האבטחה, אבל כן צריך לציין שהעסק נוקט באמצעים סבירים לשמירה על המידע.<br>
-7. שמירת מידע (Retention)<br>
-כמה זמן נשמר המידע?<br>
-עסקים רבים לא מגדירים זאת - וזה פער משפטי.<br>
-8. פרטי יצירת קשר<br>
-יש לציין כתובת ברורה לפניות בנושא פרטיות.<br>
-טעויות נפוצות שכדאי להימנע מהן<br>
-מהניסיון בשטח, אלו הכשלים שחוזרים שוב ושוב:<br>
+  .privacy-summary-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 
+  .privacy-summary-chip {
+    background: rgba(200,162,74,0.18);
+    border: 1px solid rgba(200,162,74,0.4);
+    color: var(--secondary);
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: var(--radius-badge);
+    transition: var(--transition-hover);
+  }
 
-העתקת מדיניות מאתר אחר ללא התאמה
-<br>
+  .privacy-summary-chip:hover {
+    background: var(--secondary);
+    color: var(--primary);
+  }
 
-שימוש בנוסח כללי שלא משקף את פעילות האתר
-<br>
+  /* Cookies special sub-list */
+  .privacy-inline-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+  }
 
-התעלמות מכלים חיצוניים שאוספים מידע (כמו Google Analytics)
-<br>
+  .privacy-inline-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border-light);
+    font-size: 0.96rem;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-היעדר התאמה ל־GDPR כאשר יש פעילות בינלאומית
-<br>
+  .privacy-inline-list li:last-child {
+    border-bottom: none;
+  }
 
-מדיניות שלא עודכנה שנים
+  .privacy-inline-list li::before {
+    content: '›';
+    color: var(--secondary);
+    font-size: 1.2rem;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
 
+  /* Divider */
+  .privacy-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+    margin: 48px 0;
+  }
 
-במקרה של עסק פעיל ודינמי, כמו אתר סחר שמתעדכן כל הזמן, גם מדיניות הפרטיות חייבת להתעדכן בהתאם.<br>
-האם כל עסק צריך עורך דין למדיניות פרטיות?<br>
-לא כל אתר דורש עבודה מורכבת, אבל כמעט כל אתר דורש התאמה אישית.<br>
-ההבדל בין מסמך גנרי למסמך שנכתב על ידי עורך דין הוא לא רק בניסוח - אלא בהבנה של הסיכונים:<br>
+  /* Two col for sub-items */
+  .privacy-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 12px 0 24px;
+  }
 
+  .privacy-two-col-item {
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-card);
+    padding: 14px 16px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: var(--transition-hover);
+  }
 
-איפה אתם חשופים לתביעה
-<br>
+  .privacy-two-col-item:hover {
+    border-color: var(--secondary);
+    transform: translateY(-1px);
+  }
 
-אילו רגולציות חלות עליכם בפועל
-<br>
+  .privacy-two-col-item::before {
+    content: '•';
+    color: var(--secondary);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
 
-ואיך לצמצם את החשיפה מראש
+  @media (max-width: 768px) {
+    .privacy-article-wrapper {
+      padding: 100px 20px 64px;
+    }
+    .privacy-two-col {
+      grid-template-columns: 1fr;
+    }
+    .privacy-warning-grid {
+      grid-template-columns: 1fr;
+    }
+    .privacy-summary-box {
+      padding: 28px 20px;
+    }
+    .privacy-article-h1 {
+      font-size: 1.75rem;
+    }
+    .privacy-section-heading {
+      font-size: 1.15rem;
+    }
+  }
+</style>
 
+<div class="privacy-bg-circle-1"></div>
+<div class="privacy-bg-circle-2"></div>
 
-במיוחד בעסקים שמנהלים מסחר מקוון, שיווק דיגיטלי או מאגרי מידע משמעותיים, זה כבר לא מותרות.<br>
-לסיכום<br>
-מדיניות פרטיות היא לא "עוד עמוד באתר". היא מסמך משפטי שמגדיר את היחסים ביניכם לבין הלקוחות שלכם.<br>
-עסק שמתייחס לזה ברצינות:<br>
+<div class="privacy-article-wrapper">
 
+  <!-- Tag -->
+  <div class="privacy-article-tag">משפט דיגיטלי · הגנת פרטיות</div>
 
-בונה אמון
-<br>
+  <!-- H1 -->
+  <h1 class="privacy-article-h1">מדיניות פרטיות לעסקים: מה החוק מחייב</h1>
 
-מצמצם סיכונים
-<br>
+  <!-- Lead paragraph -->
+  <p class="privacy-lead">מדיניות פרטיות לאתרי עסקים: מה חייבים לכלול?</p>
 
-ומתנהל נכון בעולם דיגיטלי מורכב
+  <p class="privacy-body">בעידן שבו כל פעולה כמעט מתבצעת אונליין, מידע אישי הפך לנכס רגיש ויקר ערך. כל אתר עסקי - בין אם מדובר בחנות מקוונת, אתר תדמית או אפליקציה - אוסף מידע על משתמשים. ברגע שזה קורה, חלה חובה משפטית ברורה: לפרסם מדיניות פרטיות.</p>
 
+  <div class="privacy-highlight-box">
+    <p class="privacy-body" style="margin:0;">זו לא רק דרישה טכנית. מדובר במסמך משפטי שמגן גם על העסק וגם על הלקוחות שלו. מניסיוני כעורך דין בתחום, עסקים רבים מתייחסים למדיניות פרטיות כאל "טקסט חובה" שמעתיקים מאתר אחר. זו טעות שעלולה להוביל לחשיפה משפטית ממשית.</p>
+  </div>
 
-הדרך הנכונה היא לא להעתיק - אלא לבנות מדיניות שמותאמת בדיוק לאופן שבו העסק שלכם פועל בפועל.&nbsp;&nbsp;</p>
-        </div>
-      </section>
+  <div class="privacy-divider"></div>
+
+  <!-- Section: Why -->
+  <h2 class="privacy-section-heading">למה בכלל צריך מדיניות פרטיות?</h2>
+  <p class="privacy-body">החובה לפרסם מדיניות פרטיות נובעת משני מקורות מרכזיים:</p>
+
+  <div class="privacy-two-col">
+    <div class="privacy-two-col-item">חוק הגנת הפרטיות, התשמ"א-1981 והתקנות מכוחו</div>
+    <div class="privacy-two-col-item">רגולציות בינלאומיות, ובראשן ה־GDPR האירופי</div>
+  </div>
+
+  <p class="privacy-body">גם עסק ישראלי שפועל רק בעברית עלול להיות כפוף ל־GDPR, למשל אם הוא מוכר מוצרים ללקוחות באירופה או משתמש בכלי מעקב בינלאומיים.</p>
+  <p class="privacy-body">מעבר לחובה החוקית, מדיניות פרטיות יוצרת שקיפות. היא מסבירה ללקוחות מה נעשה עם המידע שלהם - וזה שיקול משמעותי באמון שהם נותנים בעסק.</p>
+
+  <div class="privacy-divider"></div>
+
+  <!-- Section: What data -->
+  <h2 class="privacy-section-heading">אילו נתונים אתם אוספים - והאם אתם מודעים לזה?</h2>
+  <p class="privacy-body">אחת הטעויות הנפוצות היא חוסר מודעות להיקף איסוף המידע. אתר ממוצע אוסף הרבה יותר ממה שנדמה:</p>
+
+  <div class="privacy-two-col">
+    <div class="privacy-two-col-item">פרטים שמוזנים בטפסים (שם, טלפון, אימייל)</div>
+    <div class="privacy-two-col-item">נתוני רכישה ואמצעי תשלום</div>
+    <div class="privacy-two-col-item">כתובות IP ומידע טכני</div>
+    <div class="privacy-two-col-item">התנהגות גלישה באמצעות Cookies וכלי אנליטיקה</div>
+  </div>
+
+  <p class="privacy-body">בפרויקט של אתר איקומרס גדול כמו "מחסני תאורה", למשל, נאסף מידע גם לצורך תפעול הזמנות, גם לשירות לקוחות וגם לשיווק מותאם אישית. כל שימוש כזה חייב להיות מתועד ומוסבר במדיניות.</p>
+
+  <div class="privacy-divider"></div>
+
+  <!-- Section: What must appear -->
+  <h2 class="privacy-section-heading">מה חייב להופיע במדיניות פרטיות תקינה?</h2>
+  <p class="privacy-body">מדיניות פרטיות מקצועית לא מסתפקת בהצהרות כלליות. היא צריכה להיות מדויקת, ברורה ומותאמת לפעילות העסק. אלו המרכיבים המרכזיים שחייבים להיכלל:</p>
+
+  <!-- Numbered blocks -->
+  <div class="privacy-numbered-block">
+    <div class="privacy-numbered-block-num">1</div>
+    <h3 class="privacy-numbered-block-title">סוגי המידע הנאסף</h3>
+    <p class="privacy-numbered-block-body">יש לפרט אילו נתונים נאספים בפועל, ולא להסתפק בניסוחים עמומים. לדוגמה: "פרטי התקשרות", "נתוני רכישה", "מידע טכני על המכשיר".</p>
+  </div>
+
+  <div class="privacy-numbered-block">
+    <div class="privacy-numbered-block-num">2</div>
+    <h3 class="privacy-numbered-block-title">מטרות השימוש במידע</h3>
+    <p class="privacy-numbered-block-body">למה המידע נאסף? שירות לקוחות, שיפור האתר, דיוור שיווקי, התאמת פרסומות - כל מטרה צריכה להיות מוגדרת.</p>
+  </div>
+
+  <div class="privacy-numbered-block">
+    <div class="privacy-numbered-block-num">3</div>
+    <h3 class="privacy-numbered-block-title">העברת מידע לצדדים שלישיים</h3>
+    <p class="privacy-numbered-block-body">האם המידע מועבר לגורמים חיצוניים? באתרי מסחר, כמו במקרה של "מחסני תאורה", זה סעיף קריטי במיוחד.</p>
+    <ul class="privacy-inline-list" style="margin-top:14px;">
+      <li>חברות סליקה</li>
+      <li>מערכות דיוור</li>
+      <li>שירותי ענן</li>
+      <li>ספקי פרסום (כמו פייסבוק וגוגל)</li>
+    </ul>
+  </div>
+
+  <div class="privacy-numbered-block">
+    <div class="privacy-numbered-block-num">4</div>
+    <h3 class="privacy-numbered-block-title">שימוש בעוגיות (Cookies)</h3>
+    <p class="privacy-numbered-block-body">יש להסביר אילו עוגיות מופעלות, האם מדובר בעוגיות חיוניות או שיווקיות, וכיצד ניתן לשלוט בהן. במקרים מסוימים, נדרש גם מנגנון הסכמה (Cookie Banner).</p>
+  </div>
+
+  <div class="privacy-numbered-block">
+    <div class="privacy-numbered-block-num">5</div>
+    <h3 class="privacy-numbered-block-title">זכויות המשתמשים</h3>
+    <p class="privacy-numbered-block-body">לפי החוק, למשתמשים יש זכויות כגון: עיון במידע, תיקון מידע, מחיקה (במקרים מסוימים). המדיניות צריכה להסביר איך ניתן לממש את הזכויות הללו בפועל.</p>
+  </div>
+
+  <div class="privacy-numbered-block">
+    <div class="privacy-numbered-block-num">6</div>
+    <h3 class="privacy-numbered-block-title">אבטחת מידע</h3>
+    <p class="privacy-numbered-block-body">אין חובה לחשוף את כל אמצעי האבטחה, אבל כן צריך לציין שהעסק נוקט באמצעים סבירים לשמירה על המידע.</p>
+  </div>
+
+  <div class="privacy-numbered-block">
+    <div class="privacy-numbered-block-num">7</div>
+    <h3 class="privacy-numbered-block-title">שמירת מידע (Retention)</h3>
+    <p class="privacy-numbered-block-body">כמה זמן נשמר המידע? עסקים רבים לא מגדירים זאת - וזה פער משפטי.</p>
+  </div>
+
+  <div class="privacy-numbered-block">
+    <div class="privacy-numbered-block-num">8</div>
+    <h3 class="privacy-numbered-block-title">פרטי יצירת קשר</h3>
+    <p class="privacy-numbered-block-body">יש לציין כתובת ברורה לפניות בנושא פרטיות.</p>
+  </div>
+
+  <div class="privacy-divider"></div>
+
+  <!-- Section: Common mistakes -->
+  <h2 class="privacy-section-heading">טעויות נפוצות שכדאי להימנע מהן</h2>
+  <p class="privacy-body">מהניסיון בשטח, אלו הכשלים שחוזרים שוב ושוב:</p>
+
+  <div class="privacy-warning-grid">
+    <div class="privacy-warning-card">
+      <span class="privacy-warning-card-icon">⚠️</span>
+      <p class="privacy-warning-card-text">העתקת מדיניות מאתר אחר ללא התאמה</p>
+    </div>
+    <div class="privacy-warning-card">
+      <span class="privacy-warning-card-icon">⚠️</span>
+      <p class="privacy-warning-card-text">שימוש בנוסח כללי שלא משקף את פעילות האתר</p>
+    </div>
+    <div class="privacy-warning-card">
+      <span class="privacy-warning-card-icon">⚠️</span>
+      <p class="privacy-warning-card-text">התעלמות מכלים חיצוניים שאוספים מידע (כמו Google Analytics)</p>
+    </div>
+    <div class="privacy-warning-card">
+      <span class="privacy-warning-card-icon">⚠️</span>
+      <p class="privacy-warning-card-text">היעדר התאמה ל־GDPR כאשר יש פעילות בינלאומית</p>
+    </div>
+    <div class="privacy-warning-card">
+      <span class="privacy-warning-card-icon">⚠️</span>
+      <p class="privacy-warning-card-text">מדיניות שלא עודכנה שנים</p>
+    </div>
+  </div>
+
+  <p class="privacy-body">במקרה של עסק פעיל ודינמי, כמו אתר סחר שמתעדכן כל הזמן, גם מדיניות הפרטיות חייבת להתעדכן בהתאם.</p>
+
+  <div class="privacy-divider"></div>
+
+  <!-- Section: Do you need a lawyer -->
+  <h2 class="privacy-section-heading">האם כל עסק צריך עורך דין למדיניות פרטיות?</h2>
+  <p class="privacy-body">לא כל אתר דורש עבודה מורכבת, אבל כמעט כל אתר דורש התאמה אישית. ההבדל בין מסמך גנרי למסמך שנכתב על ידי עורך דין הוא לא רק בניסוח - אלא בהבנה של הסיכונים:</p>
+
+  <div class="privacy-highlight-box">
+    <ul class="privacy-highlight-list">
+      <li>איפה אתם חשופים לתביעה</li>
+      <li>אילו רגולציות חלות עליכם בפועל</li>
+      <li>איך לצמצם את החשיפה מראש</li>
+    </ul>
+  </div>
+
+  <p class="privacy-body">במיוחד בעסקים שמנהלים מסחר מקוון, שיווק דיגיטלי או מאגרי מידע משמעותיים, זה כבר לא מותרות.</p>
+
+  <!-- Summary box -->
+  <div class="privacy-summary-box">
+    <h3 class="privacy-summary-title">לסיכום</h3>
+    <p class="privacy-summary-body">מדיניות פרטיות היא לא "עוד עמוד באתר". היא מסמך משפטי שמגדיר את היחסים ביניכם לבין הלקוחות שלכם. עסק שמתייחס לזה ברצינות - מצמצם סיכונים ומתנהל נכון בעולם דיגיטלי מורכב. הדרך הנכונה היא לא להעתיק - אלא לבנות מדיניות שמותאמת בדיוק לאופן שבו העסק שלכם פועל בפועל.</p>
+    <div class="privacy-summary-chips">
+      <span class="privacy-summary-chip">בונה אמון</span>
+      <span class="privacy-summary-chip">מצמצם סיכונים</span>
+      <span class="privacy-summary-chip">מתנהל נכון דיגיטלית</span>
+    </div>
+  </div>
+
+</div>
+</section>
     </main> <footer class="site-footer" dir="rtl"> <div class="footer-main"> <div class="footer-container"> <div class="footer-grid"> <!-- Column 1: Company Info --> <div class="footer-col footer-col--brand"> <div class="footer-logo-wrap"> <img src="/assets/logo-1774782894048-xuck8l.webp?v=1774782894546-yv2klt" alt="ורד לוי משרד עורכי דין" class="logo" data-element-type="image" data-element-id="img-1774787134455-6shu8deq0" > </div> <p class="footer-tagline">ייעוץ משפטי מקצועי, אישי ומהימן.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>אנחנו כאן עבורכם בכל שלב.</p> <div class="footer-social"> <a href="https://facebook.com/1BVGk3N2Af" aria-label="Facebook" class="social-link"><i class="fab fa-facebook-f"></i></a> <a href="https://instagram.com/vlb_law" aria-label="Instagram" class="social-link"><i class="fab fa-instagram" data-element-type="icon" data-element-id="icon-1774787134454-cbiesvnlk" data-icon-type="fontawesome"></i></a> <a href="https://wa.me/972506479210" aria-label="WhatsApp" class="social-link"><i class="fab fa-whatsapp" data-element-type="icon" data-element-id="icon-1774787134454-m5r6l53uw" data-icon-type="fontawesome"></i></a> </div> </div> <!-- Column 2: Quick Links --> <div class="footer-col"> <h3 class="footer-heading"> <span class="footer-heading-line"></span> ניווט מהיר </h3> <ul class="footer-links"> <li><a href="/about">אודות</a></li> <li><a href="/practice-areas">תחומי עיסוק</a></li> <li><a href="/contact">צור קשר</a></li> </ul> </div> <!-- Column 3: Contact Info --> <div class="footer-col"> <h3 class="footer-heading"> <span class="footer-heading-line"></span> פרטי התקשרות </h3> <ul class="footer-contact"> <li><a href="/" style="display:flex;align-items:flex-start;gap:inherit"><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span> <span>ילדי טהרן 8, ראשון לציון, ישראל</span></a></li>           <li>
               <span class="contact-icon"><i class="fas fa-phone-alt" data-element-type="icon" data-element-id="icon-1774787134455-6sz08mu6l" data-icon-type="fontawesome"></i></span>
               <a href="tel:03-5255505">03-5255505</a>
