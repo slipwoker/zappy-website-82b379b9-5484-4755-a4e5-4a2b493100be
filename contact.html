@@ -269,9 +269,9 @@
         list-style: none;
         pointer-events: none;
       }
-      .nav-menu li:hover &gt; .sub-menu,
-      nav li:hover &gt; .sub-menu,
-      .navbar li:hover &gt; .sub-menu {
+      .nav-menu li:hover > .sub-menu,
+      nav li:hover > .sub-menu,
+      .navbar li:hover > .sub-menu {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
@@ -327,8 +327,8 @@
             }
             
             /* Menu Group styling (non-clickable parent) - TOP LEVEL ONLY with ultra-specific selector */
-            .nav-menu &gt; li &gt; .menu-group-title,
-            #navMenu &gt; li &gt; .menu-group-title {
+            .nav-menu > li > .menu-group-title,
+            #navMenu > li > .menu-group-title {
               display: inline-block !important;
               padding: 0.5rem 1rem !important;
               color: var(--nav-color) !important;
@@ -342,13 +342,13 @@
               transition: color 0.3s ease !important;
             }
             
-            .nav-menu &gt; li &gt; .menu-group-title:hover,
-            #navMenu &gt; li &gt; .menu-group-title:hover {
+            .nav-menu > li > .menu-group-title:hover,
+            #navMenu > li > .menu-group-title:hover {
               color: var(--nav-hover-color) !important;
             }
             
             /* Desktop: show submenu on Menu Group hover */
-            li:has(.menu-group-title):hover &gt; .sub-menu {
+            li:has(.menu-group-title):hover > .sub-menu {
               opacity: 1 !important;
               visibility: visible !important;
               transform: translateY(0) !important;
@@ -357,7 +357,7 @@
             
             /* Hide menu items marked as hidden (overrides hover states) */
             .zappy-hidden-menu-item,
-            li:has(.menu-group-title):hover &gt; .sub-menu .zappy-hidden-menu-item {
+            li:has(.menu-group-title):hover > .sub-menu .zappy-hidden-menu-item {
               display: none !important;
               opacity: 0 !important;
               visibility: hidden !important;
@@ -410,9 +410,9 @@
             }
             
             /* Show submenu on parent hover - more specific selectors */
-            .nav-menu li:hover &gt; .sub-menu,
-            nav li:hover &gt; .sub-menu,
-            .navbar li:hover &gt; .sub-menu {
+            .nav-menu li:hover > .sub-menu,
+            nav li:hover > .sub-menu,
+            .navbar li:hover > .sub-menu {
               opacity: 1 !important;
               visibility: visible !important;
               transform: translateY(0) !important;
@@ -450,8 +450,8 @@
             }
             
             /* CRITICAL: Override submenu styles for TOP-LEVEL Menu Groups only - must come AFTER submenu styles */
-            .nav-menu &gt; li &gt; .menu-group-title,
-            #navMenu &gt; li &gt; .menu-group-title {
+            .nav-menu > li > .menu-group-title,
+            #navMenu > li > .menu-group-title {
               display: inline-block !important;
               padding: 0.5rem 1rem !important;
               color: var(--nav-color) !important;
@@ -465,8 +465,8 @@
               transition: color 0.3s ease !important;
             }
             
-            .nav-menu &gt; li &gt; .menu-group-title:hover,
-            #navMenu &gt; li &gt; .menu-group-title:hover {
+            .nav-menu > li > .menu-group-title:hover,
+            #navMenu > li > .menu-group-title:hover {
               color: var(--nav-hover-color) !important;
               background-color: transparent !important;
             }
@@ -507,18 +507,18 @@
               }
               
               /* Disable hover behavior on mobile */
-              .nav-menu li:hover &gt; .sub-menu,
-              nav li:hover &gt; .sub-menu,
-              .navbar li:hover &gt; .sub-menu {
+              .nav-menu li:hover > .sub-menu,
+              nav li:hover > .sub-menu,
+              .navbar li:hover > .sub-menu {
                 opacity: 0;
                 visibility: hidden;
                 pointer-events: none;
               }
               
               /* Enable visibility for expanded submenus */
-              .nav-menu li &gt; .sub-menu.mobile-expanded,
-              nav li &gt; .sub-menu.mobile-expanded,
-              .navbar li &gt; .sub-menu.mobile-expanded {
+              .nav-menu li > .sub-menu.mobile-expanded,
+              nav li > .sub-menu.mobile-expanded,
+              .navbar li > .sub-menu.mobile-expanded {
                 opacity: 1 !important;
                 visibility: visible !important;
                 pointer-events: auto !important;
@@ -546,39 +546,39 @@
               }
               
               /* Parent link - takes full width since toggle is absolute (not a flex child) */
-              .nav-menu li:has(.sub-menu) &gt; a,
-              nav li:has(.sub-menu) &gt; a,
-              .navbar li:has(.sub-menu) &gt; a,
-              .nav-menu &gt; li &gt; .menu-group-title,
-              #navMenu &gt; li &gt; .menu-group-title {
+              .nav-menu li:has(.sub-menu) > a,
+              nav li:has(.sub-menu) > a,
+              .navbar li:has(.sub-menu) > a,
+              .nav-menu > li > .menu-group-title,
+              #navMenu > li > .menu-group-title {
                 flex: 1 !important;
                 min-width: 0 !important;
               }
               
               /* Normalize menu-group-title in mobile nav to match link alignment */
-              .nav-menu &gt; li &gt; .menu-group-title,
-              #navMenu &gt; li &gt; .menu-group-title {
+              .nav-menu > li > .menu-group-title,
+              #navMenu > li > .menu-group-title {
                 padding: 0 !important;
                 line-height: inherit !important;
               }
               
               /* Submenu takes full width below parent */
-              .nav-menu li:has(.sub-menu) &gt; .sub-menu,
-              nav li:has(.sub-menu) &gt; .sub-menu,
-              .navbar li:has(.sub-menu) &gt; .sub-menu {
+              .nav-menu li:has(.sub-menu) > .sub-menu,
+              nav li:has(.sub-menu) > .sub-menu,
+              .navbar li:has(.sub-menu) > .sub-menu {
                 flex-basis: 100% !important;
                 width: 100% !important;
               }
               
               /* HIDE EXISTING CHEVRONS/ARROWS from cloned sites to prevent duplicates */
-              .nav-menu li:has(.sub-menu) &gt; a .fa-chevron-down,
-              .nav-menu li:has(.sub-menu) &gt; a .fa-angle-down,
-              .nav-menu li:has(.sub-menu) &gt; a [class*="chevron"],
-              .nav-menu li:has(.sub-menu) &gt; a [class*="arrow"],
-              nav li:has(.sub-menu) &gt; a [class*="chevron"],
-              nav li:has(.sub-menu) &gt; a [class*="arrow"],
-              #navMenu li:has(.sub-menu) &gt; a [class*="chevron"],
-              #navMenu li:has(.sub-menu) &gt; a [class*="arrow"] {
+              .nav-menu li:has(.sub-menu) > a .fa-chevron-down,
+              .nav-menu li:has(.sub-menu) > a .fa-angle-down,
+              .nav-menu li:has(.sub-menu) > a [class*="chevron"],
+              .nav-menu li:has(.sub-menu) > a [class*="arrow"],
+              nav li:has(.sub-menu) > a [class*="chevron"],
+              nav li:has(.sub-menu) > a [class*="arrow"],
+              #navMenu li:has(.sub-menu) > a [class*="chevron"],
+              #navMenu li:has(.sub-menu) > a [class*="arrow"] {
                 display: none !important;
                 visibility: hidden !important;
               }
@@ -633,10 +633,10 @@
             (function() {
               function initMobileMenuToggles() {
                 // Only run on mobile
-                if (window.innerWidth &gt; 768) {
+                if (window.innerWidth > 768) {
                   // Remove any toggle buttons on desktop
-                  document.querySelectorAll('.mobile-submenu-toggle').forEach(btn =&gt; btn.remove());
-                  document.querySelectorAll('.sub-menu.mobile-expanded').forEach(menu =&gt; {
+                  document.querySelectorAll('.mobile-submenu-toggle').forEach(btn => btn.remove());
+                  document.querySelectorAll('.sub-menu.mobile-expanded').forEach(menu => {
                     menu.classList.remove('mobile-expanded');
                   });
                   console.log('[MOBILE MENU] Desktop mode - cleanup done');
@@ -659,7 +659,7 @@
                   }
                   
                   const submenu = li.querySelector('.sub-menu');
-                  const parentLink = li.querySelector(':scope &gt; a') || li.querySelector(':scope &gt; .menu-group-title');
+                  const parentLink = li.querySelector(':scope > a') || li.querySelector(':scope > .menu-group-title');
                   
                   if (!submenu || !parentLink) return;
                   
@@ -719,7 +719,7 @@
               // This handles cases where the mobile menu is hidden initially
               const observer = new MutationObserver(function(mutations) {
                 mutations.forEach(function(mutation) {
-                  if (mutation.type === 'attributes' &amp;&amp; mutation.attributeName === 'class') {
+                  if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                     const target = mutation.target;
                     if (target.classList.contains('active') || target.style.display !== 'none') {
                       console.log('[MOBILE MENU] Mobile menu became visible, re-initializing...');
@@ -1580,12 +1580,12 @@
     // Check if background is transparent or rgba with 0 alpha
     const isTransparent = bgColor === 'transparent' || 
                          bgColor === 'rgba(0, 0, 0, 0)' ||
-                         (bgColor.startsWith('rgba') &amp;&amp; bgColor.includes(', 0)'));
+                         (bgColor.startsWith('rgba') && bgColor.includes(', 0)'));
     
     if (isTransparent) {
       // Check for background-image or gradient
       const bgImage = computedStyle.backgroundImage;
-      if (bgImage &amp;&amp; bgImage !== 'none') {
+      if (bgImage && bgImage !== 'none') {
         console.log('[Navbar] Navbar has background image/gradient, using dark text');
         bgColor = 'rgb(240, 240, 240)'; // Assume light background
       } else {
@@ -1598,7 +1598,7 @@
     
     // Calculate luminance to determine if background is light or dark
     const rgb = bgColor.match(/\d+/g);
-    if (rgb &amp;&amp; rgb.length &gt;= 3) {
+    if (rgb && rgb.length >= 3) {
       const r = parseInt(rgb[0]);
       const g = parseInt(rgb[1]);
       const b = parseInt(rgb[2]);
@@ -1734,7 +1734,7 @@
       // ONLY apply inline positioning styles on mobile viewport
       // On desktop, the CSS handles hiding these buttons with display: none
       // Inline styles were breaking desktop layout by overriding CSS
-      const isMobileViewport = window.innerWidth &lt;= 768;
+      const isMobileViewport = window.innerWidth <= 768;
       
       if (mobileToggle) {
         // Icon sizing applies to all viewports for consistency
@@ -1925,7 +1925,7 @@
       phoneBtn.addEventListener('click', function() {
         // Get phone number from placeholder in page or use default
         const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
-        const phoneNumber = phoneLinks.length &gt; 0 
+        const phoneNumber = phoneLinks.length > 0 
           ? phoneLinks[0].getAttribute('href').replace('tel:', '')
           : '03-5255505';
         
@@ -1942,7 +1942,7 @@
     const handleWhatsAppVisibility = function() {
       const whatsappBtn = document.querySelector('.whatsapp-float');
       if (whatsappBtn) {
-        const isDesktop = window.innerWidth &gt;= 769;
+        const isDesktop = window.innerWidth >= 769;
         if (isDesktop) {
           whatsappBtn.style.setProperty('display', 'none', 'important');
           whatsappBtn.style.setProperty('visibility', 'hidden', 'important');
@@ -1980,37 +1980,32 @@
     <!-- Right: Info Panel -->
     <div class="cif-info-panel">
       <div class="cif-info-top">
-        <span class="cif-eyebrow">צור קשר</span>
-        <h1 class="cif-h1">נשמח לעמוד לרשותכם</h1>
+        <p class="zappy-editable"><span class="cif-eyebrow">צור קשר</span>
+        </p><h1 class="cif-h1">נשמח לעמוד לרשותכם</h1>
         <h2 class="cif-h2">כיצד נוכל לסייע?</h2>
         <p class="cif-lead">בין אם אתם עומדים בפני הליך גירושין, מעוניינים לערוך צוואה או יפוי כח מתמשך, זקוקים לייעוץ בענייני פרטיות ומדיניות, או מחפשים ייצוג בהוצאה לפועל - אנחנו כאן לשמוע ולסייע.</p>
         <p class="cif-sub">מלאו את הטופס עם פרטי הקשר ותיאור קצר של פנייתכם. אין צורך לפרט בשלב זה את כל העובדות, די בציון תחום הפנייה, וכן אופן יצירת הקשר המועדף.</p>
         <p class="cif-note">נציג ממשרדה של עורכת דין ורד לוי, יחזור אליכם בהקדם לתיאום פגישת ייעוץ ראשונית.</p>
       </div>
 
-      <ul class="cif-promise-list">
-        <li class="cif-promise-item">
-          <span class="cif-promise-icon"><i class="fa-regular fa-clock"></i></span>
+      <ul class="cif-promise-list" ><li class="cif-promise-item" data-grid-item-index="0">
+          <span class="cif-promise-icon"><i class="fa-regular fa-clock" data-element-type="icon" data-element-id="icon-1775376966963-baluqhmzi" data-icon-type="fontawesome" style="pointer-events: auto; cursor: pointer;"></i></span>
           <span class="cif-promise-text">מענה מהיר, לרוב כלל תוך יום עסקים</span>
-        </li>
-        <li class="cif-promise-item">
-          <span class="cif-promise-icon"><i class="fa-regular fa-comments"></i></span>
+        </li><li class="cif-promise-item" data-grid-item-index="1">
+          <span class="cif-promise-icon"><i class="fa-regular fa-comments" data-element-type="icon" data-element-id="icon-1775376966964-els4r5fc7" data-icon-type="fontawesome" style="pointer-events: auto; cursor: pointer;"></i></span>
           <span class="cif-promise-text">שיחה ראשונית ללא התחייבות</span>
-        </li>
-        <li class="cif-promise-item">
-          <span class="cif-promise-icon"><i class="fa-regular fa-user-shield"></i></span>
+        </li><li class="cif-promise-item" data-grid-item-index="2">
+          <span class="cif-promise-icon"><i class="fa-regular" data-element-type="icon" data-element-id="icon-1775376966964-hxijhyfye" data-icon-type="fontawesome" style="pointer-events: auto; cursor: pointer; font-size: 12px !important; color: rgb(16, 26, 47);"></i></span>
           <span class="cif-promise-text">טיפול אישי, מקצועי ודיסקרטי</span>
-        </li>
-        <li class="cif-promise-item">
-          <span class="cif-promise-icon"><i class="fa-regular fa-scale-balanced"></i></span>
+        </li><li class="cif-promise-item" data-grid-item-index="3">
+          <span class="cif-promise-icon"><i class="fa-regular" data-element-type="icon" data-element-id="icon-1775376966964-2mbthi7zg" data-icon-type="fontawesome" style="pointer-events: auto; cursor: pointer; font-size: 12px !important; color: rgb(16, 26, 47);"></i></span>
           <span class="cif-promise-text">ניסיון בתחומי פרטיות, דיני משפחה, ליטיגציה והוצאה לפועל</span>
-        </li>
-      </ul>
+        </li></ul>
 
       <div class="cif-gold-rule"></div>
 
       <div class="cif-contact-direct">
-        <img data-placeholder="contact-inquiry-form-image-1" data-context="Elegant professional portrait of a female Israeli attorney in a law office setting — warm, approachable, confident expression. Soft natural light, navy and gold tones, bookshelves with legal volumes in background. Refined, trustworthy, personal branding photography for a boutique law firm." width="600" height="400" src="" alt="עורכת דין ורד לוי - פגישת ייעוץ אישית" class="cif-attorney-img" style="object-fit: cover; object-position: center;">
+        
       </div>
     </div>
 
@@ -2019,12 +2014,12 @@
       <div class="cif-form-card">
         <form class="contact-form cif-form" novalidate="">
 
-          <div class="cif-field-row">
-            <div class="cif-field">
+          <div class="cif-field-row zappy-preserve-css-grid" id="zappy-auto-grid-1775376966970-y59btt" data-zappy-auto-grid="true" data-original-item-width="240" data-original-gap="16px" style="display: grid; --zappy-grid-cols: repeat(2, minmax(0, 1fr)); grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch !important;" data-zappy-explicit-columns="true">
+            <div class="cif-field" data-grid-item-index="0">
               <label class="cif-label" for="cif-name">שם מלא</label>
               <input class="cif-input" type="text" id="cif-name" name="name" placeholder="ישראל ישראלי" required="">
             </div>
-            <div class="cif-field">
+            <div class="cif-field" data-grid-item-index="1">
               <label class="cif-label" for="cif-phone">טלפון</label>
               <input class="cif-input" type="tel" id="cif-phone" name="phone" placeholder="050-0000000" required="">
             </div>
@@ -2057,7 +2052,7 @@
             </label>
           </div>
 
-          <button class="btn-primary cif-submit" type="submit">שליחת הפנייה</button>
+          <button class="btn-primary cif-submit" type="submit" data-element-type="button" data-element-id="btn-1775376966962-vt1bsuppw" data-native-element="true">שליחת הפנייה</button>
 
         </form>
       </div>
