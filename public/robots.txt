@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vered-levi-law-office.zappy5.app/sitemap.xml
+Sitemap: https://vlb-law.com/sitemap.xml
