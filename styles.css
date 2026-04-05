@@ -2223,10 +2223,9 @@ main { margin-top: 0 !important; padding-top: 0 !important; }
   box-shadow: 0 8px 20px rgba(200, 162, 74, 0.35);
 }
 
-/* ── Bottom Bar ── */
 .footer-bottom {
   background-color: #172540;
-  padding-block: 1.25rem;
+  padding-block: 0.4rem;
 }
 
 .footer-bottom-inner {
