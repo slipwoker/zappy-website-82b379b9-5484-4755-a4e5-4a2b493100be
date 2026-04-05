@@ -258,807 +258,725 @@
 </head>
 <body>
  <nav class="navbar" dir="rtl"> <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"> <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"> <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path> </svg> <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;"> <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path> </svg> </button> <button class="phone-header-btn" data-phone="035255505" aria-label="Call"> <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"> <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path> </svg> </button> <div class="nav-container"> <div class="nav-right-group"><div class="nav-brand"> <a href="/" class="logo-link"> <img src="/assets/logo-1774782894048-xuck8l.webp?v=1774782894546-yv2klt" alt="ורד לוי משרד עורכי דין" class="logo"> </a> </div><ul class="nav-menu" id="navMenu"><li><a href="/practice-areas">תחומי עיסוק</a></li><li><a href="/about">אודות</a></li><li><a href="/professional-articles">מאמרים מקצועיים</a><ul class="sub-menu"><li><a href="/continuing-power-of-attorney">יפוי כח מתמשך לא למבוגרים בלבד!</a></li><li><a href="/workplace-privacy-violation">פגיעה בפרטיות במקום העבודה: גבולות הסמכות בין בית הדין לעבודה לבית המשפט האזרחי</a></li><li><a href="/prenuptial-agreement">הסכם ממון לפני החתונה?</a></li><li><a href="/divorce-costs-israel">כמה עולה להתגרש בישראל</a></li><li><a href="/business-debt-collection">גביית חוב עיסקי: צעדים משפטיים שכדאי להכיר</a></li><li><a href="/hostile-actions-victims">נפגעי פעולות איבה: גם פגיעה בדרך למרחב מוגן או נזק נפשי עשויים לזכות בפיצוי</a></li><li><a href="/war-victims-claims">נפגעי פעולות איבה: המדריך להגשת תביעה</a></li><li><a href="/prenuptial-agreement-review">מה חשוב לבדוק לבדוק לפני חתימה על הסכם ממון?</a></li></ul></li><li style="display: none !important;" class="zappy-hidden-menu-item"><a href="/thank-you">Thank You | Vered Levy Law Office</a></li><li class="nav-cta-item-mobile"><a href="/contact">צור קשר</a></li><li><a href="/war-damage-compensation" class="">פיצוי לנפגעי פעולות איבה לעומת תביעת נזיקין</a></li></ul></div> <div class="nav-cta-container"> <a href="/contact" class="nav-cta-btn">צור קשר</a> </div> </div> </nav> <script> // Navbar Mobile Menu Toggle and Contrast Fix (function() { // Use 'load' event instead of 'DOMContentLoaded' to ensure we run AFTER all other scripts window.addEventListener('load', function() { // FIX MOBILE BUTTON CONTRAST // Detect navbar background color and apply contrasting color to mobile buttons const navbar = document.querySelector('.navbar, nav, header'); if (!navbar) { console.log('[Navbar] Navbar element not found'); return; } // DECLARE VARIABLES EARLY to avoid Temporal Dead Zone errors // These are used in multiple places below let mobileToggle = document.getElementById('mobileToggle') || document.querySelector('.mobile-toggle') || document.querySelector('.hamburger') || document.querySelector('.hamburger-menu') || document.querySelector('.menu-toggle') || document.querySelector('.burger-menu') || document.querySelector('[aria-label="Menu"]') || document.querySelector('[aria-label="תפריט"]'); const phoneBtn = document.querySelector('.phone-header-btn'); const computedStyle = window.getComputedStyle(navbar); let bgColor = computedStyle.backgroundColor; console.log('[Navbar] Initial navbar background:', bgColor); // Check if background is transparent or rgba with 0 alpha const isTransparent = bgColor === 'transparent' || bgColor === 'rgba(0, 0, 0, 0)' || (bgColor.startsWith('rgba') && bgColor.includes(', 0)')); if (isTransparent) { // Check for background-image or gradient const bgImage = computedStyle.backgroundImage; if (bgImage && bgImage !== 'none') { console.log('[Navbar] Navbar has background image/gradient, using dark text'); bgColor = 'rgb(240, 240, 240)'; // Assume light background } else { // Transparent navbar - check body background const bodyBg = window.getComputedStyle(document.body).backgroundColor; console.log('[Navbar] Navbar transparent, using body background:', bodyBg); bgColor = bodyBg; } } // Calculate luminance to determine if background is light or dark const rgb = bgColor.match(/\d+/g); if (rgb && rgb.length >= 3) { const r = parseInt(rgb[0]); const g = parseInt(rgb[1]); const b = parseInt(rgb[2]); const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255; // Mobile button colors are set by Claude's AI-generated CSS (same as .nav-menu a) // No dynamic color overrides needed - colors come from the generated navbar CSS console.log('[Navbar] Mobile button colors preserved from Claude CSS (luminance:', luminance.toFixed(2) + ')'); // FIX ICON SIZES - Ensure SVGs are properly sized and visible // INJECT CRITICAL CSS TO OVERRIDE ANY CONFLICTING RULES const criticalCSS = document.createElement('style'); criticalCSS.id = 'zappy-mobile-nav-fix'; const htmlLang = document.documentElement.lang || 'en'; const htmlDir = document.documentElement.dir || 'ltr'; // Check both dir attribute AND lang for RTL detection // dir="rtl" is the most reliable indicator const isRTL = htmlDir === 'rtl' || htmlLang === 'he' || htmlLang === 'ar'; criticalCSS.textContent = ` /* Hide mobile buttons on desktop, show only on mobile */ @media (min-width: 769px) { .mobile-toggle, .phone-header-btn { display: none !important; } } /* Show and position mobile buttons correctly on mobile */ @media (max-width: 768px) { .mobile-toggle, .phone-header-btn { position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; z-index: 1001 !important; display: flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; border-radius: 50% !important; border: none !important; cursor: pointer !important; padding: 6px !important; background: none !important; color: var(--nav-text, var(--text-light)) !important; } /* LTR positioning (default): hamburger LEFT, phone RIGHT */ html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle, html[dir="ltr"] .mobile-toggle { left: 12px !important; right: auto !important; } html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn, html[dir="ltr"] .phone-header-btn { right: 12px !important; left: auto !important; } /* RTL positioning: hamburger RIGHT, phone LEFT */ html[dir="rtl"] .mobile-toggle, html[lang="he"] .mobile-toggle, html[lang="ar"] .mobile-toggle { right: 12px !important; left: auto !important; } html[dir="rtl"] .phone-header-btn, html[lang="he"] .phone-header-btn, html[lang="ar"] .phone-header-btn { left: 12px !important; right: auto !important; } /* CRITICAL: Ensure nav-container has min-height on mobile */ /* All children are positioned absolutely/fixed on mobile, so height:auto collapses to 0 */ .nav-container { min-height: 70px !important; position: relative !important; } /* Ensure SVG icons are properly sized and inherit color */ .mobile-toggle svg, .phone-header-btn svg { width: 24px !important; height: 24px !important; /* Don't force display - let JavaScript control hamburger/close toggle */ } /* Reset nav-cta-container on mobile - remove desktop box-shadow/padding */ /* that creates a visible ghost box when CTA button is hidden */ .nav-cta-container { box-shadow: none !important; padding: 0 !important; } /* Hide nav-cta-container entirely on mobile when there's no lang-switcher */ /* (only the CTA button is inside, and it's hidden on mobile) */ .nav-cta-container:not(:has(.lang-switcher)) { display: none !important; } /* CRITICAL: Prevent hero image fade gradient from bleeding over headline text */ /* The .image-fade-gradient has bottom: -30px (extends below parent) */ /* On mobile stacked layout, this overlaps the h1 text below the image */ .hero-image-column { overflow: hidden !important; } .image-fade-gradient { bottom: 0 !important; } /* Hide desktop language switcher on mobile - hamburger menu handles it */ /* High specificity to override stored CSS */ .lang-switcher, .nav-cta-container .lang-switcher, .nav-container .lang-switcher, .navbar .lang-switcher, .navbar .nav-cta-container .lang-switcher { display: none !important; } } `; // Remove existing fix if present and inject new one const existing = document.getElementById('zappy-mobile-nav-fix'); if (existing) existing.remove(); document.head.appendChild(criticalCSS); console.log('[Navbar] Critical CSS injected for mobile nav positioning'); // ONLY apply inline positioning styles on mobile viewport // On desktop, the CSS handles hiding these buttons with display: none // Inline styles were breaking desktop layout by overriding CSS const isMobileViewport = window.innerWidth <= 768; if (mobileToggle) { // Icon sizing applies to all viewports for consistency const hamburgerIcon = mobileToggle.querySelector('.hamburger-icon'); const closeIcon = mobileToggle.querySelector('.close-icon'); if (hamburgerIcon) { hamburgerIcon.style.setProperty('width', '24px', 'important'); hamburgerIcon.style.setProperty('height', '24px', 'important'); hamburgerIcon.style.setProperty('display', 'block', 'important'); // Show hamburger by default } if (closeIcon) { closeIcon.style.setProperty('width', '24px', 'important'); closeIcon.style.setProperty('height', '24px', 'important'); closeIcon.style.setProperty('display', 'none', 'important'); // Hide close icon by default } // ONLY set positioning inline styles on mobile if (isMobileViewport) { mobileToggle.style.setProperty('position', 'absolute', 'important'); mobileToggle.style.setProperty('top', '50%', 'important'); mobileToggle.style.setProperty('transform', 'translateY(-50%)', 'important'); mobileToggle.style.setProperty('z-index', '1001', 'important'); // Clear any inline left/right so CSS can take over based on html[dir] mobileToggle.style.removeProperty('left'); mobileToggle.style.removeProperty('right'); console.log('[Navbar] Mobile toggle positioning applied (mobile viewport)'); } else { // On desktop, clear any positioning styles to let CSS handle it mobileToggle.style.removeProperty('position'); mobileToggle.style.removeProperty('top'); mobileToggle.style.removeProperty('transform'); mobileToggle.style.removeProperty('z-index'); mobileToggle.style.removeProperty('left'); mobileToggle.style.removeProperty('right'); console.log('[Navbar] Desktop viewport - cleared mobile toggle inline positioning'); } } if (phoneBtn) { // Icon sizing applies to all viewports const phoneIcon = phoneBtn.querySelector('svg'); if (phoneIcon) { phoneIcon.style.width = '24px'; phoneIcon.style.height = '24px'; phoneIcon.setAttribute('width', '24'); phoneIcon.setAttribute('height', '24'); } // ONLY set positioning inline styles on mobile if (isMobileViewport) { phoneBtn.style.setProperty('position', 'absolute', 'important'); phoneBtn.style.setProperty('top', '50%', 'important'); phoneBtn.style.setProperty('transform', 'translateY(-50%)', 'important'); phoneBtn.style.setProperty('z-index', '1001', 'important'); // Clear any inline left/right so CSS can take over based on html[dir] phoneBtn.style.removeProperty('left'); phoneBtn.style.removeProperty('right'); console.log('[Navbar] Phone button positioning applied (mobile viewport)'); } else { // On desktop, clear any positioning styles to let CSS handle it phoneBtn.style.removeProperty('position'); phoneBtn.style.removeProperty('top'); phoneBtn.style.removeProperty('transform'); phoneBtn.style.removeProperty('z-index'); phoneBtn.style.removeProperty('left'); phoneBtn.style.removeProperty('right'); console.log('[Navbar] Desktop viewport - cleared phone button inline positioning'); } } } else { console.log('[Navbar] Could not parse background color:', bgColor); } // MOBILE MENU TOGGLE // Re-query in case DOM changed (mobileToggle already declared at top of function) mobileToggle = document.getElementById('mobileToggle') || document.querySelector('.mobile-toggle') || document.querySelector('.hamburger') || document.querySelector('.hamburger-menu') || document.querySelector('.menu-toggle') || document.querySelector('.burger-menu') || document.querySelector('[aria-label="Menu"]') || document.querySelector('[aria-label="תפריט"]'); // EXPANDED SEARCH: Find nav menu by ID or class const navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu') || document.querySelector('.nav-links') || document.querySelector('nav ul:not(.submenu)'); if (!mobileToggle || !navMenu) { console.log('[Navbar] Mobile toggle or menu not found:', { toggle: !!mobileToggle, menu: !!navMenu }); return; } // Ensure navMenu has ID for CSS targeting if (!navMenu.id) { navMenu.id = 'navMenu'; } console.log('[Navbar] Initializing mobile menu...'); // Remove any existing event listeners by cloning the button const newToggle = mobileToggle.cloneNode(true); mobileToggle.parentNode.replaceChild(newToggle, mobileToggle); // Toggle menu on button click - use newToggle now newToggle.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); const hamburgerIcon = this.querySelector('.hamburger-icon'); const closeIcon = this.querySelector('.close-icon'); const isActive = navMenu.classList.contains('active'); if (isActive) { // Close menu navMenu.classList.remove('active'); if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important'); if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important'); document.body.style.overflow = ''; console.log('[Navbar] Menu closed'); } else { // Open menu navMenu.classList.add('active'); if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'none', 'important'); if (closeIcon) closeIcon.style.setProperty('display', 'block', 'important'); document.body.style.overflow = 'hidden'; console.log('[Navbar] Menu opened'); } }); // Close menu when clicking nav links (but NOT dropdown toggles) const navLinks = navMenu.querySelectorAll('a'); navLinks.forEach(function(link) { link.addEventListener('click', function() { // Don't close if it's a dropdown child (unless it's a real navigation link) if (this.getAttribute('href') === '#') return; const hamburgerIcon = newToggle.querySelector('.hamburger-icon'); const closeIcon = newToggle.querySelector('.close-icon'); navMenu.classList.remove('active'); if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important'); if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important'); document.body.style.overflow = ''; console.log('[Navbar] Menu closed (link clicked)'); }); }); // DROPDOWN MENU TOGGLE (for mobile and touch devices) var dropdownToggles = navMenu.querySelectorAll('.dropdown-toggle'); dropdownToggles.forEach(function(toggle) { toggle.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); var parent = this.closest('.nav-dropdown'); if (!parent) return; // Close other open dropdowns at the same level var siblings = parent.parentNode.querySelectorAll('.nav-dropdown.open'); siblings.forEach(function(sib) { if (sib !== parent) sib.classList.remove('open'); }); parent.classList.toggle('open'); console.log('[Navbar] Dropdown toggled:', parent.classList.contains('open') ? 'open' : 'closed'); }); }); // Close dropdowns when clicking outside document.addEventListener('click', function(e) { if (!e.target.closest('.nav-dropdown')) { var openDropdowns = document.querySelectorAll('.nav-dropdown.open'); openDropdowns.forEach(function(dd) { dd.classList.remove('open'); }); } }); console.log('[Navbar] Dropdown handlers initialized for ' + dropdownToggles.length + ' dropdowns'); // Phone button functionality (phoneBtn already declared at top of function) if (phoneBtn) { phoneBtn.addEventListener('click', function() { // Get phone number from placeholder in page or use default const phoneLinks = document.querySelectorAll('a[href^="tel:"]'); const phoneNumber = phoneLinks.length > 0 ? phoneLinks[0].getAttribute('href').replace('tel:', '') : ' 03-5255505 </li> <li class="zappy-editable"> <a href="tel:035255505" style="display:flex;align-items:flex-start;gap:inherit" class="zappy-editable"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> 050-6479210'; window.location.href = 'tel:' + phoneNumber; console.log('[Navbar] Phone button clicked'); }); } console.log('[Navbar] Mobile menu initialized successfully'); // === WHATSAPP BUTTON VISIBILITY FIX === // Ensure WhatsApp floating button is hidden on desktop and visible on mobile // IMPORTANT: Only target the floating button by its class, NOT generic wa.me links const handleWhatsAppVisibility = function() { const whatsappBtn = document.querySelector('.whatsapp-float'); if (whatsappBtn) { const isDesktop = window.innerWidth >= 769; if (isDesktop) { whatsappBtn.style.setProperty('display', 'none', 'important'); whatsappBtn.style.setProperty('visibility', 'hidden', 'important'); whatsappBtn.style.setProperty('opacity', '0', 'important'); whatsappBtn.style.setProperty('pointer-events', 'none', 'important'); console.log('[WhatsApp] Button hidden on desktop'); } else { whatsappBtn.style.removeProperty('display'); whatsappBtn.style.removeProperty('visibility'); whatsappBtn.style.removeProperty('opacity'); whatsappBtn.style.removeProperty('pointer-events'); console.log('[WhatsApp] Button visible on mobile'); } } }; // Run on load handleWhatsAppVisibility(); // Run on resize with debouncing let resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(handleWhatsAppVisibility, 100); }); }); })(); </script> <main>
-      <section style="direction: rtl; font-family: system-ui, sans-serif; background: var(--bg-light, #F6F4EF); max-width: 100%; box-sizing: border-box; overflow: hidden; position: relative; opacity: 1;" data-zappy-section="true" class="section" id="zappy-section-0">
+      <section style="width:100%;max-width:100%;box-sizing:border-box;background:var(--bg-light);font-family:system-ui,sans-serif;direction:rtl;position:relative;overflow:visible;" data-zappy-section="true" class="section" id="zappy-section-0">
 <style>
-  :root {
-    --primary: #1F3156;
-    --secondary: #C8A24A;
-    --accent: #F2E7C9;
-    --bg-light: #F6F4EF;
-    --bg-dark: #1F3156;
-    --text-dark: #1A1A1A;
-    --text-light: #F6F4EF;
-    --text-muted: #6E6A61;
-    --border-light: #E6DED0;
-    --gradient-primary: linear-gradient(180deg, #E0BE68 0%, #C89F47 52%, #A97822 100%);
-    --gradient-gold-shine: linear-gradient(90deg, #9E7426 0%, #D8B865 22%, #F0D98A 50%, #C79D44 78%, #8D6722 100%);
+  .nim-article-section {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    background: var(--bg-light);
+    padding: 0 0 80px 0;
   }
 
-  .article-hero {
-    background: var(--primary);
+  /* Hero Banner */
+  .nim-hero {
+    background: var(--gradient-secondary);
     position: relative;
-    padding: 80px 0 60px;
+    padding: 80px 24px 100px;
     overflow: hidden;
+    text-align: center;
   }
-
-  .article-hero::before {
+  .nim-hero::before {
     content: '';
     position: absolute;
-    top: -120px;
-    left: -120px;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: rgba(200, 162, 74, 0.08);
-    pointer-events: none;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(200,162,74,0.18) 0%, transparent 60%);
+    z-index: 1;
   }
-
-  .article-hero::after {
+  .nim-hero::after {
     content: '';
     position: absolute;
-    bottom: -80px;
-    right: -80px;
-    width: 350px;
-    height: 350px;
+    top: -80px; left: -80px;
+    width: 340px; height: 340px;
     border-radius: 50%;
-    background: rgba(200, 162, 74, 0.06);
-    pointer-events: none;
+    background: radial-gradient(circle, rgba(200,162,74,0.13) 0%, transparent 70%);
+    z-index: 1;
   }
-
-  .article-badge {
-    display: inline-block;
-    background: var(--gradient-primary);
-    color: #fff;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    padding: 5px 16px;
-    border-radius: 2px;
-    margin-bottom: 22px;
-    text-transform: uppercase;
-  }
-
-  .article-hero-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 32px;
+  .nim-hero-inner {
     position: relative;
     z-index: 10;
+    max-width: 860px;
+    margin: 0 auto;
   }
-
-  .article-hero h1 {
-    font-size: clamp(1.7rem, 4vw, 2.8rem);
+  .nim-badge {
+    display: inline-block;
+    background: var(--gradient-primary);
+    color: var(--primary);
+    font-size: 0.72rem;
     font-weight: 800;
+    letter-spacing: 0.12em;
+    padding: 6px 20px;
+    border-radius: var(--radius-badge);
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  .nim-hero h1 {
+    font-size: clamp(1.7rem, 4vw, 2.8rem);
+    font-weight: 900;
     color: var(--text-light);
     line-height: 1.25;
-    margin: 0 0 18px;
+    margin: 0 0 28px;
   }
-
-  .article-hero h1 span {
+  .nim-hero h1 span {
+    display: inline-block;
     background: var(--gradient-gold-shine);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
-  .article-hero-desc {
-    color: rgba(246,244,239,0.75);
-    font-size: 1.08rem;
-    line-height: 1.7;
-    max-width: 700px;
-  }
-
-  .gold-divider {
-    width: 60px;
-    height: 3px;
-    background: var(--gradient-primary);
-    margin: 22px 0;
-    border-radius: 2px;
-  }
-
-  /* ── MAIN CONTENT ── */
-  .article-body {
-    max-width: 900px;
+  .nim-hero-intro {
+    color: rgba(246,244,239,0.82);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    max-width: 720px;
     margin: 0 auto;
-    padding: 56px 32px 72px;
   }
 
-  /* ── TRACK BLOCK ── */
-  .track-block {
-    background: #fff;
-    border-radius: 2px;
-    box-shadow: 0 18px 42px rgba(15,27,49,0.10);
-    overflow: hidden;
-    margin-bottom: 48px;
-    border-top: 4px solid var(--secondary);
+  /* Divider wave bottom of hero */
+  .nim-hero-divider {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 60px;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .nim-hero-divider svg {
+    display: block; width: 100%; height: 100%;
   }
 
-  .track-header {
-    background: linear-gradient(135deg, #1F3156 0%, #2a4272 100%);
-    padding: 28px 36px 22px;
+  /* Layout Container */
+  .nim-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* VS Comparison Row */
+  .nim-vs-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    margin: 60px 0 0;
+    align-items: start;
+  }
+  .nim-vs-divider-col {
     display: flex;
-    align-items: center;
-    gap: 16px;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 60px;
   }
-
-  .track-number {
-    width: 48px;
-    height: 48px;
+  .nim-vs-circle {
+    width: 52px; height: 52px;
     border-radius: 50%;
     background: var(--gradient-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: var(--primary);
+    letter-spacing: 0.05em;
+    box-shadow: var(--shadow-card);
     flex-shrink: 0;
   }
 
-  .track-header h2 {
-    color: #fff;
-    font-size: 1.35rem;
-    font-weight: 700;
+  /* Track Cards */
+  .nim-track-card {
+    background: #fff;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    transition: var(--transition-default);
+  }
+  .nim-track-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elevated);
+  }
+  .nim-track-header {
+    padding: 28px 32px 20px;
+    position: relative;
+  }
+  .nim-track-header.primary-track {
+    background: var(--gradient-secondary);
+  }
+  .nim-track-header.secondary-track {
+    background: linear-gradient(135deg, #2a3f6a 0%, #1F3156 100%);
+  }
+  .nim-track-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    margin-bottom: 8px;
+  }
+  .nim-track-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-light);
+    line-height: 1.3;
     margin: 0;
   }
+  .nim-track-body {
+    padding: 28px 32px 32px;
+  }
 
-  .track-tag {
-    margin-right: auto;
-    background: rgba(200,162,74,0.18);
-    color: var(--secondary);
-    font-size: 0.72rem;
+  /* Central track highlight */
+  .nim-central-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, rgba(200,162,74,0.15), rgba(200,162,74,0.05));
+    border-right: 3px solid var(--secondary);
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 4px 12px;
-    border-radius: 20px;
-    border: 1px solid rgba(200,162,74,0.3);
+    color: var(--primary);
+    margin-bottom: 20px;
   }
 
-  .track-body {
-    padding: 32px 36px 36px;
-  }
-
-  .track-body p {
-    color: var(--text-dark);
-    font-size: 0.97rem;
+  .nim-body-text {
+    font-size: 0.95rem;
     line-height: 1.8;
-    margin: 0 0 20px;
+    color: var(--text-dark);
+    margin-bottom: 16px;
   }
+  .nim-body-text:last-child { margin-bottom: 0; }
 
-  .conditions-grid {
+  /* Conditions Grid */
+  .nim-conditions {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin: 24px 0;
+    gap: 12px;
+    margin: 20px 0;
   }
-
-  .condition-card {
+  .nim-condition-item {
     background: var(--bg-light);
     border: 1px solid var(--border-light);
-    border-right: 3px solid var(--secondary);
-    padding: 18px 20px;
-    border-radius: 2px;
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
   }
-
-  .condition-card .label {
+  .nim-condition-num {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex; align-items: center; justify-content: center;
     font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: var(--secondary);
-    text-transform: uppercase;
-    margin-bottom: 6px;
+    font-weight: 800;
+    color: var(--primary);
+    flex-shrink: 0;
   }
-
-  .condition-card p {
-    margin: 0 !important;
-    font-size: 0.9rem !important;
-    color: var(--text-dark) !important;
-  }
-
-  .disability-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 0.9rem;
-  }
-
-  .disability-table th {
-    background: var(--primary);
-    color: #fff;
-    padding: 12px 16px;
-    text-align: right;
-    font-weight: 600;
-  }
-
-  .disability-table td {
-    padding: 11px 16px;
-    border-bottom: 1px solid var(--border-light);
+  .nim-condition-text {
+    font-size: 0.88rem;
     color: var(--text-dark);
+    font-weight: 600;
+    line-height: 1.4;
+    padding-top: 3px;
   }
 
-  .disability-table tr:nth-child(even) td {
-    background: var(--bg-light);
+  /* Pros/Cons Lists */
+  .nim-pros, .nim-cons {
+    list-style: none;
+    padding: 0; margin: 0;
+  }
+  .nim-pros li, .nim-cons li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--border-light);
+    line-height: 1.5;
+  }
+  .nim-pros li:last-child, .nim-cons li:last-child { border-bottom: none; }
+  .nim-pros li::before {
+    content: '✓';
+    color: #2a7d4f;
+    font-weight: 800;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .nim-cons li::before {
+    content: '×';
+    color: #b03a2e;
+    font-weight: 800;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+    margin-top: 0;
   }
 
-  /* ── ADVANTAGES / DISADVANTAGES ── */
-  .adv-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin: 28px 0;
+  /* Section header style */
+  .nim-section-header {
+    text-align: center;
+    margin: 64px 0 36px;
   }
-
-  .adv-card {
+  .nim-section-header h2 {
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 12px;
+    position: relative;
+    display: inline-block;
+  }
+  .nim-section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 0;
+    width: 60%;
+    height: 3px;
+    background: var(--gradient-primary);
     border-radius: 2px;
-    padding: 24px 22px;
   }
 
-  .adv-card.green {
-    background: linear-gradient(135deg, #e8f5e9 0%, #f1faf2 100%);
-    border: 1px solid #b2dfb4;
+  /* Limits section - dark card */
+  .nim-limits-card {
+    background: var(--gradient-secondary);
+    border-radius: var(--radius-card);
+    padding: 40px 40px 36px;
+    box-shadow: var(--shadow-elevated);
+    position: relative;
+    overflow: hidden;
   }
-
-  .adv-card.red {
-    background: linear-gradient(135deg, #fdf3f3 0%, #fff8f8 100%);
-    border: 1px solid #f5c6c6;
+  .nim-limits-card::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,162,74,0.1) 0%, transparent 70%);
+    pointer-events: none;
   }
-
-  .adv-card .adv-title {
+  .nim-limits-card h2 {
+    color: var(--text-light);
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 800;
+    margin: 0 0 8px;
+  }
+  .nim-limits-subtext {
+    color: rgba(246,244,239,0.7);
+    font-size: 0.9rem;
+    margin-bottom: 28px;
+  }
+  .nim-limits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .nim-limit-chip {
+    background: rgba(246,244,239,0.08);
+    border: 1px solid rgba(200,162,74,0.3);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    color: var(--text-light);
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nim-limit-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    flex-shrink: 0;
+  }
+  .nim-limits-missing {
+    background: rgba(246,244,239,0.06);
+    border-radius: var(--radius-sm);
+    padding: 20px 24px;
+    margin-top: 4px;
+  }
+  .nim-limits-missing-title {
+    color: var(--secondary);
     font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
-
-  .adv-card.green .adv-title { color: #2e7d32; }
-  .adv-card.red .adv-title { color: #c62828; }
-
-  .adv-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .nim-missing-list {
+    list-style: none; padding: 0; margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
-
-  .adv-card ul li {
-    font-size: 0.9rem;
-    color: var(--text-dark);
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
+  .nim-missing-list li {
+    color: rgba(246,244,239,0.8);
+    font-size: 0.88rem;
     display: flex;
     align-items: flex-start;
     gap: 8px;
-    line-height: 1.5;
+    line-height: 1.45;
   }
-
-  .adv-card ul li:last-child { border-bottom: none; }
-
-  .adv-card ul li::before {
-    content: '✓';
-    color: #2e7d32;
+  .nim-missing-list li::before {
+    content: '×';
+    color: #e07a6a;
     font-weight: 800;
     flex-shrink: 0;
-    margin-top: 1px;
+  }
+  .nim-limits-footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: rgba(246,244,239,0.75);
+    border-top: 1px solid rgba(200,162,74,0.2);
+    padding-top: 20px;
+  }
+  .nim-limits-footer strong {
+    color: var(--secondary);
   }
 
-  .adv-card.red ul li::before {
-    content: '×';
-    color: #c62828;
+  /* Negligence section */
+  .nim-tort-section {
+    margin: 64px 0 0;
   }
-
-  /* ── SECTION TITLE ── */
-  .section-title-wrap {
-    margin: 48px 0 28px;
-    position: relative;
+  .nim-tort-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
   }
-
-  .section-title-wrap h2 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--primary);
-    margin: 0;
-    padding-bottom: 14px;
-  }
-
-  .section-title-wrap::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 1px;
-    background: var(--border-light);
-  }
-
-  .section-title-wrap::before {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    right: 0;
-    width: 60px;
-    height: 3px;
-    background: var(--gradient-primary);
-    z-index: 1;
-    border-radius: 2px;
-  }
-
-  /* ── LIMIT BLOCK ── */
-  .limit-block {
-    background: linear-gradient(135deg, #fff8ee 0%, #fffdf8 100%);
-    border: 1px solid rgba(200,162,74,0.25);
-    border-right: 4px solid var(--secondary);
-    border-radius: 2px;
-    padding: 28px 32px;
-    margin-bottom: 24px;
-  }
-
-  .limit-block p {
-    color: var(--text-dark);
-    font-size: 0.97rem;
-    line-height: 1.8;
-    margin: 0 0 14px;
-  }
-
-  .limit-block p:last-child { margin: 0; }
-
-  .criteria-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 16px 0;
-  }
-
-  .criteria-pill {
-    background: var(--primary);
-    color: #fff;
-    font-size: 0.82rem;
-    font-weight: 600;
-    padding: 7px 16px;
-    border-radius: 20px;
-  }
-
-  /* ── TORT BLOCK ── */
-  .tort-block {
+  .nim-tort-left {
     background: #fff;
-    border-radius: 2px;
-    box-shadow: 0 18px 42px rgba(15,27,49,0.10);
-    overflow: hidden;
-    margin-bottom: 48px;
-    border-top: 4px solid var(--primary);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: 36px 32px;
   }
-
-  .tort-header {
-    background: linear-gradient(135deg, #2a3f5f 0%, #1F3156 100%);
-    padding: 28px 36px 22px;
+  .nim-tort-right {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 16px;
   }
-
-  .tort-header h2 {
-    color: #fff;
-    font-size: 1.35rem;
-    font-weight: 700;
-    margin: 0;
-  }
-
-  .tort-body {
-    padding: 32px 36px 36px;
-  }
-
-  .tort-body p {
-    color: var(--text-dark);
-    font-size: 0.97rem;
-    line-height: 1.8;
-    margin: 0 0 18px;
-  }
-
-  .prove-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    margin: 20px 0 26px;
-  }
-
-  .prove-item {
-    background: var(--bg-light);
-    border: 1px solid var(--border-light);
-    padding: 16px 18px;
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .prove-item .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--secondary);
-    flex-shrink: 0;
-  }
-
-  .prove-item span {
+  .nim-tort-mini-card {
+    background: #fff;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-subtle);
+    padding: 20px 24px;
+    border-right: 4px solid var(--secondary);
     font-size: 0.9rem;
     color: var(--text-dark);
-    font-weight: 600;
-  }
-
-  .example-list {
-    list-style: none;
-    padding: 0;
-    margin: 16px 0;
-  }
-
-  .example-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px dashed var(--border-light);
-    font-size: 0.93rem;
-    color: var(--text-dark);
     line-height: 1.6;
+    transition: var(--transition-hover);
+  }
+  .nim-tort-mini-card:hover {
+    transform: translateX(-4px);
+    box-shadow: var(--shadow-card);
+  }
+  .nim-tort-mini-card strong {
+    display: block;
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
   }
 
-  .example-list li:last-child { border-bottom: none; }
+  .nim-h2-inline {
+    font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 16px;
+    line-height: 1.3;
+  }
 
-  .example-list li::before {
-    content: '←';
+  /* Requirements grid */
+  .nim-req-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 16px 0 20px;
+  }
+  .nim-req-item {
+    background: var(--bg-light);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nim-req-item::before {
+    content: '◆';
     color: var(--secondary);
-    font-weight: 800;
+    font-size: 0.6rem;
     flex-shrink: 0;
-    margin-top: 1px;
   }
 
-  .full-compensation-box {
-    background: linear-gradient(135deg, var(--primary) 0%, #2a4272 100%);
-    border-radius: 2px;
-    padding: 24px 28px;
-    margin-top: 24px;
+  /* Full comp list */
+  .nim-full-comp {
+    background: linear-gradient(135deg, rgba(200,162,74,0.08) 0%, rgba(200,162,74,0.02) 100%);
+    border: 1px solid rgba(200,162,74,0.25);
+    border-radius: var(--radius-sm);
+    padding: 20px 24px;
+    margin-top: 16px;
   }
-
-  .full-compensation-box .fct {
-    font-size: 0.72rem;
+  .nim-full-comp-title {
+    font-size: 0.78rem;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     color: var(--secondary);
     text-transform: uppercase;
     margin-bottom: 12px;
   }
-
-  .full-compensation-box .comp-items {
+  .nim-full-comp ul {
+    list-style: none;
+    padding: 0; margin: 0;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
-
-  .comp-item {
+  .nim-full-comp ul li {
+    font-size: 0.88rem;
+    color: var(--text-dark);
     display: flex;
     align-items: center;
-    gap: 8px;
-    color: rgba(246,244,239,0.9);
-    font-size: 0.88rem;
+    gap: 7px;
   }
-
-  .comp-item::before {
-    content: '✦';
-    color: var(--secondary);
-    font-size: 0.7rem;
+  .nim-full-comp ul li::before {
+    content: '✓';
+    color: #2a7d4f;
+    font-weight: 800;
+    font-size: 0.8rem;
     flex-shrink: 0;
   }
 
-  /* ── Q&A PANELS ── */
-  .qa-grid {
+  /* Relation / connection section */
+  .nim-relation-section {
+    margin: 48px 0 0;
+    background: linear-gradient(135deg, rgba(31,49,86,0.05) 0%, rgba(200,162,74,0.05) 100%);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-card);
+    padding: 36px 40px;
+  }
+  .nim-relation-cols {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin: 0 0 40px;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 20px;
   }
-
-  .qa-card {
-    background: #fff;
-    border-radius: 2px;
-    box-shadow: 0 10px 30px rgba(15,27,49,0.08);
-    padding: 28px 24px;
-    border-top: 3px solid var(--secondary);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .qa-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 42px rgba(15,27,49,0.14);
-  }
-
-  .qa-card h3 {
-    color: var(--primary);
+  .nim-relation-col h3 {
     font-size: 1rem;
     font-weight: 800;
-    margin: 0 0 14px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border-light);
+    color: var(--primary);
+    margin: 0 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-
-  .qa-card p {
-    color: var(--text-dark);
-    font-size: 0.88rem;
-    line-height: 1.75;
-    margin: 0;
-  }
-
-  /* ── SUMMARY ── */
-  .summary-block {
-    background: linear-gradient(135deg, #1F3156 0%, #16223A 100%);
-    border-radius: 2px;
-    padding: 44px 40px;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 48px;
-  }
-
-  .summary-block::before {
-    content: '';
-    position: absolute;
-    top: -60px;
-    left: -60px;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    background: rgba(200,162,74,0.07);
-    pointer-events: none;
-  }
-
-  .summary-block h2 {
-    color: #fff;
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin: 0 0 20px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .summary-block h2::after {
+  .nim-relation-col h3::before {
     content: '';
     display: block;
-    width: 50px;
-    height: 3px;
+    width: 16px; height: 3px;
     background: var(--gradient-primary);
-    margin-top: 12px;
     border-radius: 2px;
+    flex-shrink: 0;
   }
 
-  .summary-block p {
-    color: rgba(246,244,239,0.82);
-    font-size: 0.97rem;
-    line-height: 1.8;
-    margin: 0 0 16px;
-    position: relative;
-    z-index: 1;
+  /* Summary / What's better */
+  .nim-summary-section {
+    margin: 48px 0 0;
   }
-
-  .summary-insights {
+  .nim-summary-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 28px;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .nim-summary-card {
+    border-radius: var(--radius-card);
+    padding: 32px 28px;
+    box-shadow: var(--shadow-card);
     position: relative;
-    z-index: 1;
+    overflow: hidden;
   }
-
-  .insight-box {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(200,162,74,0.2);
-    border-radius: 2px;
-    padding: 20px 18px;
+  .nim-summary-card.better {
+    background: var(--gradient-secondary);
+    color: var(--text-light);
   }
-
-  .insight-box .ib-label {
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    color: var(--secondary);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  .insight-box p {
-    font-size: 0.85rem !important;
-    margin: 0 !important;
-    color: rgba(246,244,239,0.75) !important;
-  }
-
-  /* ── LEAD PARAGRAPH ── */
-  .lead-para {
+  .nim-summary-card.final {
     background: #fff;
-    border-right: 4px solid var(--secondary);
-    border-radius: 2px;
-    padding: 28px 32px;
-    margin-bottom: 40px;
-    box-shadow: 0 10px 30px rgba(15,27,49,0.07);
-  }
-
-  .lead-para p {
-    font-size: 1.0rem;
-    line-height: 1.85;
     color: var(--text-dark);
+  }
+  .nim-summary-card h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
     margin: 0 0 14px;
   }
+  .nim-summary-card.better h3 { color: var(--secondary); }
+  .nim-summary-card.final h3 { color: var(--primary); }
+  .nim-summary-card p {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    margin: 0;
+    opacity: 0.9;
+  }
+  .nim-summary-card.better p { color: rgba(246,244,239,0.85); }
 
-  .lead-para p:last-child { margin: 0; }
+  /* Final summary strip */
+  .nim-final-strip {
+    margin: 40px 0 0;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-card);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    box-shadow: var(--shadow-btn-hover);
+  }
+  .nim-final-strip-icon {
+    font-size: 2.2rem;
+    flex-shrink: 0;
+  }
+  .nim-final-strip-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--primary);
+    font-weight: 600;
+  }
+  .nim-final-strip-text strong {
+    font-weight: 900;
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .article-hero { padding: 100px 0 48px; }
-    .article-hero-inner, .article-body { padding-left: 20px; padding-right: 20px; }
-    .article-hero h1 { font-size: 1.5rem; }
-    .conditions-grid, .adv-row, .prove-grid, .qa-grid, .summary-insights { grid-template-columns: 1fr; }
-    .track-header, .tort-header { padding: 22px 20px 18px; flex-wrap: wrap; }
-    .track-body, .tort-body { padding: 24px 20px; }
-    .full-compensation-box .comp-items { grid-template-columns: 1fr; }
-    .summary-block { padding: 32px 24px; }
-    .limit-block { padding: 22px 20px; }
-    .disability-table { font-size: 0.82rem; }
-    .disability-table th, .disability-table td { padding: 9px 10px; }
-    .qa-card { padding: 22px 18px; }
+  /* Responsive */
+  @media (max-width: 900px) {
+    .nim-vs-row {
+      grid-template-columns: 1fr;
+    }
+    .nim-vs-divider-col {
+      padding: 0;
+      justify-content: center;
+    }
+    .nim-tort-grid,
+    .nim-relation-cols,
+    .nim-summary-grid,
+    .nim-missing-list,
+    .nim-full-comp ul,
+    .nim-req-grid {
+      grid-template-columns: 1fr;
+    }
+    .nim-conditions {
+      grid-template-columns: 1fr;
+    }
+    .nim-limits-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .nim-final-strip {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nim-relation-section {
+      padding: 24px 20px;
+    }
+    .nim-limits-card {
+      padding: 28px 20px 24px;
+    }
+    .nim-track-body {
+      padding: 20px 20px 24px;
+    }
+    .nim-track-header {
+      padding: 22px 20px 16px;
+    }
+  }
+  @media (max-width: 600px) {
+    .nim-hero {
+      padding-top: 100px;
+    }
+    .nim-limits-grid {
+      grid-template-columns: 1fr;
+    }
+    .nim-container {
+      padding: 0 16px;
+    }
+    .nim-final-strip {
+      padding: 24px 20px;
+    }
+    .nim-tort-left {
+      padding: 24px 18px;
+    }
   }
 </style>
 
-<!-- HERO -->
-<div class="article-hero">
-  <div class="article-hero-inner">
-    <div class="article-badge">מאמר מקצועי</div>
-    <h1>פיצוי לנפגעי פעולות איבה <span>לעומת תביעת נזיקין</span></h1>
-    <div class="gold-divider"></div>
-    <p class="article-hero-desc">כאשר אדם נפגע כתוצאה מפעולת איבה, עומדת בפניו אפשרות לקבל פיצוי מהמדינה במסגרת חוק התגמולים לנפגעי פעולות איבה, התש״ל-1970. יחד עם זאת, במקרים מסוימים עולה השאלה האם ניתן לפעול גם במסלול של תביעה נזיקית. ההבחנה בין המסלולים אינה טכנית בלבד. מדובר בבחירה משפטית שיש לה השלכות ישירות על היקף הפיצוי.</p>
-  </div>
-</div>
+<div class="nim-article-section">
 
-<!-- BODY -->
-<div class="article-body">
-
-  <!-- Lead -->
-  <div class="lead-para">
-    
-    
+  <!-- HERO -->
+  <div class="nim-hero">
+    <div class="nim-hero-inner">
+      <div class="nim-badge">מאמר מקצועי</div>
+      <h1>פיצוי לנפגעי פעולות איבה<br><span>לעומת תביעת נזיקין</span></h1>
+      <p class="nim-hero-intro">כאשר אדם נפגע כתוצאה מפעולת איבה, עומדת בפניו אפשרות לקבל פיצוי מהמדינה במסגרת חוק התגמולים לנפגעי פעולות איבה, התש״ל-1970. יחד עם זאת, במקרים מסוימים עולה השאלה האם ניתן לפעול גם במסלול של תביעה נזיקית. ההבחנה בין המסלולים אינה טכנית בלבד. מדובר בבחירה משפטית שיש לה השלכות ישירות על היקף הפיצוי.</p>
+    </div>
+    <div class="nim-hero-divider">
+      <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,60 C400,0 800,0 1200,60 L1200,60 L0,60 Z" fill="var(--bg-light)"></path>
+      </svg>
+    </div>
   </div>
 
-  <!-- Track 1: Statutory -->
-  <div class="track-block">
-    <div class="track-header">
-      <div class="track-number">1</div>
-      <h2>המסלול של נפגעי פעולות איבה</h2>
-      <p><span class="track-tag">מסלול מרכזי</span>
-    </p></div>
-    <div class="track-body">
-      <p>זהו המסלול המרכזי בישראל לקבלת פיצוי נפגעי פעולות איבה.</p>
-      <p>המסלול המרכזי הוא פנייה למוסד לביטוח לאומי לצורך הכרה כנפגע פעולת איבה.</p>
-      <p>לצורך ההכרה יש להוכיח שני תנאים מרכזיים:</p>
+  <div class="nim-container">
 
-      <div class="conditions-grid zappy-preserve-css-grid" id="zappy-auto-grid-1775407625808-sbo214" data-zappy-auto-grid="true" data-original-item-width="374" data-original-gap="16px" style="display: grid; --zappy-grid-cols: 374.01px 374.028px; grid-template-columns: 374.01px 374.028px; align-items: stretch !important;" data-zappy-explicit-columns="true">
-        <div class="condition-card" data-grid-item-index="0">
-          <div class="label">תנאי ראשון</div>
-          <p>קיומו של אירוע המוכר כפעולת איבה</p>
+    <!-- VS COMPARISON -->
+    <div class="nim-vs-row">
+      <!-- Left: Primary Track -->
+      <div class="nim-track-card">
+        <div class="nim-track-header primary-track">
+          <div class="nim-track-label">מסלול מרכזי</div>
+          <h2 class="nim-track-title">המסלול של נפגעי פעולות איבה</h2>
         </div>
-        <div class="condition-card" data-grid-item-index="1">
-          <div class="label">תנאי שני</div>
-          <p>קשר סיבתי בין האירוע לבין הנזק שנגרם</p>
+        <div class="nim-track-body">
+          <div class="nim-central-badge">מסלול מרכזי</div>
+          <p class="nim-body-text">זהו המסלול המרכזי בישראל לקבלת פיצוי נפגעי פעולות איבה.</p>
+          <p class="nim-body-text">המסלול המרכזי הוא פנייה למוסד לביטוח לאומי לצורך הכרה כנפגע פעולת איבה.</p>
+          <p class="nim-body-text" style="font-weight:700;color:var(--primary);margin-bottom:12px;">לצורך ההכרה יש להוכיח שני תנאים מרכזיים:</p>
+          <div class="nim-conditions">
+            <div class="nim-condition-item">
+              <div class="nim-condition-num">א</div>
+              <div class="nim-condition-text"><strong>תנאי ראשון</strong> — קיומו של אירוע המוכר כפעולת איבה</div>
+            </div>
+            <div class="nim-condition-item">
+              <div class="nim-condition-num">ב</div>
+              <div class="nim-condition-text"><strong>תנאי שני</strong> — קשר סיבתי בין האירוע לבין הנזק שנגרם</div>
+            </div>
+          </div>
+          <p class="nim-body-text">הגדרת "פגיעת איבה" בדין היא רחבה, וכוללת לא רק פגיעה ישירה אלא גם פגיעה עקיפה הנובעת מהאירוע, לרבות פגיעה במהלך ניסיון להתגונן או בשל חשש ממשי לפעולת איבה.</p>
+          <p class="nim-body-text">לאחר ההכרה, הזכויות נקבעות לפי דרגת הנכות. בנוסף, קיימת זכאות למימון טיפולים רפואיים ונפשיים, שיקום וסיוע כלכלי. מדובר בזכות חוקית שמטרתה להעניק רשת ביטחון לנפגעים כולל מי שנפגע מפציצת אזעקה או נזק נפשי.</p>
+
+          <p style="font-size:0.8rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--secondary);margin:20px 0 10px;">✓ יתרונות</p>
+          <ul class="nim-pros">
+            <li>אין צורך להוכיח אשמה</li>
+            <li>ההליך יחסית מהיר ומובנה</li>
+            <li>קיימת זכאות לטיפולים ושיקום</li>
+            <li>ניתן לקבל קצבה חודשית</li>
+          </ul>
+          <p class="nim-body-text" style="margin-top:16px;font-style:italic;font-size:0.88rem;color:var(--text-muted);">המאפיין המרכזי של המסלול הוא שמדובר בזכות סוציאלית. אין צורך להוכיח רשלנות או אחריות של גורם כלשהו. די בכך שהנזק נגרם כתוצאה מפעולת איבה. זהו יתרון משמעותי, במיוחד במצבים שבהם לא ניתן להצביע על גורם אחראי.</p>
         </div>
       </div>
 
-      <p>הגדרת "פגיעת איבה" בדין היא רחבה, וכוללת לא רק פגיעה ישירה אלא גם פגיעה עקיפה הנובעת מהאירוע, לרבות פגיעה במהלך ניסיון להתגונן או בשל חשש ממשי לפעולת איבה.</p>
-      <p>לאחר ההכרה, הזכויות נקבעות לפי דרגת הנכות:</p>
-
-      <table class="disability-table">
-        <tbody><tr data-grid-item-index="0">
-          <th>שיעור נכות</th>
-          <th>הזכאות</th>
-        </tr>
-        <tr data-grid-item-index="1">
-          <td>10% ומעלה</td>
-          <td>זכאות לתשלום</td>
-        </tr>
-        <tr data-grid-item-index="2">
-          <td>10%–19%</td>
-          <td>מענק חד פעמי</td>
-        </tr>
-        <tr data-grid-item-index="3">
-          <td>20% ומעלה</td>
-          <td>קצבה חודשית</td>
-        </tr>
-      </tbody></table>
-
-      <p>בנוסף, קיימת זכאות למימון טיפולים רפואיים ונפשיים, שיקום וסיוע כלכלי.</p>
-      <p>מדובר בזכות חוקית שמטרתה להעניק רשת ביטחון לנפגעים כולל מי שנפגע מפציצת אזעקה או נזק נפשי.</p>
-
-      <p><strong>היתרונות:</strong></p>
-      <div class="adv-row">
-        <div class="adv-card green">
-          <div class="adv-title">✓ יתרונות</div>
-          <ul>
-            <li data-grid-item-index="0">אין צורך להוכיח אשמה</li>
-            <li data-grid-item-index="1">ההליך יחסית מהיר ומובנה</li>
-            <li data-grid-item-index="2">קיימת זכאות לטיפולים ושיקום</li>
-            <li data-grid-item-index="3">ניתן לקבל קצבה חודשית</li>
-          </ul>
-        </div>
-        <div class="adv-card red">
-          <div class="adv-title">× מגבלות</div>
-          <ul>
-            <li data-grid-item-index="0">כאב וסבל במובנו הרחב</li>
-            <li data-grid-item-index="1">פיצוי מלא על אובדן הנאות חיים</li>
-          </ul>
-        </div>
+      <!-- Center VS -->
+      <div class="nim-vs-divider-col">
+        <div class="nim-vs-circle">VS</div>
       </div>
 
-      <p>המאפיין המרכזי של המסלול הוא שמדובר בזכות סוציאלית. אין צורך להוכיח רשלנות או אחריות של גורם כלשהו. די בכך שהנזק נגרם כתוצאה מפעולת איבה. זהו יתרון משמעותי, במיוחד במצבים שבהם לא ניתן להצביע על גורם אחראי.</p>
-    </div>
-  </div>
-
-  <!-- Limits Section -->
-  <div class="section-title-wrap">
-    <h2>מגבלות המסלול - כמה מקבלים נפגעי איבה?</h2>
-  </div>
-
-  <div class="limit-block">
-    <p>שאלה נפוצה היא כמה מקבלים נפגעי איבה בפועל. הפיצוי מוגבל יחסית ואינו כולל רכיבים מסוימים כמו:</p>
-    <p>החיסרון הוא שהפיצוי אינו מותאם באופן מלא לנזק הספציפי של הנפגע.</p>
-    <p>התגמולים נקבעים לפי קריטריונים קבועים:</p>
-    <div class="criteria-pills">
-      <span class="criteria-pill">אחוזי נכות</span>
-      <span class="criteria-pill">מצב תעסוקתי</span>
-      <span class="criteria-pill">פרמטרים סטטוטוריים נוספים</span>
-    </div>
-    <p>הסכומים נקבעים לפי קריטריונים קבועים ולא לפי נזק אישי מלא — וזו בדיוק הסיבה לבחון את זכויות נפגעי פעולות האיבה לעומק לפני הגשת התביעה.</p>
-    <p>ולכן, במקרים של נזק כבד במיוחד, הפיצוי עשוי להיות נמוך מהנזק בפועל.</p>
-  </div>
-
-  <!-- Tort Track -->
-  <div class="tort-block">
-    <div class="tort-header">
-      <div class="track-number">2</div>
-      <h2>תביעה נזיקית - מתי זה רלוונטי</h2>
-    </div>
-    <div class="tort-body">
-      <p >&nbsp; תביעה נזיקית: מתי היא נכנסת לתמונה<br>
-תביעה נזיקית מתבססת על עקרונות פקודת הנזיקין, ובראשם עוולת הרשלנות.<br>
-כדי להצליח בתביעה כזו, יש להוכיח:<br>
-קיומה של חובת זהירות<br>
-הפרת חובה<br>
-נזק<br>
-וקשר סיבתי<br>
-במקרה של פעולות איבה, תביעה נזיקית עשויה להיות רלוונטית כאשר קיים גורם נוסף שתרם לנזק.<br>
-לדוגמה:<br>
-היעדר מרחב מוגן תקני<br>
-ליקויי בטיחות במבנה<br>
-כשל באמצעי התרעה או הגנה<br>
-התנהלות רשלנית שהחמירה את הפגיעה<br>
-במצבים אלו, ייתכן כי הנזק אינו נובע רק מהאירוע הביטחוני, אלא גם מהתרשלות.<br>
-היתרון: פיצוי מלא<br>
-בתביעה נזיקית ניתן לתבוע את מלוא הנזק, לרבות:<br>
-הפסדי השתכרות<br>
-כאב וסבל<br>
-הוצאות עתידיות<br>
-אובדן איכות חיים<br>
-לעיתים מדובר בפיצוי גבוה משמעותית מהמסלול הסטטוטורי.<br>
-הקשר בין המסלולים<br>
-ככלל, אין כפל פיצוי.<br>
-אם מתקבל פיצוי משני מקורות, יבוצעו קיזוזים.<br>
-עם זאת, קיימים מצבים שבהם ניתן למצות זכויות בשני המסלולים, תוך ניהול נכון של ההליך.<br>
-זהו תחום מורכב המחייב בחינה פרטנית של כל מקרה.<br>
-אז מה עדיף<br>
-ברוב המקרים, המסלול של נפגעי פעולות איבה הוא נקודת המוצא.<br>
-זהו מסלול מהיר יותר, פשוט יותר, ואינו דורש הוכחת אשמה.<br>
-עם זאת, במקרים שבהם קיימת אינדיקציה לרשלנות, יש לבחון גם אפשרות של תביעה נזיקית.<br>
-ההחלטה אינה טכנית, אלא אסטרטגית.<br>
-סיכום<br>
-הדין בישראל מעניק לנפגעי פעולות איבה רשת ביטחון רחבה, אך היא אינה בהכרח ממצה את מלוא הפיצוי האפשרי.<br>
-מי שנפגע צריך להבין:<br>
-לא רק מה מגיע לו<br>
-אלא גם באיזה מסלול לפעול<br>
-בחירה נכונה, בזמן הנכון, יכולה להשפיע באופן משמעותי על היקף הפיצוי.&nbsp;&nbsp;</p></div></div></div></section>
+      <!-- Right: Tort Track -->
+      <div class="nim-track-card">
+        <div class="nim-track-header secondary-track">
+          <div class="nim-track-label" style="color:var(--secondary);">מסלול חלופי</div>
+          <h2 class="nim-track-title">תביעה נזיקית - מתי זה רלוונטי</h2>
+        </div>
+        <div class="nim-track-body">
+          <p class="nim-body-text" style="font-weight:700;color:var(--primary);">תביעה נזיקית: מתי היא נכנסת לתמונה</p>
+          <p class="nim-body-text">תביעה נזיקית מתבססת על עקרונות פקודת הנזיקין, ובראשם עוולת הרשלנות. כדי להצליח בתביעה כזו, יש להוכיח:</p>
+          <div class="nim-req-grid">
+            <div class="nim-req-item">קיומה של חובת זהירות</div>
+            <div class="nim-req-item">הפרת חובה</div>
+            </div></div></div></div></div></div></section>
     </main> <footer class="site-footer" dir="rtl"> <div class="footer-main"> <div class="footer-container"> <div class="footer-grid"> <!-- Column 1: Company Info --> <div class="footer-col footer-col--brand"> <div class="footer-logo-wrap"> <img src="/assets/logo-1774782894048-xuck8l.webp?v=1774782894546-yv2klt" alt="ורד לוי משרד עורכי דין" class="logo" data-element-type="image" data-element-id="img-1774787134455-6shu8deq0" > </div> <p class="footer-tagline" >ייעוץ משפטי מקצועי, אישי ומהימן.
 אנחנו כאן עבורכם בכל שלב.</p> <div class="footer-social"> <a href="https://facebook.com/1BVGk3N2Af" aria-label="Facebook" class="social-link"><i class="fab fa-facebook-f"></i></a> <a href="https://instagram.com/vlb_law" aria-label="Instagram" class="social-link"><i class="fab fa-instagram" data-element-type="icon" data-element-id="icon-1774787134454-cbiesvnlk" data-icon-type="fontawesome"></i></a> <a href="https://wa.me/972506479210" aria-label="WhatsApp" class="social-link"><i class="fab fa-whatsapp" data-element-type="icon" data-element-id="icon-1774787134454-m5r6l53uw" data-icon-type="fontawesome"></i></a> </div> </div> <!-- Column 2: Quick Links --> <div class="footer-col"> <h3 class="footer-heading"> <span class="footer-heading-line"></span> ניווט מהיר </h3> <ul class="footer-links"> <li><a href="/about">אודות</a></li> <li><a href="/practice-areas">תחומי עיסוק</a></li> <li><a href="/contact">צור קשר</a></li> </ul> </div> <!-- Column 3: Contact Info --> <div class="footer-col"> <h3 class="footer-heading"> <span class="footer-heading-line"></span> פרטי התקשרות </h3> <ul class="footer-contact"> <li><a href="/" style="display:flex;align-items:flex-start;gap:inherit"><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span> <span>ילדי טהרן 8, ראשון לציון, ישראל</span></a></li>           <li>
               <span class="contact-icon"><i class="fas fa-phone-alt" data-element-type="icon" data-element-id="icon-1774787134455-6sz08mu6l" data-icon-type="fontawesome"></i></span>
