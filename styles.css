@@ -9250,6 +9250,30 @@ body.accessibility-widget-visible ._access-menu {
   min-width: 380px !important;
 }
 
+#layout-1775392133559 .prof-article-card-title {
+  color: rgb(25, 41, 72) !important;
+}
+
+#layout-1775392133559 .prof-article-card-desc {
+  color: rgb(25, 41, 72) !important;
+}
+
+#layout-1775392133559 .prof-article-card-title {
+  color: rgb(25, 41, 72) !important;
+}
+
+#layout-1775392133559 .prof-article-card-desc {
+  color: rgb(25, 41, 72) !important;
+}
+
+.index-services-section .index-services-card-title {
+  color: var(--text-light) !important;
+}
+
+.index-services-section .index-services-card-text {
+  color: rgba(246, 244, 239, 0.68) !important;
+}
+
 /* ========== RTL MOBILE NAVBAR FIX (zappy-rtl-mobile-fix) ========== */
 /* High-specificity rules to ensure RTL positioning wins over any [lang="en"] conflicts */
 /* For RTL sites: hamburger on RIGHT, phone on LEFT (mirror of LTR layout) */
