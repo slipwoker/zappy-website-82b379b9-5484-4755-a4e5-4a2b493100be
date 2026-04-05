@@ -9267,11 +9267,11 @@ body.accessibility-widget-visible ._access-menu {
 }
 
 .index-services-section .index-services-card-title {
-  color: var(--text-light) !important;
+  color: #1F3156;
 }
 
 .index-services-section .index-services-card-text {
-  color: rgba(246, 244, 239, 0.68) !important;
+  color: #1F3156;
 }
 
 /* ========== RTL MOBILE NAVBAR FIX (zappy-rtl-mobile-fix) ========== */
