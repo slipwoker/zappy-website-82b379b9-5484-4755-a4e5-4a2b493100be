@@ -1113,199 +1113,219 @@
 
 </style>
 
+
+
 <style data-zappy-section-v2-css="true">
 /* V2 Regenerated Section CSS */
 .contact-inquiry-form-section {
-  position: relative;
-  background-color: #1F3156;
-  background-image:
-    radial-gradient(ellipse at 10% 0%, rgba(200,162,74,0.10) 0%, transparent 55%),
-    radial-gradient(ellipse at 90% 100%, rgba(200,162,74,0.07) 0%, transparent 50%),
-    linear-gradient(160deg, #1F3156 0%, #16243E 100%);
-  color: var(--text-light);
-  padding: 120px 24px 80px;
-  overflow: visible;
   direction: rtl;
+  background-color: #F6F4EF;
+  background-image: linear-gradient(180deg, #FBF8F2 0%, #F2EBDD 100%);
+  color: var(--text-dark);
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: visible;
+  font-family: 'Heebo', sans-serif;
 }
 
-.contact-inquiry-form-section .cifs-inner {
-  max-width: 1140px;
+.contact-inquiry-form-section .cif-inner {
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 56px;
+  gap: 60px;
   align-items: start;
-  direction: rtl;
 }
 
-/* ── INFO PANEL ── */
-.contact-inquiry-form-section .cifs-info-panel {
+/* ─── INFO PANEL ─────────────────────────────────── */
+.contact-inquiry-form-section .cif-info-panel {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 32px;
 }
 
-.contact-inquiry-form-section .cifs-info-top {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.contact-inquiry-form-section .cifs-gold-rule {
-  width: 48px;
-  height: 3px;
-  background: linear-gradient(90deg, #E0BE68 0%, #C89F47 100%);
-  border-radius: 2px;
-  margin-inline-start: 0;
-}
-
-.contact-inquiry-form-section .cifs-h1 {
-  font-family: 'Frank Ruhl Libre', serif;
-  font-size: 40px;
+.contact-inquiry-form-section .cif-eyebrow {
+  display: inline-block;
+  font-family: 'Heebo', sans-serif;
+  font-size: 12px;
   font-weight: 700;
-  line-height: 1.2;
-  color: var(--text-light);
-  margin: 0;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 8px;
+}
+
+.contact-inquiry-form-section .cif-h1 {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--primary);
+  margin: 0 0 10px;
   text-align: right;
 }
 
-.contact-inquiry-form-section .cifs-h2 {
+.contact-inquiry-form-section .cif-h2 {
   font-family: 'Frank Ruhl Libre', serif;
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.4;
-  color: #C8A24A;
-  margin: 0;
+  color: var(--text-muted);
+  margin: 0 0 20px;
   text-align: right;
 }
 
-.contact-inquiry-form-section .cifs-lead {
-  font-family: 'Heebo', sans-serif;
+.contact-inquiry-form-section .cif-lead {
   font-size: 16px;
-  line-height: 1.8;
-  color: rgba(246,244,239,0.85);
-  margin: 0;
+  line-height: 1.75;
+  color: var(--text-dark);
   text-align: right;
+  margin: 0 0 12px;
 }
 
-/* ── PROMISE LIST ── */
-.contact-inquiry-form-section .cifs-promise-list {
+.contact-inquiry-form-section .cif-sub {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-dark);
+  text-align: right;
+  margin: 0 0 12px;
+}
+
+.contact-inquiry-form-section .cif-note {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  text-align: right;
+  margin: 0;
+}
+
+.contact-inquiry-form-section .cif-info-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ─── PROMISE LIST ───────────────────────────────── */
+.contact-inquiry-form-section .cif-promise-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
-.contact-inquiry-form-section .cifs-promise-list li {
+.contact-inquiry-form-section .cif-promise-item {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 12px;
-  font-family: 'Heebo', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--text-light);
+  gap: 14px;
   text-align: right;
 }
 
-.contact-inquiry-form-section .cifs-icon-wrap {
+.contact-inquiry-form-section .cif-promise-icon {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  background: rgba(200,162,74,0.15);
-  border: 1px solid rgba(200,162,74,0.35);
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #C8A24A;
-  margin-top: 2px;
+  background: linear-gradient(180deg, #E0BE68 0%, #C89F47 52%, #A97822 100%);
+  color: #101A2F;
+  border-radius: 0;
+  font-size: 16px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
 }
 
-/* ── NOTE BOX ── */
-.contact-inquiry-form-section .cifs-note-box {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(200,162,74,0.20);
-  border-inline-start: 3px solid #C8A24A;
-  padding: 20px 20px 20px 16px;
-  border-radius: 2px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.contact-inquiry-form-section .cif-promise-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-dark);
+  padding-top: 10px;
 }
 
-.contact-inquiry-form-section .cifs-note-box p {
-  font-family: 'Heebo', sans-serif;
-  font-size: 14px;
-  line-height: 1.7;
-  color: rgba(246,244,239,0.78);
-  margin: 0;
-  text-align: right;
+/* ─── GOLD RULE ──────────────────────────────────── */
+.contact-inquiry-form-section .cif-gold-rule {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #C89F47, #E0BE68);
+  margin-inline-start: auto;
 }
 
-/* ── FORM CARD ── */
-.contact-inquiry-form-section .cifs-form-card {
-  background: #F6F4EF;
-  border-radius: 2px;
-  box-shadow: 0 28px 70px rgba(15,27,49,0.32), 0 0 0 1px rgba(200,162,74,0.12);
-  overflow: hidden;
+/* ─── ATTORNEY IMAGE ─────────────────────────────── */
+.contact-inquiry-form-section .cif-contact-direct {
+  margin-top: 0;
 }
 
-.contact-inquiry-form-section .cifs-form-card-inner {
-  padding: 44px 40px;
+.contact-inquiry-form-section .cif-attorney-img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border: 1px solid var(--border-light);
+  filter: grayscale(8%);
 }
 
-/* ── FORM FIELDS ── */
-.contact-inquiry-form-section .cifs-form {
+/* ─── FORM PANEL ─────────────────────────────────── */
+.contact-inquiry-form-section .cif-form-panel {
+  position: sticky;
+  top: 100px;
+}
+
+.contact-inquiry-form-section .cif-form-card {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  padding: 40px 36px;
+  box-shadow: 0 18px 42px rgba(15,27,49,0.10);
+  position: relative;
+}
+
+.contact-inquiry-form-section .cif-form-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #E0BE68 0%, #C89F47 52%, #A97822 100%);
+}
+
+.contact-inquiry-form-section .cif-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.contact-inquiry-form-section .cifs-field-row {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.contact-inquiry-form-section .cifs-field-row--two {
+.contact-inquiry-form-section .cif-field-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 
-.contact-inquiry-form-section .cifs-field {
+.contact-inquiry-form-section .cif-field {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.contact-inquiry-form-section .cifs-field label {
+.contact-inquiry-form-section .cif-label {
   font-family: 'Heebo', sans-serif;
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  color: #1A1A1A;
+  color: var(--primary);
   text-align: right;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
-.contact-inquiry-form-section .cifs-req {
-  color: #C8A24A;
-  font-weight: 700;
-}
-
-.contact-inquiry-form-section .cifs-field input,
-.contact-inquiry-form-section .cifs-field textarea {
+.contact-inquiry-form-section .cif-input {
   font-family: 'Heebo', sans-serif;
   font-size: 15px;
-  line-height: 1.6;
-  color: #1A1A1A;
-  background: #FFFFFF;
-  border: 1px solid #E6DED0;
-  border-radius: 2px;
+  line-height: 1.5;
+  color: var(--text-dark);
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: 0;
   padding: 11px 14px;
   text-align: right;
   direction: rtl;
@@ -1313,24 +1333,27 @@
   box-sizing: border-box;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   outline: none;
-  resize: vertical;
+  -webkit-appearance: none;
 }
 
-.contact-inquiry-form-section .cifs-field input::placeholder,
-.contact-inquiry-form-section .cifs-field textarea::placeholder {
-  color: #9E9890;
-  font-size: 14px;
+.contact-inquiry-form-section .cif-input::placeholder {
+  color: #B5AFA7;
 }
 
-.contact-inquiry-form-section .cifs-field input:focus,
-.contact-inquiry-form-section .cifs-field textarea:focus {
-  border-color: #C8A24A;
+.contact-inquiry-form-section .cif-input:focus {
+  border-color: var(--secondary);
+  background: #fff;
   box-shadow: 0 0 0 3px rgba(200,162,74,0.12);
 }
 
-/* ── PRIVACY CONSENT ── */
+.contact-inquiry-form-section .cif-textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+/* ─── PRIVACY CONSENT ────────────────────────────── */
 .contact-inquiry-form-section .privacy-consent {
-  color: #1A1A1A;
+  color: var(--text-dark);
 }
 
 .contact-inquiry-form-section .privacy-consent-label {
@@ -1339,10 +1362,9 @@
   align-items: flex-start;
   gap: 10px;
   cursor: pointer;
-  font-family: 'Heebo', sans-serif;
   font-size: 13px;
   line-height: 1.6;
-  color: #3B352E;
+  color: var(--text-dark);
   text-align: right;
 }
 
@@ -1351,72 +1373,63 @@
   width: 16px;
   height: 16px;
   margin-top: 3px;
-  accent-color: #1F3156;
+  accent-color: var(--secondary);
   cursor: pointer;
 }
 
 .contact-inquiry-form-section .privacy-consent-label a {
-  color: #1F3156;
-  font-weight: 600;
+  color: var(--secondary);
   text-decoration: underline;
   text-underline-offset: 2px;
   transition: color 0.2s ease;
 }
 
 .contact-inquiry-form-section .privacy-consent-label a:hover {
-  color: #C8A24A;
+  color: var(--primary);
 }
 
-/* ── SUBMIT BUTTON ── */
-.contact-inquiry-form-section .cifs-submit {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+/* ─── SUBMIT BUTTON ──────────────────────────────── */
+.contact-inquiry-form-section .cif-submit {
+  font-family: 'Heebo', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
   background: linear-gradient(180deg, #E0BE68 0%, #C89F47 52%, #A97822 100%);
   color: #101A2F;
-  padding: 15px 34px;
-  border-radius: 2px;
   border: 1px solid #B78B35;
-  font-family: 'Heebo', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1;
-  letter-spacing: 0.03em;
+  border-radius: 0;
+  padding: 15px 34px;
   cursor: pointer;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 4px 16px rgba(183,139,53,0.24);
-  transition: filter 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+  transition: opacity 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  width: 100%;
   text-align: center;
-  margin-top: 4px;
+  letter-spacing: 0.03em;
 }
 
-.contact-inquiry-form-section .cifs-submit:hover {
-  filter: brightness(1.06);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 8px 28px rgba(183,139,53,0.32);
+.contact-inquiry-form-section .cif-submit:hover {
+  opacity: 0.92;
+  box-shadow: 0 8px 24px rgba(183,139,53,0.28), inset 0 1px 0 rgba(255,255,255,0.35);
   transform: translateY(-1px);
 }
 
-.contact-inquiry-form-section .cifs-submit:active {
-  filter: brightness(0.97);
+.contact-inquiry-form-section .cif-submit:active {
   transform: translateY(0);
+  opacity: 1;
 }
 
-/* ── BOTTOM ACCENT ── */
-.contact-inquiry-form-section .cifs-bottom-accent {
-  max-width: 1140px;
-  margin: 56px auto 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(200,162,74,0.30) 30%, rgba(200,162,74,0.30) 70%, transparent 100%);
-}
-
-/* ── RESPONSIVE ── */
+/* ─── RESPONSIVE ─────────────────────────────────── */
 @media (max-width: 900px) {
-  .contact-inquiry-form-section .cifs-inner {
+  .contact-inquiry-form-section .cif-inner {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
-  .contact-inquiry-form-section .cifs-h1 {
+  .contact-inquiry-form-section .cif-form-panel {
+    position: static;
+  }
+
+  .contact-inquiry-form-section .cif-h1 {
     font-size: 32px;
   }
 }
@@ -1426,30 +1439,40 @@
     padding: 100px 16px 60px;
   }
 
-  .contact-inquiry-form-section .cifs-inner {
+  .contact-inquiry-form-section .cif-inner {
     grid-template-columns: 1fr;
     gap: 32px;
   }
 
-  .contact-inquiry-form-section .cifs-form-card-inner {
+  .contact-inquiry-form-section .cif-field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-inquiry-form-section .cif-form-card {
     padding: 28px 20px;
   }
 
-  .contact-inquiry-form-section .cifs-field-row--two {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .contact-inquiry-form-section .cifs-h1 {
+  .contact-inquiry-form-section .cif-h1 {
     font-size: 28px;
   }
 
-  .contact-inquiry-form-section .cifs-h2 {
+  .contact-inquiry-form-section .cif-h2 {
     font-size: 18px;
   }
 
-  .contact-inquiry-form-section .cifs-bottom-accent {
-    margin-top: 36px;
+  .contact-inquiry-form-section .cif-attorney-img {
+    max-height: 220px;
+  }
+
+  .contact-inquiry-form-section .cif-promise-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+  }
+
+  .contact-inquiry-form-section .cif-promise-text {
+    font-size: 14px;
+    padding-top: 8px;
   }
 }
 </style>
@@ -1951,87 +1974,80 @@
 </script>
   
   <main>
-    <section class="contact-inquiry-form-section" data-layout-spec="צור קשר-inquiry-form" dir="rtl" data-zappy-section="true" id="zappy-section-2" style="opacity: 1;">
-  <div class="cifs-inner">
+    <section class="contact-inquiry-form-section" data-layout-spec="צור קשר-inquiry-form" dir="rtl" data-zappy-section="true" id="zappy-section-2">
+  <div class="cif-inner">
 
-    <!-- Right Column: Info Panel -->
-    <aside class="cifs-info-panel">
-      <div class="cifs-info-top">
-        <div class="cifs-gold-rule"></div>
-        <h1 class="cifs-h1">נשמח לעמוד לרשותכם</h1>
-        <h2 class="cifs-h2">כיצד נוכל לסייע&nbsp;?</h2>
-        <p class="cifs-lead" >בין אם אתם עומדים בפני הליך גירושין, מעוניינים לערוך צוואה או יפוי כח מתמשך, זקוקים לייעוץ בענייני פרטיות ומדיניות, או מחפשים ייצוג בהוצאה לפועל - אנחנו כאן לשמוע ולסייע.</p>
+    <!-- Right: Info Panel -->
+    <div class="cif-info-panel">
+      <div class="cif-info-top">
+        <span class="cif-eyebrow">צור קשר</span>
+        <h1 class="cif-h1">נשמח לעמוד לרשותכם</h1>
+        <h2 class="cif-h2">כיצד נוכל לסייע?</h2>
+        <p class="cif-lead">בין אם אתם עומדים בפני הליך גירושין, מעוניינים לערוך צוואה או יפוי כח מתמשך, זקוקים לייעוץ בענייני פרטיות ומדיניות, או מחפשים ייצוג בהוצאה לפועל - אנחנו כאן לשמוע ולסייע.</p>
+        <p class="cif-sub">מלאו את הטופס עם פרטי הקשר ותיאור קצר של פנייתכם. אין צורך לפרט בשלב זה את כל העובדות, די בציון תחום הפנייה, וכן אופן יצירת הקשר המועדף.</p>
+        <p class="cif-note">נציג ממשרדה של עורכת דין ורד לוי, יחזור אליכם בהקדם לתיאום פגישת ייעוץ ראשונית.</p>
       </div>
 
-      <ul class="cifs-promise-list">
-        <li>
-          <span class="cifs-icon-wrap" aria-hidden="true">
-            <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </span>
-          <span>מענה מהיר, לרוב כלל תוך יום עסקים</span>
+      <ul class="cif-promise-list">
+        <li class="cif-promise-item">
+          <span class="cif-promise-icon"><i class="fa-regular fa-clock"></i></span>
+          <span class="cif-promise-text">מענה מהיר, לרוב כלל תוך יום עסקים</span>
         </li>
-        <li>
-          <span class="cifs-icon-wrap" aria-hidden="true">
-            <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </span>
-          <span>שיחה ראשונית ללא התחייבות</span>
+        <li class="cif-promise-item">
+          <span class="cif-promise-icon"><i class="fa-regular fa-comments"></i></span>
+          <span class="cif-promise-text">שיחה ראשונית ללא התחייבות</span>
         </li>
-        <li>
-          <span class="cifs-icon-wrap" aria-hidden="true">
-            <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </span>
-          <span>טיפול אישי, מקצועי ודיסקרטי</span>
+        <li class="cif-promise-item">
+          <span class="cif-promise-icon"><i class="fa-regular fa-user-shield"></i></span>
+          <span class="cif-promise-text">טיפול אישי, מקצועי ודיסקרטי</span>
         </li>
-        <li>
-          <span class="cifs-icon-wrap" aria-hidden="true">
-            <svg data-element-type="icon" data-icon-type="svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </span>
-          <span>ניסיון בתחומי פרטיות, דיני משפחה, ליטיגציה והוצאה לפועל</span>
+        <li class="cif-promise-item">
+          <span class="cif-promise-icon"><i class="fa-regular fa-scale-balanced"></i></span>
+          <span class="cif-promise-text">ניסיון בתחומי פרטיות, דיני משפחה, ליטיגציה והוצאה לפועל</span>
         </li>
       </ul>
 
-      <div class="cifs-note-box">
-        <p>מלאו את הטופס עם פרטי הקשר ותיאור קצר של פנייתכם. אין צורך לפרט בשלב זה את כל העובדות, די בציון תחום הפנייה, וכן אופן יצירת הקשר המועדף.</p>
-        <p >נציג ממשרדה של עורכת דין ורד לוי, יחזור אליכם בהקדם לתיאום פגישת ייעוץ ראשונית.</p>
+      <div class="cif-gold-rule"></div>
+
+      <div class="cif-contact-direct">
+        <img data-placeholder="contact-inquiry-form-image-1" data-context="Elegant professional portrait of a female Israeli attorney in a law office setting — warm, approachable, confident expression. Soft natural light, navy and gold tones, bookshelves with legal volumes in background. Refined, trustworthy, personal branding photography for a boutique law firm." width="600" height="400" src="" alt="עורכת דין ורד לוי - פגישת ייעוץ אישית" class="cif-attorney-img" style="object-fit: cover; object-position: center;">
       </div>
-    </aside>
+    </div>
 
-    <!-- Left Column: Form Card -->
-    <div class="cifs-form-card">
-      <div class="cifs-form-card-inner">
-        <form class="contact-form cifs-form" novalidate="">
+    <!-- Left: Form Panel -->
+    <div class="cif-form-panel">
+      <div class="cif-form-card">
+        <form class="contact-form cif-form" novalidate="">
 
-          <div class="cifs-field-row">
-            <div class="cifs-field">
-              <label for="cifs-name">שם מלא <span class="cifs-req">*</span></label>
-              <input type="text" id="cifs-name" name="name" placeholder="שם פרטי ושם משפחה" required="">
+          <div class="cif-field-row">
+            <div class="cif-field">
+              <label class="cif-label" for="cif-name">שם מלא</label>
+              <input class="cif-input" type="text" id="cif-name" name="name" placeholder="ישראל ישראלי" required="">
+            </div>
+            <div class="cif-field">
+              <label class="cif-label" for="cif-phone">טלפון</label>
+              <input class="cif-input" type="tel" id="cif-phone" name="phone" placeholder="050-0000000" required="">
             </div>
           </div>
 
-          <div class="cifs-field-row cifs-field-row--two">
-            <div class="cifs-field">
-              <label for="cifs-phone">טלפון <span class="cifs-req">*</span></label>
-              <input type="tel" id="cifs-phone" name="phone" placeholder="05X-XXXXXXX" required="">
-            </div>
-            <div class="cifs-field">
-              <label for="cifs-email">דואר אלקטרוני</label>
-              <input type="email" id="cifs-email" name="email" placeholder="your@email.com">
-            </div>
+          <div class="cif-field">
+            <label class="cif-label" for="cif-email">דוא"ל</label>
+            <input class="cif-input" type="email" id="cif-email" name="email" placeholder="your@email.com">
           </div>
 
-          <div class="cifs-field">
-            <label for="cifs-subject">תחום הפנייה <span class="cifs-req">*</span></label>
-            <input type="text" id="cifs-subject" name="subject" placeholder="למשל: גירושין, צוואה, הוצאה לפועל…" required="">
+          <div class="cif-field">
+            <label class="cif-label" for="cif-subject">תחום הפנייה</label>
+            <input class="cif-input" type="text" id="cif-subject" name="subject" placeholder="למשל: גירושין, צוואה, הוצאה לפועל...">
           </div>
 
-          <div class="cifs-field">
-            <label for="cifs-contact-pref">אופן יצירת קשר מועדף</label>
-            <input type="text" id="cifs-contact-pref" name="contact_preference" placeholder="טלפון / וואטסאפ / אימייל">
+          <div class="cif-field">
+            <label class="cif-label" for="cif-contact-pref">אופן יצירת קשר מועדף</label>
+            <input class="cif-input" type="text" id="cif-contact-pref" name="contact_pref" placeholder="טלפון / דוא&quot;ל / וואטסאפ">
           </div>
 
-          <div class="cifs-field">
-            <label for="cifs-message">תיאור קצר של הפנייה</label>
-            <textarea id="cifs-message" name="message" rows="4" placeholder="ספרו לנו בקצרה כיצד נוכל לסייע לכם…"></textarea>
+          <div class="cif-field">
+            <label class="cif-label" for="cif-message">תיאור קצר של הפנייה</label>
+            <textarea class="cif-input cif-textarea" id="cif-message" name="message" rows="4" placeholder="תארו בקצרה את הנושא שבו תרצו לקבל סיוע..."></textarea>
           </div>
 
           <div class="privacy-consent">
@@ -2041,15 +2057,13 @@
             </label>
           </div>
 
-          <button type="submit" class="btn-primary cifs-submit" data-element-type="button" data-element-id="btn-1775373715099-lrjbowfki" data-native-element="true">שליחת הפנייה</button>
+          <button class="btn-primary cif-submit" type="submit">שליחת הפנייה</button>
+
         </form>
       </div>
     </div>
 
   </div>
-
-  <!-- Decorative bottom accent line -->
-  <div class="cifs-bottom-accent" aria-hidden="true"></div>
 </section>
 
 <section class="contact-contact-details-section" dir="rtl" data-layout-spec="צור קשר-contact-details" data-zappy-section="true" id="zappy-section-1">
