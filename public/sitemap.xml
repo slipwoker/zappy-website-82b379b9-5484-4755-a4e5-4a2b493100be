@@ -67,21 +67,21 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vered-levi-law-office.zappy5.app/contact</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://vered-levi-law-office.zappy5.app/blog/prenuptial-agreement-common-mistakes</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vered-levi-law-office.zappy5.app/copy</loc>
+    <loc>https://vered-levi-law-office.zappy5.app/eidos-test</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vered-levi-law-office.zappy5.app/contact</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
