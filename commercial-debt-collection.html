@@ -257,12 +257,660 @@
 </head>
 <body>
  <nav class="navbar" dir="rtl"> <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"> <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"> <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path> </svg> <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;"> <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path> </svg> </button> <button class="phone-header-btn" data-phone="035255505" aria-label="Call"> <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"> <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path> </svg> </button> <div class="nav-container"> <div class="nav-right-group"><div class="nav-brand"> <a href="/" class="logo-link"> <img src="/assets/logo-1774782894048-xuck8l.webp?v=1774782894546-yv2klt" alt="ורד לוי משרד עורכי דין" class="logo"> </a> </div><ul class="nav-menu" id="navMenu"><li><a href="/about">אודות</a></li><li><a href="/practice-areas">תחומי עיסוק</a></li><li><a href="/blog" class="nav-link">מאמרים</a><ul class="sub-menu"><li><a href="/prenuptial-agreement">הסכם ממון לפני החתונה?</a></li><li><a href="/workplace-privacy-violation">פגיעה בפרטיות במקום העבודה: גבולות הסמכות בין בית הדין לעבודה לבית המשפט האזרחי</a></li><li style="display: none !important;" class="zappy-hidden-menu-item"><a href="/blog/prenuptial-agreement-common-mistakes">טעויות נפוצות בהסכם ממון ואיך להימנע מהן</a></li></ul></li><li class="nav-cta-item-mobile"><a href="/contact">צור קשר</a></li><li><a href="/commercial-debt-collection" class="">גביית חוב עיסקי:</a></li></ul></div> <div class="nav-cta-container"> <a href="/contact" class="nav-cta-btn">צור קשר</a> </div> </div> </nav> <script> // Navbar Mobile Menu Toggle and Contrast Fix (function() { // Use 'load' event instead of 'DOMContentLoaded' to ensure we run AFTER all other scripts window.addEventListener('load', function() { // FIX MOBILE BUTTON CONTRAST // Detect navbar background color and apply contrasting color to mobile buttons const navbar = document.querySelector('.navbar, nav, header'); if (!navbar) { console.log('[Navbar] Navbar element not found'); return; } // DECLARE VARIABLES EARLY to avoid Temporal Dead Zone errors // These are used in multiple places below let mobileToggle = document.getElementById('mobileToggle') || document.querySelector('.mobile-toggle') || document.querySelector('.hamburger') || document.querySelector('.hamburger-menu') || document.querySelector('.menu-toggle') || document.querySelector('.burger-menu') || document.querySelector('[aria-label="Menu"]') || document.querySelector('[aria-label="תפריט"]'); const phoneBtn = document.querySelector('.phone-header-btn'); const computedStyle = window.getComputedStyle(navbar); let bgColor = computedStyle.backgroundColor; console.log('[Navbar] Initial navbar background:', bgColor); // Check if background is transparent or rgba with 0 alpha const isTransparent = bgColor === 'transparent' || bgColor === 'rgba(0, 0, 0, 0)' || (bgColor.startsWith('rgba') && bgColor.includes(', 0)')); if (isTransparent) { // Check for background-image or gradient const bgImage = computedStyle.backgroundImage; if (bgImage && bgImage !== 'none') { console.log('[Navbar] Navbar has background image/gradient, using dark text'); bgColor = 'rgb(240, 240, 240)'; // Assume light background } else { // Transparent navbar - check body background const bodyBg = window.getComputedStyle(document.body).backgroundColor; console.log('[Navbar] Navbar transparent, using body background:', bodyBg); bgColor = bodyBg; } } // Calculate luminance to determine if background is light or dark const rgb = bgColor.match(/\d+/g); if (rgb && rgb.length >= 3) { const r = parseInt(rgb[0]); const g = parseInt(rgb[1]); const b = parseInt(rgb[2]); const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255; // Mobile button colors are set by Claude's AI-generated CSS (same as .nav-menu a) // No dynamic color overrides needed - colors come from the generated navbar CSS console.log('[Navbar] Mobile button colors preserved from Claude CSS (luminance:', luminance.toFixed(2) + ')'); // FIX ICON SIZES - Ensure SVGs are properly sized and visible // INJECT CRITICAL CSS TO OVERRIDE ANY CONFLICTING RULES const criticalCSS = document.createElement('style'); criticalCSS.id = 'zappy-mobile-nav-fix'; const htmlLang = document.documentElement.lang || 'en'; const htmlDir = document.documentElement.dir || 'ltr'; // Check both dir attribute AND lang for RTL detection // dir="rtl" is the most reliable indicator const isRTL = htmlDir === 'rtl' || htmlLang === 'he' || htmlLang === 'ar'; criticalCSS.textContent = ` /* Hide mobile buttons on desktop, show only on mobile */ @media (min-width: 769px) { .mobile-toggle, .phone-header-btn { display: none !important; } } /* Show and position mobile buttons correctly on mobile */ @media (max-width: 768px) { .mobile-toggle, .phone-header-btn { position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; z-index: 1001 !important; display: flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; border-radius: 50% !important; border: none !important; cursor: pointer !important; padding: 6px !important; background: none !important; color: var(--nav-text, var(--text-light)) !important; } /* LTR positioning (default): hamburger LEFT, phone RIGHT */ html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle, html[dir="ltr"] .mobile-toggle { left: 12px !important; right: auto !important; } html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn, html[dir="ltr"] .phone-header-btn { right: 12px !important; left: auto !important; } /* RTL positioning: hamburger RIGHT, phone LEFT */ html[dir="rtl"] .mobile-toggle, html[lang="he"] .mobile-toggle, html[lang="ar"] .mobile-toggle { right: 12px !important; left: auto !important; } html[dir="rtl"] .phone-header-btn, html[lang="he"] .phone-header-btn, html[lang="ar"] .phone-header-btn { left: 12px !important; right: auto !important; } /* CRITICAL: Ensure nav-container has min-height on mobile */ /* All children are positioned absolutely/fixed on mobile, so height:auto collapses to 0 */ .nav-container { min-height: 70px !important; position: relative !important; } /* Ensure SVG icons are properly sized and inherit color */ .mobile-toggle svg, .phone-header-btn svg { width: 24px !important; height: 24px !important; /* Don't force display - let JavaScript control hamburger/close toggle */ } /* Reset nav-cta-container on mobile - remove desktop box-shadow/padding */ /* that creates a visible ghost box when CTA button is hidden */ .nav-cta-container { box-shadow: none !important; padding: 0 !important; } /* Hide nav-cta-container entirely on mobile when there's no lang-switcher */ /* (only the CTA button is inside, and it's hidden on mobile) */ .nav-cta-container:not(:has(.lang-switcher)) { display: none !important; } /* CRITICAL: Prevent hero image fade gradient from bleeding over headline text */ /* The .image-fade-gradient has bottom: -30px (extends below parent) */ /* On mobile stacked layout, this overlaps the h1 text below the image */ .hero-image-column { overflow: hidden !important; } .image-fade-gradient { bottom: 0 !important; } /* Hide desktop language switcher on mobile - hamburger menu handles it */ /* High specificity to override stored CSS */ .lang-switcher, .nav-cta-container .lang-switcher, .nav-container .lang-switcher, .navbar .lang-switcher, .navbar .nav-cta-container .lang-switcher { display: none !important; } } `; // Remove existing fix if present and inject new one const existing = document.getElementById('zappy-mobile-nav-fix'); if (existing) existing.remove(); document.head.appendChild(criticalCSS); console.log('[Navbar] Critical CSS injected for mobile nav positioning'); // ONLY apply inline positioning styles on mobile viewport // On desktop, the CSS handles hiding these buttons with display: none // Inline styles were breaking desktop layout by overriding CSS const isMobileViewport = window.innerWidth <= 768; if (mobileToggle) { // Icon sizing applies to all viewports for consistency const hamburgerIcon = mobileToggle.querySelector('.hamburger-icon'); const closeIcon = mobileToggle.querySelector('.close-icon'); if (hamburgerIcon) { hamburgerIcon.style.setProperty('width', '24px', 'important'); hamburgerIcon.style.setProperty('height', '24px', 'important'); hamburgerIcon.style.setProperty('display', 'block', 'important'); // Show hamburger by default } if (closeIcon) { closeIcon.style.setProperty('width', '24px', 'important'); closeIcon.style.setProperty('height', '24px', 'important'); closeIcon.style.setProperty('display', 'none', 'important'); // Hide close icon by default } // ONLY set positioning inline styles on mobile if (isMobileViewport) { mobileToggle.style.setProperty('position', 'absolute', 'important'); mobileToggle.style.setProperty('top', '50%', 'important'); mobileToggle.style.setProperty('transform', 'translateY(-50%)', 'important'); mobileToggle.style.setProperty('z-index', '1001', 'important'); // Clear any inline left/right so CSS can take over based on html[dir] mobileToggle.style.removeProperty('left'); mobileToggle.style.removeProperty('right'); console.log('[Navbar] Mobile toggle positioning applied (mobile viewport)'); } else { // On desktop, clear any positioning styles to let CSS handle it mobileToggle.style.removeProperty('position'); mobileToggle.style.removeProperty('top'); mobileToggle.style.removeProperty('transform'); mobileToggle.style.removeProperty('z-index'); mobileToggle.style.removeProperty('left'); mobileToggle.style.removeProperty('right'); console.log('[Navbar] Desktop viewport - cleared mobile toggle inline positioning'); } } if (phoneBtn) { // Icon sizing applies to all viewports const phoneIcon = phoneBtn.querySelector('svg'); if (phoneIcon) { phoneIcon.style.width = '24px'; phoneIcon.style.height = '24px'; phoneIcon.setAttribute('width', '24'); phoneIcon.setAttribute('height', '24'); } // ONLY set positioning inline styles on mobile if (isMobileViewport) { phoneBtn.style.setProperty('position', 'absolute', 'important'); phoneBtn.style.setProperty('top', '50%', 'important'); phoneBtn.style.setProperty('transform', 'translateY(-50%)', 'important'); phoneBtn.style.setProperty('z-index', '1001', 'important'); // Clear any inline left/right so CSS can take over based on html[dir] phoneBtn.style.removeProperty('left'); phoneBtn.style.removeProperty('right'); console.log('[Navbar] Phone button positioning applied (mobile viewport)'); } else { // On desktop, clear any positioning styles to let CSS handle it phoneBtn.style.removeProperty('position'); phoneBtn.style.removeProperty('top'); phoneBtn.style.removeProperty('transform'); phoneBtn.style.removeProperty('z-index'); phoneBtn.style.removeProperty('left'); phoneBtn.style.removeProperty('right'); console.log('[Navbar] Desktop viewport - cleared phone button inline positioning'); } } } else { console.log('[Navbar] Could not parse background color:', bgColor); } // MOBILE MENU TOGGLE // Re-query in case DOM changed (mobileToggle already declared at top of function) mobileToggle = document.getElementById('mobileToggle') || document.querySelector('.mobile-toggle') || document.querySelector('.hamburger') || document.querySelector('.hamburger-menu') || document.querySelector('.menu-toggle') || document.querySelector('.burger-menu') || document.querySelector('[aria-label="Menu"]') || document.querySelector('[aria-label="תפריט"]'); // EXPANDED SEARCH: Find nav menu by ID or class const navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu') || document.querySelector('.nav-links') || document.querySelector('nav ul:not(.submenu)'); if (!mobileToggle || !navMenu) { console.log('[Navbar] Mobile toggle or menu not found:', { toggle: !!mobileToggle, menu: !!navMenu }); return; } // Ensure navMenu has ID for CSS targeting if (!navMenu.id) { navMenu.id = 'navMenu'; } console.log('[Navbar] Initializing mobile menu...'); // Remove any existing event listeners by cloning the button const newToggle = mobileToggle.cloneNode(true); mobileToggle.parentNode.replaceChild(newToggle, mobileToggle); // Toggle menu on button click - use newToggle now newToggle.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); const hamburgerIcon = this.querySelector('.hamburger-icon'); const closeIcon = this.querySelector('.close-icon'); const isActive = navMenu.classList.contains('active'); if (isActive) { // Close menu navMenu.classList.remove('active'); if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important'); if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important'); document.body.style.overflow = ''; console.log('[Navbar] Menu closed'); } else { // Open menu navMenu.classList.add('active'); if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'none', 'important'); if (closeIcon) closeIcon.style.setProperty('display', 'block', 'important'); document.body.style.overflow = 'hidden'; console.log('[Navbar] Menu opened'); } }); // Close menu when clicking nav links (but NOT dropdown toggles) const navLinks = navMenu.querySelectorAll('a'); navLinks.forEach(function(link) { link.addEventListener('click', function() { // Don't close if it's a dropdown child (unless it's a real navigation link) if (this.getAttribute('href') === '#') return; const hamburgerIcon = newToggle.querySelector('.hamburger-icon'); const closeIcon = newToggle.querySelector('.close-icon'); navMenu.classList.remove('active'); if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important'); if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important'); document.body.style.overflow = ''; console.log('[Navbar] Menu closed (link clicked)'); }); }); // DROPDOWN MENU TOGGLE (for mobile and touch devices) var dropdownToggles = navMenu.querySelectorAll('.dropdown-toggle'); dropdownToggles.forEach(function(toggle) { toggle.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); var parent = this.closest('.nav-dropdown'); if (!parent) return; // Close other open dropdowns at the same level var siblings = parent.parentNode.querySelectorAll('.nav-dropdown.open'); siblings.forEach(function(sib) { if (sib !== parent) sib.classList.remove('open'); }); parent.classList.toggle('open'); console.log('[Navbar] Dropdown toggled:', parent.classList.contains('open') ? 'open' : 'closed'); }); }); // Close dropdowns when clicking outside document.addEventListener('click', function(e) { if (!e.target.closest('.nav-dropdown')) { var openDropdowns = document.querySelectorAll('.nav-dropdown.open'); openDropdowns.forEach(function(dd) { dd.classList.remove('open'); }); } }); console.log('[Navbar] Dropdown handlers initialized for ' + dropdownToggles.length + ' dropdowns'); // Phone button functionality (phoneBtn already declared at top of function) if (phoneBtn) { phoneBtn.addEventListener('click', function() { // Get phone number from placeholder in page or use default const phoneLinks = document.querySelectorAll('a[href^="tel:"]'); const phoneNumber = phoneLinks.length > 0 ? phoneLinks[0].getAttribute('href').replace('tel:', '') : ' 03-5255505 </li> <li class="zappy-editable"> <a href="tel:035255505" style="display:flex;align-items:flex-start;gap:inherit" class="zappy-editable"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> 050-6479210'; window.location.href = 'tel:' + phoneNumber; console.log('[Navbar] Phone button clicked'); }); } console.log('[Navbar] Mobile menu initialized successfully'); // === WHATSAPP BUTTON VISIBILITY FIX === // Ensure WhatsApp floating button is hidden on desktop and visible on mobile // IMPORTANT: Only target the floating button by its class, NOT generic wa.me links const handleWhatsAppVisibility = function() { const whatsappBtn = document.querySelector('.whatsapp-float'); if (whatsappBtn) { const isDesktop = window.innerWidth >= 769; if (isDesktop) { whatsappBtn.style.setProperty('display', 'none', 'important'); whatsappBtn.style.setProperty('visibility', 'hidden', 'important'); whatsappBtn.style.setProperty('opacity', '0', 'important'); whatsappBtn.style.setProperty('pointer-events', 'none', 'important'); console.log('[WhatsApp] Button hidden on desktop'); } else { whatsappBtn.style.removeProperty('display'); whatsappBtn.style.removeProperty('visibility'); whatsappBtn.style.removeProperty('opacity'); whatsappBtn.style.removeProperty('pointer-events'); console.log('[WhatsApp] Button visible on mobile'); } } }; // Run on load handleWhatsAppVisibility(); // Run on resize with debouncing let resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(handleWhatsAppVisibility, 100); }); }); })(); </script> <main>
-      <section id="layout-1775384479557" class="py-16 md:py-24 bg-white layout-section" data-zappy-component="true" style="width: 100%; padding: 60px 0;">
-        <div class="container mx-auto px-4 md:px-8 text-center">
-          <h1 class="text-3xl md:text-4xl font-bold mb-4">גביית חוב עיסקי:</h1>
-          <p class="text-gray-600 text-lg" >&nbsp; גביית חוב עסקי: צעדים משפטיים שכדאי להכיר<br>פברואר 2026  זמן קריאה: כ-5 דקות<br>חוב שאינו נפרע בזמן עלול להכביד על כל עסק - בין אם מדובר בחברה גדולה ובין אם בעסק קטן. כאשר לקוח או שותף עסקי אינו עומד בהתחייבויותיו הכספיות, חשוב לדעת אילו כלים משפטיים עומדים לרשותכם, כיצד לפעול בצורה מושכלת וממה להיזהר בדרך. במאמר זה נסקור את הצעדים המרכזיים שכדאי להכיר בתהליך גביית חוב עסקי.<br>שלב ראשון: ניסיון לפתרון מוסכם<br>לפני שפונים להליכים משפטיים, מומלץ לנסות לפתור את המחלוקת בדרכי שלום. שיחה ישירה עם החייב, שליחת מכתב תזכורת רשמי, או הצעת הסדר תשלומים - אלו הם הצעדים הראשונים שיש לנקוט. לעיתים קרובות, מכתב מעורך דין המנסח את דרישת התשלום בצורה מקצועית ובלשון ברורה מספיק כדי להניע את החייב לפעולה, ללא צורך בהגשת תביעה.<br>חשוב לתעד כל פנייה בכתב ולשמור עותקים מכל ההתכתבות. תיעוד זה עשוי לשמש ראיה חשובה בהמשך, אם יידרש הליך משפטי.<br>שלב שני: הגשת תביעה לבית המשפט<br>כאשר ניסיונות הפשרה אינם נושאים פרי, ניתן לפנות לבית המשפט. בישראל קיימים מסלולים שונים בהתאם לגובה החוב:<br>תביעות קטנות  תביעות עד סכום של 38,900 ₪ (נכון להיום), ניתן להגיש בבית משפט לתביעות קטנות בהליך מהיר ופשוט יחסית, ללא חובת ייצוג על ידי עורך דין.בית משפט השלוםלתביעות בסכומים גבוהים יותר, עד 2.5 מיליון ₪, מוגשת התביעה לבית משפט השלום. הליך זה מורכב יותר, ובמרבית המקרים מומלץ להיעזר בייצוג משפטי מקצועי.בית המשפט המחוזילתביעות בסכומים העולים על 2.5 מיליון ₪, הסמכות העניינית עוברת לבית המשפט המחוזי.<br>צו עיקול ואמצעי אכיפה<br>לאחר קבלת פסק דין לטובתכם, מתחיל שלב האכיפה - שלב שלעיתים מורכב לא פחות מהשגת פסק הדין עצמו. במסגרת הוצאה לפועל ניתן לנקוט בשורה של אמצעים:<br>עיקול נכסים ובנק- ניתן לעקל חשבונות בנק, כלי רכב, מניות ונכסים נוספים של החייב. עיקול בנקאי הוא אחד הכלים האפקטיביים ביותר לגביית חובות עסקיים.<br>עיקול שכר- כאשר החייב הוא שכיר, ניתן לעקל חלק ממשכורתו עד לפירעון החוב.<br>עיקול מטלטלין- ניתן לעקל ציוד, מלאי, ורכוש מוחשי של עסק החייב.<br>הגבלות על חייב -   עיכוב יציאה מהארץ, הגבלת רישיון נהיגה, הגבלת כרטיסי אשראי.הליך חדלות פרעון (יחיד) ופירוק חברה (תאגיד)<br>כאשר מדובר בחייב שאינו מסוגל לפרוע את חובותיו, ניתן לשקול הגשת בקשה לחדלות פרעון (ביחס לאדם פרטי) או לפירוק חברה (ביחס לתאגיד). הליכים אלה מאפשרים לנושים לקבל חלק מהחוב באמצעות מימוש נכסי החייב, בפיקוח בית המשפט.<br>חשוב לציין כי הגשת בקשה לפשיטת רגללחדלות פרעון אינה מבטיחה גבייה מלאה של החוב, אך היא עשויה להיות כלי לחץ אפקטיבי שיניע את החייב להגיע להסדר.<br><br><br><br>  לפני הגשת תביעה, חשוב לבחון לא רק את עצם החוב אלא גם את יכולת הגבייה בפועל.  <br>מדוע כדאי לפעול עם עורך דין מנוסה?<br>גביית חוב עסקי היא תחום הדורש ידע משפטי מעמיק, ניסיון מעשי והבנה של הדינמיקה בין נושים לחייבים. טעויות פרוצדורליות, מחדלי תיעוד או בחירה בהליך הלא מתאים עלולים לעכב את הגבייה ואף לפגוע בסיכויי ההצלחה.<br>במשרד ורד לוי עורכי דין אנו מלווים נושים,  פרטיים ועסקיים כאחד בכל שלבי הליך גביית החוב: מניסוח מכתב הדרישה הראשון ועד לביצוע פסק הדין. אנו פועלים בנחישות, מקצועיות ורגישות, תוך שמירה על האינטרסים שלכם לאורך כל הדרך.אם אתם מתמודדים עם חוב שאינו נפרע, אל תמתינו - פנו אלינו לייעוץ ראשוני ונבחן יחד את האפשרויות העומדות לרשותכם.&nbsp;&nbsp;</p>
+      <section style="direction: rtl; font-family: system-ui, sans-serif; background: var(--bg-light, #F6F4EF); width: 100%; max-width: 100%; box-sizing: border-box; overflow: hidden; position: relative; opacity: 1;" data-zappy-section="true" class="section" id="zappy-section-0">
+<style>
+  :root {
+    --primary: #1F3156;
+    --secondary: #C8A24A;
+    --accent: #F2E7C9;
+    --bg-light: #F6F4EF;
+    --bg-dark: #1F3156;
+    --text-dark: #1A1A1A;
+    --text-light: #F6F4EF;
+    --text-muted: #6E6A61;
+    --border-light: #E6DED0;
+    --gradient-primary: linear-gradient(180deg, #E0BE68 0%, #C89F47 52%, #A97822 100%);
+    --gradient-gold-shine: linear-gradient(90deg, #9E7426 0%, #D8B865 22%, #F0D98A 50%, #C79D44 78%, #8D6722 100%);
+    --gradient-secondary: linear-gradient(180deg, #1C2946 0%, #101A2F 100%);
+    --gradient-dark-section: linear-gradient(180deg, #16223A 0%, #0F1B31 100%);
+  }
+
+  .article-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    box-sizing: border-box;
+  }
+
+  /* HEADER BAND */
+  .article-header-band {
+    background: var(--gradient-dark-section);
+    width: 100%;
+    padding: 80px 24px 60px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .article-header-band::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,162,74,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .article-header-band::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: -40px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,162,74,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .article-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+
+  .article-category-tag {
+    display: inline-block;
+    background: var(--gradient-primary);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .article-main-title {
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 900;
+    color: var(--text-light);
+    line-height: 1.1;
+    margin: 0 0 20px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .article-main-title span.gold-line {
+    display: block;
+    width: 90px;
+    height: 4px;
+    background: var(--gradient-primary);
+    margin-top: 16px;
+    border-radius: 2px;
+  }
+
+  .article-meta-row {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .meta-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(246,244,239,0.7);
+    font-size: 0.85rem;
+  }
+
+  .meta-chip strong {
+    color: var(--secondary);
+  }
+
+  /* DIAGONAL CLIP BETWEEN HEADER AND BODY */
+  .article-clip-divider {
+    width: 100%;
+    height: 60px;
+    background: var(--bg-light);
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    margin-top: -1px;
+  }
+
+  /* CONTENT LAYOUT */
+  .article-content-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 48px;
+    align-items: start;
+    margin-top: 0;
+    padding-top: 40px;
+  }
+
+  @media (max-width: 900px) {
+    .article-content-layout {
+      grid-template-columns: 1fr;
+    }
+    .article-sidebar {
+      order: -1;
+    }
+  }
+
+  /* MAIN ARTICLE BODY */
+  .article-body {
+    position: relative;
+  }
+
+  .article-intro-block {
+    background: linear-gradient(135deg, var(--primary) 0%, #16223A 100%);
+    border-right: 5px solid var(--secondary);
+    padding: 32px 36px;
+    border-radius: 2px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .article-intro-block::after {
+    content: '❝';
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    font-size: 8rem;
+    color: rgba(200,162,74,0.08);
+    font-family: Georgia, serif;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .article-intro-block p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* SECTION BLOCKS */
+  .article-section-block {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+  }
+
+  .article-section-block:last-child {
+    border-bottom: none;
+  }
+
+  .section-heading-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .section-number {
+    width: 48px;
+    height: 48px;
+    background: var(--gradient-primary);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 900;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 8px 20px rgba(200,162,74,0.3);
+  }
+
+  .section-title-text {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .section-body-text {
+    color: var(--text-dark);
+    font-size: 1rem;
+    line-height: 1.9;
+    margin: 0;
+  }
+
+  /* COURT TRACKS GRID */
+  .court-tracks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 700px) {
+    .court-tracks-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .court-track-card {
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-top: 4px solid var(--secondary);
+    padding: 24px 20px;
+    border-radius: 2px;
+    box-shadow: 0 8px 24px rgba(15,27,49,0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .court-track-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(15,27,49,0.14);
+  }
+
+  .court-track-amount {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--secondary);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .court-track-name {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 10px;
+  }
+
+  .court-track-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ENFORCEMENT ITEMS */
+  .enforcement-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .enforcement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: #fff;
+    border: 1px solid var(--border-light);
+    padding: 18px 20px;
+    border-radius: 2px;
+    box-shadow: 0 4px 12px rgba(15,27,49,0.05);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .enforcement-item:hover {
+    border-color: var(--secondary);
+    box-shadow: 0 8px 24px rgba(200,162,74,0.15);
+  }
+
+  .enforcement-bullet {
+    width: 10px;
+    height: 10px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  .enforcement-text {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .enforcement-text strong {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #FBF8F2 0%, #F2EBDD 100%);
+    border: 1px solid var(--border-light);
+    border-right: 5px solid var(--secondary);
+    padding: 24px 28px;
+    border-radius: 2px;
+    margin: 24px 0;
+  }
+
+  .highlight-box p {
+    margin: 0;
+    font-size: 0.97rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+  }
+
+  /* SIDEBAR */
+  .article-sidebar {
+    position: sticky;
+    top: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .article-sidebar {
+      position: static;
+    }
+  }
+
+  .sidebar-cta-card {
+    background: var(--gradient-dark-section);
+    border-radius: 2px;
+    padding: 36px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(15,27,49,0.25);
+  }
+
+  .sidebar-cta-card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,162,74,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .sidebar-cta-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-light);
+    margin: 0 0 12px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .sidebar-cta-text {
+    font-size: 0.9rem;
+    color: rgba(246,244,239,0.75);
+    line-height: 1.7;
+    margin: 0 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .sidebar-cta-btn {
+    display: block;
+    background: var(--gradient-primary);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 14px 24px;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(200,162,74,0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .sidebar-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(200,162,74,0.5);
+  }
+
+  .sidebar-info-card {
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-top: 4px solid var(--primary);
+    padding: 28px 24px;
+    border-radius: 2px;
+    box-shadow: 0 8px 24px rgba(15,27,49,0.07);
+  }
+
+  .sidebar-info-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .sidebar-steps-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sidebar-step-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+  }
+
+  .sidebar-step-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--secondary);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* CLOSING CTA BAND */
+  .article-closing-band {
+    background: var(--gradient-primary);
+    padding: 56px 24px;
+    text-align: center;
+    margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .article-closing-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .closing-band-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+
+  .closing-band-title {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 900;
+    color: #fff;
+    margin: 0 0 16px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  .closing-band-text {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .article-header-band {
+      padding: 100px 20px 50px;
+    }
+    .article-wrapper {
+      padding: 0 16px 60px;
+    }
+    .article-intro-block {
+      padding: 24px 20px;
+    }
+    .court-tracks-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<!-- HEADER BAND -->
+<div class="article-header-band">
+  <div class="article-header-inner">
+    
+    <h1 class="article-main-title">
+      גביית חוב עיסקי:
+      <span class="gold-line"></span>
+    </h1>
+    <div class="article-meta-row">
+      <div class="meta-chip">📅 <strong>פברואר 2026</strong></div>
+      <div class="meta-chip">⏱ זמן קריאה: <strong>כ-5 דקות</strong></div>
+      <div class="meta-chip">✍️ <strong>ורד לוי משרד עורכי דין</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- DIAGONAL DIVIDER -->
+<div class="article-clip-divider"></div>
+
+<!-- MAIN CONTENT -->
+<div class="article-wrapper">
+  <div class="article-content-layout">
+
+    <!-- MAIN BODY -->
+    <main class="article-body">
+
+      <!-- INTRO -->
+      <div class="article-intro-block">
+        <p>חוב שאינו נפרע בזמן עלול להכביד על כל עסק - בין אם מדובר בחברה גדולה ובין אם בעסק קטן. כאשר לקוח או שותף עסקי אינו עומד בהתחייבויותיו הכספיות, חשוב לדעת אילו כלים משפטיים עומדים לרשותכם, כיצד לפעול בצורה מושכלת וממה להיזהר בדרך. במאמר זה נסקור את הצעדים המרכזיים שכדאי להכיר בתהליך גביית חוב עסקי.</p>
+      </div>
+
+      <!-- STEP 1 -->
+      <div class="article-section-block">
+        <div class="section-heading-row">
+          <div class="section-number">01</div>
+          <h2 class="section-title-text">שלב ראשון: ניסיון לפתרון מוסכם</h2>
         </div>
-      </section>
+        <p class="section-body-text">לפני שפונים להליכים משפטיים, מומלץ לנסות לפתור את המחלוקת בדרכי שלום. שיחה ישירה עם החייב, שליחת מכתב תזכורת רשמי, או הצעת הסדר תשלומים - אלו הם הצעדים הראשונים שיש לנקוט. לעיתים קרובות, מכתב מעורך דין המנסח את דרישת התשלום בצורה מקצועית ובלשון ברורה מספיק כדי להניע את החייב לפעולה, ללא צורך בהגשת תביעה.</p>
+        <div class="highlight-box">
+          <p>חשוב לתעד כל פנייה בכתב ולשמור עותקים מכל ההתכתבות. תיעוד זה עשוי לשמש ראיה חשובה בהמשך, אם יידרש הליך משפטי.</p>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="article-section-block">
+        <div class="section-heading-row">
+          <div class="section-number">02</div>
+          <h2 class="section-title-text">שלב שני: הגשת תביעה לבית המשפט</h2>
+        </div>
+        <p class="section-body-text">כאשר ניסיונות הפשרה אינם נושאים פרי, ניתן לפנות לבית המשפט. בישראל קיימים מסלולים שונים בהתאם לגובה החוב:</p>
+
+        <div class="court-tracks-grid">
+          <div class="court-track-card">
+            <p class="zappy-editable"><span class="court-track-amount">עד 38,900 ₪</span>
+            </p><h3 class="court-track-name">תביעות קטנות</h3>
+            <p class="court-track-desc">הליך מהיר ופשוט יחסית, ללא חובת ייצוג על ידי עורך דין.</p>
+          </div>
+          <div class="court-track-card">
+            <p class="zappy-editable"><span class="court-track-amount">עד 2.5 מיליון ₪</span>
+            </p><h3 class="court-track-name">בית משפט השלום</h3>
+            <p class="court-track-desc">הליך מורכב יותר — במרבית המקרים מומלץ להיעזר בייצוג משפטי.</p>
+          </div>
+          <div class="court-track-card">
+            <p class="zappy-editable"><span class="court-track-amount">מעל 2.5 מיליון ₪</span>
+            </p><h3 class="court-track-name">בית המשפט המחוזי</h3>
+            <p class="court-track-desc">הסמכות העניינית לתביעות בסכומים גבוהים במיוחד.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 - ENFORCEMENT -->
+      <div class="article-section-block">
+        <div class="section-heading-row">
+          <div class="section-number">03</div>
+          <h2 class="section-title-text">צו עיקול ואמצעי אכיפה</h2>
+        </div>
+        <p class="section-body-text">לאחר קבלת פסק דין לטובתכם, מתחיל שלב האכיפה - שלב שלעיתים מורכב לא פחות מהשגת פסק הדין עצמו. במסגרת הוצאה לפועל ניתן לנקוט בשורה של אמצעים:</p>
+        <ul class="enforcement-list">
+          <li class="enforcement-item">
+            <div class="enforcement-bullet"></div>
+            <p class="enforcement-text"><strong>עיקול נכסים ובנק</strong> — ניתן לעקל חשבונות בנק, כלי רכב, מניות ונכסים נוספים של החייב. עיקול בנקאי הוא אחד הכלים האפקטיביים ביותר לגביית חובות עסקיים.</p>
+          </li>
+          <li class="enforcement-item">
+            <div class="enforcement-bullet"></div>
+            <p class="enforcement-text"><strong>עיקול שכר</strong> — כאשר החייב הוא שכיר, ניתן לעקל חלק ממשכורתו עד לפירעון החוב.</p>
+          </li>
+          <li class="enforcement-item">
+            <div class="enforcement-bullet"></div>
+            <p class="enforcement-text"><strong>עיקול מטלטלין</strong> — ניתן לעקל ציוד, מלאי, ורכוש מוחשי של עסק החייב.</p>
+          </li>
+          <li class="enforcement-item">
+            <div class="enforcement-bullet"></div>
+            <p class="enforcement-text"><strong>הגבלות על חייב</strong> — עיכוב יציאה מהארץ, הגבלת רישיון נהיגה, הגבלת כרטיסי אשראי.</p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- STEP 4 - INSOLVENCY -->
+      <div class="article-section-block">
+        <div class="section-heading-row">
+          <div class="section-number">04</div>
+          <h2 class="section-title-text">הליך חדלות פרעון ופירוק חברה</h2>
+        </div>
+        <p class="section-body-text">כאשר מדובר בחייב שאינו מסוגל לפרוע את חובותיו, ניתן לשקול הגשת בקשה לחדלות פרעון (ביחס לאדם פרטי) או לפירוק חברה (ביחס לתאגיד). הליכים אלה מאפשרים לנושים לקבל חלק מהחוב באמצעות מימוש נכסי החייב, בפיקוח בית המשפט.</p>
+        <div class="highlight-box">
+          <p>חשוב לציין כי הגשת בקשה לפשיטת רגל / חדלות פרעון אינה מבטיחה גבייה מלאה של החוב, אך היא עשויה להיות כלי לחץ אפקטיבי שיניע את החייב להגיע להסדר. לפני הגשת תביעה, חשוב לבחון לא רק את עצם החוב אלא גם את יכולת הגבייה בפועל.</p>
+        </div>
+      </div>
+
+      <!-- STEP 5 - WHY LAWYER -->
+      <div class="article-section-block">
+        <div class="section-heading-row">
+          <div class="section-number">05</div>
+          <h2 class="section-title-text">מדוע כדאי לפעול עם עורך דין מנוסה?</h2>
+        </div>
+        <p class="section-body-text">גביית חוב עסקי היא תחום הדורש ידע משפטי מעמיק, ניסיון מעשי והבנה של הדינמיקה בין נושים לחייבים. טעויות פרוצדורליות, מחדלי תיעוד או בחירה בהליך הלא מתאים עלולים לעכב את הגבייה ואף לפגוע בסיכויי ההצלחה.</p>
+        <p class="section-body-text" style="margin-top: 16px;">במשרד ורד לוי עורכי דין אנו מלווים נושים, פרטיים ועסקיים כאחד בכל שלבי הליך גביית החוב: מניסוח מכתב הדרישה הראשון ועד לביצוע פסק הדין. אנו פועלים בנחישות, מקצועיות ורגישות, תוך שמירה על האינטרסים שלכם לאורך כל הדרך.</p>
+        <p class="section-body-text" style="margin-top: 16px; font-weight: 700; color: var(--primary);">אם אתם מתמודדים עם חוב שאינו נפרע, אל תמתינו - פנו אלינו לייעוץ ראשוני ונבחן יחד את האפשרויות העומדות לרשותכם.</p>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="article-sidebar">
+      <div class="sidebar-cta-card">
+        <h3 class="sidebar-cta-title">יש לכם חוב שאינו נפרע?</h3>
+        <p class="sidebar-cta-text">פנו אלינו לייעוץ ראשוני ונבחן יחד את הא</p></div></aside></div></div></section>
     </main> <footer class="site-footer" dir="rtl"> <div class="footer-main"> <div class="footer-container"> <div class="footer-grid"> <!-- Column 1: Company Info --> <div class="footer-col footer-col--brand"> <div class="footer-logo-wrap"> <img src="/assets/logo-1774782894048-xuck8l.webp?v=1774782894546-yv2klt" alt="ורד לוי משרד עורכי דין" class="logo" data-element-type="image" data-element-id="img-1774787134455-6shu8deq0" > </div> <p class="footer-tagline">ייעוץ משפטי מקצועי, אישי ומהימן.<br><br><br><br><br><br><br><br>אנחנו כאן עבורכם בכל שלב.</p> <div class="footer-social"> <a href="https://facebook.com/1BVGk3N2Af" aria-label="Facebook" class="social-link"><i class="fab fa-facebook-f"></i></a> <a href="https://instagram.com/vlb_law" aria-label="Instagram" class="social-link"><i class="fab fa-instagram" data-element-type="icon" data-element-id="icon-1774787134454-cbiesvnlk" data-icon-type="fontawesome"></i></a> <a href="https://wa.me/972506479210" aria-label="WhatsApp" class="social-link"><i class="fab fa-whatsapp" data-element-type="icon" data-element-id="icon-1774787134454-m5r6l53uw" data-icon-type="fontawesome"></i></a> </div> </div> <!-- Column 2: Quick Links --> <div class="footer-col"> <h3 class="footer-heading"> <span class="footer-heading-line"></span> ניווט מהיר </h3> <ul class="footer-links"> <li><a href="/about">אודות</a></li> <li><a href="/practice-areas">תחומי עיסוק</a></li> <li><a href="/contact">צור קשר</a></li> </ul> </div> <!-- Column 3: Contact Info --> <div class="footer-col"> <h3 class="footer-heading"> <span class="footer-heading-line"></span> פרטי התקשרות </h3> <ul class="footer-contact"> <li><a href="/" style="display:flex;align-items:flex-start;gap:inherit"><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span> <span>ילדי טהרן 8, ראשון לציון, ישראל</span></a></li>           <li>
               <span class="contact-icon"><i class="fas fa-phone-alt" data-element-type="icon" data-element-id="icon-1774787134455-6sz08mu6l" data-icon-type="fontawesome"></i></span>
               <a href="tel:03-5255505">03-5255505</a>
