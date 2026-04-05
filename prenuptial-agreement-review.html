@@ -258,144 +258,566 @@
 </head>
 <body>
  <nav class="navbar" dir="rtl"> <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"> <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"> <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path> </svg> <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;"> <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path> </svg> </button> <button class="phone-header-btn" data-phone="035255505" aria-label="Call"> <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"> <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path> </svg> </button> <div class="nav-container"> <div class="nav-right-group"><div class="nav-brand"> <a href="/" class="logo-link"> <img src="/assets/logo-1774782894048-xuck8l.webp?v=1774782894546-yv2klt" alt="ורד לוי משרד עורכי דין" class="logo"> </a> </div><ul class="nav-menu" id="navMenu"><li><a href="/about">אודות</a></li><li><a href="/practice-areas">תחומי עיסוק</a></li><li><a href="/blog" class="nav-link">מאמרים</a><ul class="sub-menu"><li><a href="/workplace-privacy-violation">פגיעה בפרטיות במקום העבודה: גבולות הסמכות בין בית הדין לעבודה לבית המשפט האזרחי</a></li><li><a href="/prenuptial-agreement">הסכם ממון לפני החתונה?</a></li><li><a href="/divorce-costs-israel">כמה עולה להתגרש בישראל</a></li><li><a href="/business-debt-collection">גביית חוב עיסקי: צעדים משפטיים שכדאי להכיר</a></li></ul></li><li style="display: none !important;" class="zappy-hidden-menu-item"><a href="/thank-you">Thank You | Vered Levy Law Office</a></li><li class="nav-cta-item-mobile"><a href="/contact">צור קשר</a></li><li><a href="/prenuptial-agreement-review" class="">מה חשוב לבדוק לבדוק לפני חתימה על הסכם ממון?</a></li></ul></div> <div class="nav-cta-container"> <a href="/contact" class="nav-cta-btn">צור קשר</a> </div> </div> </nav> <script> // Navbar Mobile Menu Toggle and Contrast Fix (function() { // Use 'load' event instead of 'DOMContentLoaded' to ensure we run AFTER all other scripts window.addEventListener('load', function() { // FIX MOBILE BUTTON CONTRAST // Detect navbar background color and apply contrasting color to mobile buttons const navbar = document.querySelector('.navbar, nav, header'); if (!navbar) { console.log('[Navbar] Navbar element not found'); return; } // DECLARE VARIABLES EARLY to avoid Temporal Dead Zone errors // These are used in multiple places below let mobileToggle = document.getElementById('mobileToggle') || document.querySelector('.mobile-toggle') || document.querySelector('.hamburger') || document.querySelector('.hamburger-menu') || document.querySelector('.menu-toggle') || document.querySelector('.burger-menu') || document.querySelector('[aria-label="Menu"]') || document.querySelector('[aria-label="תפריט"]'); const phoneBtn = document.querySelector('.phone-header-btn'); const computedStyle = window.getComputedStyle(navbar); let bgColor = computedStyle.backgroundColor; console.log('[Navbar] Initial navbar background:', bgColor); // Check if background is transparent or rgba with 0 alpha const isTransparent = bgColor === 'transparent' || bgColor === 'rgba(0, 0, 0, 0)' || (bgColor.startsWith('rgba') && bgColor.includes(', 0)')); if (isTransparent) { // Check for background-image or gradient const bgImage = computedStyle.backgroundImage; if (bgImage && bgImage !== 'none') { console.log('[Navbar] Navbar has background image/gradient, using dark text'); bgColor = 'rgb(240, 240, 240)'; // Assume light background } else { // Transparent navbar - check body background const bodyBg = window.getComputedStyle(document.body).backgroundColor; console.log('[Navbar] Navbar transparent, using body background:', bodyBg); bgColor = bodyBg; } } // Calculate luminance to determine if background is light or dark const rgb = bgColor.match(/\d+/g); if (rgb && rgb.length >= 3) { const r = parseInt(rgb[0]); const g = parseInt(rgb[1]); const b = parseInt(rgb[2]); const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255; // Mobile button colors are set by Claude's AI-generated CSS (same as .nav-menu a) // No dynamic color overrides needed - colors come from the generated navbar CSS console.log('[Navbar] Mobile button colors preserved from Claude CSS (luminance:', luminance.toFixed(2) + ')'); // FIX ICON SIZES - Ensure SVGs are properly sized and visible // INJECT CRITICAL CSS TO OVERRIDE ANY CONFLICTING RULES const criticalCSS = document.createElement('style'); criticalCSS.id = 'zappy-mobile-nav-fix'; const htmlLang = document.documentElement.lang || 'en'; const htmlDir = document.documentElement.dir || 'ltr'; // Check both dir attribute AND lang for RTL detection // dir="rtl" is the most reliable indicator const isRTL = htmlDir === 'rtl' || htmlLang === 'he' || htmlLang === 'ar'; criticalCSS.textContent = ` /* Hide mobile buttons on desktop, show only on mobile */ @media (min-width: 769px) { .mobile-toggle, .phone-header-btn { display: none !important; } } /* Show and position mobile buttons correctly on mobile */ @media (max-width: 768px) { .mobile-toggle, .phone-header-btn { position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; z-index: 1001 !important; display: flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; border-radius: 50% !important; border: none !important; cursor: pointer !important; padding: 6px !important; background: none !important; color: var(--nav-text, var(--text-light)) !important; } /* LTR positioning (default): hamburger LEFT, phone RIGHT */ html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle, html[dir="ltr"] .mobile-toggle { left: 12px !important; right: auto !important; } html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn, html[dir="ltr"] .phone-header-btn { right: 12px !important; left: auto !important; } /* RTL positioning: hamburger RIGHT, phone LEFT */ html[dir="rtl"] .mobile-toggle, html[lang="he"] .mobile-toggle, html[lang="ar"] .mobile-toggle { right: 12px !important; left: auto !important; } html[dir="rtl"] .phone-header-btn, html[lang="he"] .phone-header-btn, html[lang="ar"] .phone-header-btn { left: 12px !important; right: auto !important; } /* CRITICAL: Ensure nav-container has min-height on mobile */ /* All children are positioned absolutely/fixed on mobile, so height:auto collapses to 0 */ .nav-container { min-height: 70px !important; position: relative !important; } /* Ensure SVG icons are properly sized and inherit color */ .mobile-toggle svg, .phone-header-btn svg { width: 24px !important; height: 24px !important; /* Don't force display - let JavaScript control hamburger/close toggle */ } /* Reset nav-cta-container on mobile - remove desktop box-shadow/padding */ /* that creates a visible ghost box when CTA button is hidden */ .nav-cta-container { box-shadow: none !important; padding: 0 !important; } /* Hide nav-cta-container entirely on mobile when there's no lang-switcher */ /* (only the CTA button is inside, and it's hidden on mobile) */ .nav-cta-container:not(:has(.lang-switcher)) { display: none !important; } /* CRITICAL: Prevent hero image fade gradient from bleeding over headline text */ /* The .image-fade-gradient has bottom: -30px (extends below parent) */ /* On mobile stacked layout, this overlaps the h1 text below the image */ .hero-image-column { overflow: hidden !important; } .image-fade-gradient { bottom: 0 !important; } /* Hide desktop language switcher on mobile - hamburger menu handles it */ /* High specificity to override stored CSS */ .lang-switcher, .nav-cta-container .lang-switcher, .nav-container .lang-switcher, .navbar .lang-switcher, .navbar .nav-cta-container .lang-switcher { display: none !important; } } `; // Remove existing fix if present and inject new one const existing = document.getElementById('zappy-mobile-nav-fix'); if (existing) existing.remove(); document.head.appendChild(criticalCSS); console.log('[Navbar] Critical CSS injected for mobile nav positioning'); // ONLY apply inline positioning styles on mobile viewport // On desktop, the CSS handles hiding these buttons with display: none // Inline styles were breaking desktop layout by overriding CSS const isMobileViewport = window.innerWidth <= 768; if (mobileToggle) { // Icon sizing applies to all viewports for consistency const hamburgerIcon = mobileToggle.querySelector('.hamburger-icon'); const closeIcon = mobileToggle.querySelector('.close-icon'); if (hamburgerIcon) { hamburgerIcon.style.setProperty('width', '24px', 'important'); hamburgerIcon.style.setProperty('height', '24px', 'important'); hamburgerIcon.style.setProperty('display', 'block', 'important'); // Show hamburger by default } if (closeIcon) { closeIcon.style.setProperty('width', '24px', 'important'); closeIcon.style.setProperty('height', '24px', 'important'); closeIcon.style.setProperty('display', 'none', 'important'); // Hide close icon by default } // ONLY set positioning inline styles on mobile if (isMobileViewport) { mobileToggle.style.setProperty('position', 'absolute', 'important'); mobileToggle.style.setProperty('top', '50%', 'important'); mobileToggle.style.setProperty('transform', 'translateY(-50%)', 'important'); mobileToggle.style.setProperty('z-index', '1001', 'important'); // Clear any inline left/right so CSS can take over based on html[dir] mobileToggle.style.removeProperty('left'); mobileToggle.style.removeProperty('right'); console.log('[Navbar] Mobile toggle positioning applied (mobile viewport)'); } else { // On desktop, clear any positioning styles to let CSS handle it mobileToggle.style.removeProperty('position'); mobileToggle.style.removeProperty('top'); mobileToggle.style.removeProperty('transform'); mobileToggle.style.removeProperty('z-index'); mobileToggle.style.removeProperty('left'); mobileToggle.style.removeProperty('right'); console.log('[Navbar] Desktop viewport - cleared mobile toggle inline positioning'); } } if (phoneBtn) { // Icon sizing applies to all viewports const phoneIcon = phoneBtn.querySelector('svg'); if (phoneIcon) { phoneIcon.style.width = '24px'; phoneIcon.style.height = '24px'; phoneIcon.setAttribute('width', '24'); phoneIcon.setAttribute('height', '24'); } // ONLY set positioning inline styles on mobile if (isMobileViewport) { phoneBtn.style.setProperty('position', 'absolute', 'important'); phoneBtn.style.setProperty('top', '50%', 'important'); phoneBtn.style.setProperty('transform', 'translateY(-50%)', 'important'); phoneBtn.style.setProperty('z-index', '1001', 'important'); // Clear any inline left/right so CSS can take over based on html[dir] phoneBtn.style.removeProperty('left'); phoneBtn.style.removeProperty('right'); console.log('[Navbar] Phone button positioning applied (mobile viewport)'); } else { // On desktop, clear any positioning styles to let CSS handle it phoneBtn.style.removeProperty('position'); phoneBtn.style.removeProperty('top'); phoneBtn.style.removeProperty('transform'); phoneBtn.style.removeProperty('z-index'); phoneBtn.style.removeProperty('left'); phoneBtn.style.removeProperty('right'); console.log('[Navbar] Desktop viewport - cleared phone button inline positioning'); } } } else { console.log('[Navbar] Could not parse background color:', bgColor); } // MOBILE MENU TOGGLE // Re-query in case DOM changed (mobileToggle already declared at top of function) mobileToggle = document.getElementById('mobileToggle') || document.querySelector('.mobile-toggle') || document.querySelector('.hamburger') || document.querySelector('.hamburger-menu') || document.querySelector('.menu-toggle') || document.querySelector('.burger-menu') || document.querySelector('[aria-label="Menu"]') || document.querySelector('[aria-label="תפריט"]'); // EXPANDED SEARCH: Find nav menu by ID or class const navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu') || document.querySelector('.nav-links') || document.querySelector('nav ul:not(.submenu)'); if (!mobileToggle || !navMenu) { console.log('[Navbar] Mobile toggle or menu not found:', { toggle: !!mobileToggle, menu: !!navMenu }); return; } // Ensure navMenu has ID for CSS targeting if (!navMenu.id) { navMenu.id = 'navMenu'; } console.log('[Navbar] Initializing mobile menu...'); // Remove any existing event listeners by cloning the button const newToggle = mobileToggle.cloneNode(true); mobileToggle.parentNode.replaceChild(newToggle, mobileToggle); // Toggle menu on button click - use newToggle now newToggle.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); const hamburgerIcon = this.querySelector('.hamburger-icon'); const closeIcon = this.querySelector('.close-icon'); const isActive = navMenu.classList.contains('active'); if (isActive) { // Close menu navMenu.classList.remove('active'); if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important'); if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important'); document.body.style.overflow = ''; console.log('[Navbar] Menu closed'); } else { // Open menu navMenu.classList.add('active'); if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'none', 'important'); if (closeIcon) closeIcon.style.setProperty('display', 'block', 'important'); document.body.style.overflow = 'hidden'; console.log('[Navbar] Menu opened'); } }); // Close menu when clicking nav links (but NOT dropdown toggles) const navLinks = navMenu.querySelectorAll('a'); navLinks.forEach(function(link) { link.addEventListener('click', function() { // Don't close if it's a dropdown child (unless it's a real navigation link) if (this.getAttribute('href') === '#') return; const hamburgerIcon = newToggle.querySelector('.hamburger-icon'); const closeIcon = newToggle.querySelector('.close-icon'); navMenu.classList.remove('active'); if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important'); if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important'); document.body.style.overflow = ''; console.log('[Navbar] Menu closed (link clicked)'); }); }); // DROPDOWN MENU TOGGLE (for mobile and touch devices) var dropdownToggles = navMenu.querySelectorAll('.dropdown-toggle'); dropdownToggles.forEach(function(toggle) { toggle.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); var parent = this.closest('.nav-dropdown'); if (!parent) return; // Close other open dropdowns at the same level var siblings = parent.parentNode.querySelectorAll('.nav-dropdown.open'); siblings.forEach(function(sib) { if (sib !== parent) sib.classList.remove('open'); }); parent.classList.toggle('open'); console.log('[Navbar] Dropdown toggled:', parent.classList.contains('open') ? 'open' : 'closed'); }); }); // Close dropdowns when clicking outside document.addEventListener('click', function(e) { if (!e.target.closest('.nav-dropdown')) { var openDropdowns = document.querySelectorAll('.nav-dropdown.open'); openDropdowns.forEach(function(dd) { dd.classList.remove('open'); }); } }); console.log('[Navbar] Dropdown handlers initialized for ' + dropdownToggles.length + ' dropdowns'); // Phone button functionality (phoneBtn already declared at top of function) if (phoneBtn) { phoneBtn.addEventListener('click', function() { // Get phone number from placeholder in page or use default const phoneLinks = document.querySelectorAll('a[href^="tel:"]'); const phoneNumber = phoneLinks.length > 0 ? phoneLinks[0].getAttribute('href').replace('tel:', '') : ' 03-5255505 </li> <li class="zappy-editable"> <a href="tel:035255505" style="display:flex;align-items:flex-start;gap:inherit" class="zappy-editable"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> 050-6479210'; window.location.href = 'tel:' + phoneNumber; console.log('[Navbar] Phone button clicked'); }); } console.log('[Navbar] Mobile menu initialized successfully'); // === WHATSAPP BUTTON VISIBILITY FIX === // Ensure WhatsApp floating button is hidden on desktop and visible on mobile // IMPORTANT: Only target the floating button by its class, NOT generic wa.me links const handleWhatsAppVisibility = function() { const whatsappBtn = document.querySelector('.whatsapp-float'); if (whatsappBtn) { const isDesktop = window.innerWidth >= 769; if (isDesktop) { whatsappBtn.style.setProperty('display', 'none', 'important'); whatsappBtn.style.setProperty('visibility', 'hidden', 'important'); whatsappBtn.style.setProperty('opacity', '0', 'important'); whatsappBtn.style.setProperty('pointer-events', 'none', 'important'); console.log('[WhatsApp] Button hidden on desktop'); } else { whatsappBtn.style.removeProperty('display'); whatsappBtn.style.removeProperty('visibility'); whatsappBtn.style.removeProperty('opacity'); whatsappBtn.style.removeProperty('pointer-events'); console.log('[WhatsApp] Button visible on mobile'); } } }; // Run on load handleWhatsAppVisibility(); // Run on resize with debouncing let resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(handleWhatsAppVisibility, 100); }); }); })(); </script> <main>
-      <section id="layout-1775388066415" class="py-16 md:py-24 bg-white layout-section" data-zappy-component="true" style="width: 100%; padding: 60px 0;">
-        <div class="container mx-auto px-4 md:px-8 text-center">
-          <h1 class="text-3xl md:text-4xl font-bold mb-4">מה חשוב לבדוק לבדוק לפני חתימה על הסכם ממון?</h1>
-          <p class="text-gray-600 text-lg" ><br><br>
-הסכם ממון הוא לא עוד מסמך טכני. מדובר בהסכם משפטי מחייב, שמסדיר את הזכויות הכלכליות בין בני זוג ויכול להשפיע באופן דרמטי על חייהם בעתיד. למרות זאת, לא מעט זוגות חותמים עליו במהירות, לעיתים מתוך לחץ זמן או רצון "לסגור פינה" לפני החתונה, מבלי להבין את המשמעות המלאה.<br>
-אם ניגשים להסכם כזה, צריך להתייחס אליו כמו שכל עורך דין מנוסה בתחום דיני המשפחה היה מתייחס: בזהירות, בדיוק, ועם בדיקה יסודית של כל פרט.<br>
-מהו הסכם ממון ולמה בכלל צריך אותו?<br>
-הסכם ממון הוא חוזה בין בני זוג, לפני הנישואין או במהלכם, שמסדיר את חלוקת הרכוש, ההכנסות, החובות והזכויות הפיננסיות ביניהם.<br>
-בהיעדר הסכם, חל בישראל חוק יחסי ממון בין בני זוג, התשל"ג-1973, הקובע מנגנון של איזון משאבים עם פקיעת הנישואין. המשמעות היא שבמועד פרידה או גירושין, מתבצע איזון של כלל הנכסים שנצברו במהלך החיים המשותפים, למעט חריגים מסוימים.<br>
-הסכם ממון מאפשר לסטות מהברירה הזו. הוא נותן לבני הזוג שליטה: להחליט מראש מה שייך למי, איך יחולקו נכסים, ומה יקרה בתרחישים שונים.<br>
-עמידה בדרישות החוק - תנאי בסיסי לתוקף<br>
-כדי שהסכם ממון יהיה תקף ואכיף בישראל, עליו לעמוד בכמה דרישות פורמליות ברורות:<br>
+      <section style="direction: rtl; font-family: system-ui, sans-serif; background: var(--bg-light, #F6F4EF); position: relative; width: 100%; max-width: 100%; box-sizing: border-box; overflow: hidden;" data-zappy-section="true" class="section" id="layout-1775388066415">
+<style>
+  :root {
+    --primary: #1F3156;
+    --secondary: #C8A24A;
+    --accent: #F2E7C9;
+    --bg-light: #F6F4EF;
+    --bg-dark: #1F3156;
+    --text-dark: #1A1A1A;
+    --text-light: #F6F4EF;
+    --text-muted: #6E6A61;
+    --border-light: #E6DED0;
+    --shadow-card: 0 18px 42px rgba(15,27,49,0.14);
+  }
 
+  .article-hero {
+    background: var(--primary);
+    background-image: linear-gradient(135deg, #1F3156 0%, #0F1B31 60%, #1a2d4e 100%);
+    padding: 100px 24px 70px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-ההסכם חייב להיות בכתב
-<br>
+  .article-hero::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: -80px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(200,162,74,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
 
-עליו לקבל אישור של בית המשפט לענייני משפחה או נוטריון (לפני הנישואין ניתן גם אצל נוטריון)
-<br>
+  .article-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    right: -60px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(200,162,74,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
 
-על החתימה להיות מרצון חופשי, ללא לחץ, כפייה או הטעיה
+  .article-hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
 
+  .article-badge {
+    display: inline-block;
+    background: var(--secondary);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
 
-בתי המשפט אינם מהססים לפסול הסכמים כאשר מתברר שאחד הצדדים לא הבין את המשמעות, או חתם תחת לחץ. לכן חשוב לוודא שלא מדובר רק בחתימה פורמלית, אלא בתהליך מודע ומושכל.<br>
-גילוי מלא של נכסים והתחייבויות<br>
-אחת הנקודות הקריטיות ביותר היא גילוי נאות.<br>
-לפני החתימה, כל צד חייב לפרט באופן מלא:<br>
+  .article-hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 800;
+    color: var(--text-light);
+    line-height: 1.25;
+    margin: 0 0 28px 0;
+    position: relative;
+  }
 
+  .article-hero h1 span {
+    color: var(--secondary);
+  }
 
-נכסים (דירות, רכבים, השקעות)
-<br>
+  .article-hero-lead {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(246,244,239,0.82);
+    max-width: 740px;
+    margin: 0;
+    border-right: 3px solid var(--secondary);
+    padding-right: 20px;
+  }
 
-חשבונות בנק וחסכונות
-<br>
+  .article-gold-line {
+    width: 70px;
+    height: 4px;
+    background: linear-gradient(90deg, #C8A24A, #F0D98A, #C8A24A);
+    margin-bottom: 24px;
+    border-radius: 2px;
+  }
 
-זכויות פנסיוניות וקרנות השתלמות
-<br>
+  /* Main content area */
+  .article-body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 24px 80px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 48px;
+    align-items: start;
+    box-sizing: border-box;
+  }
 
-חובות והתחייבויות
-<br>
+  .article-main-content {
+    min-width: 0;
+  }
 
-נכסים עתידיים צפויים (כמו ירושות)
+  .article-sidebar {
+    position: sticky;
+    top: 90px;
+  }
 
+  /* Styled paragraphs */
+  .article-section {
+    margin-bottom: 40px;
+  }
 
-הסתרת מידע אינה רק בעיה מוסרית, אלא גם סיכון משפטי ממשי. הסכם שנחתם ללא גילוי מלא עלול להתבטל בעתיד.<br>
-הבחנה ברורה בין רכוש משותף לרכוש נפרד<br>
-הסכם טוב לא משאיר מקום לפרשנות.<br>
-צריך להגדיר בצורה מדויקת:<br>
+  .article-section-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 14px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-light);
+    position: relative;
+  }
 
+  .article-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--secondary);
+  }
 
-מה נחשב רכוש נפרד (למשל נכסים מלפני הנישואין)
-<br>
+  .article-p {
+    font-size: 1.02rem;
+    line-height: 1.9;
+    color: var(--text-dark);
+    margin: 0 0 18px 0;
+  }
 
-מה ייחשב רכוש משותף
-<br>
+  /* Highlighted blocks */
+  .article-highlight-box {
+    background: linear-gradient(135deg, #1F3156 0%, #0F1B31 100%);
+    border-radius: 4px;
+    padding: 32px 36px;
+    margin: 32px 0;
+    position: relative;
+    overflow: hidden;
+  }
 
-מה קורה להכנסות מאותם נכסים
+  .article-highlight-box::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 120px;
+    color: rgba(200,162,74,0.12);
+    font-family: Georgia, serif;
+    line-height: 1;
+    pointer-events: none;
+  }
 
+  .article-highlight-box p {
+    color: rgba(246,244,239,0.92);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+  }
 
-לדוגמה: דירה שהייתה בבעלות אחד הצדדים לפני הנישואין.<br>
-השאלה המשפטית החשובה היא לא רק מי הבעלים, אלא גם:<br>
+  /* Checklist style items */
+  .article-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0;
+  }
 
+  .article-checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.98rem;
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
 
-מה קורה לעליית הערך שלה?
-<br>
+  .article-checklist li:last-child {
+    border-bottom: none;
+  }
 
-מה קורה אם שיפצו אותה מכספים משותפים?
+  .article-checklist li::before {
+    content: '✦';
+    color: var(--secondary);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
 
+  /* Numbered sections */
+  .article-numbered-section {
+    counter-increment: section-counter;
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-card);
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
 
-אלו פרטים שבתי משפט עוסקים בהם לא מעט, ולכן חשוב להסדיר אותם מראש.<br>
-התייחסות לנכסים עתידיים<br>
-הסכם ממון איכותי לא עוסק רק בהווה, אלא גם בעתיד.<br>
-יש לתת מענה ברור למצבים כמו:<br>
+  .article-numbered-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 28px 56px rgba(15,27,49,0.18);
+  }
 
+  .article-numbered-section::before {
+    content: counter(section-counter, decimal-leading-zero);
+    position: absolute;
+    top: -16px;
+    right: 28px;
+    background: var(--secondary);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+  }
 
-הקמת עסק במהלך הנישואין
-<br>
+  .article-numbered-section h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 12px 0;
+  }
 
-קבלת ירושה או מתנה
-<br>
+  .article-numbered-section p {
+    font-size: 0.97rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin: 0;
+  }
 
-מענקים, אופציות או פיצויים
-<br>
+  .sections-counter {
+    counter-reset: section-counter;
+  }
 
-זכויות פנסיוניות שנצברות עם השנים
+  /* Sidebar cards */
+  .sidebar-card {
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-card);
+  }
 
+  .sidebar-card-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 16px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-למשל: האם ירושה תישאר תמיד רכוש אישי, או שיש מצבים שבהם תהפוך למשותפת?<br>
-אין תשובה אחת נכונה, אבל חייבת להיות תשובה כתובה.<br>
-ייצוג משפטי נפרד - לא המלצה, אלא צורך אמיתי<br>
-אחת הטעויות הנפוצות היא הסתמכות על עורך דין אחד לשני הצדדים.<br>
-בפועל, זה מצב בעייתי:<br>
+  .sidebar-card-title::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--secondary);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
 
+  .sidebar-card p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin: 0;
+  }
 
-לעורך הדין אין אפשרות לייצג נאמנה שני אינטרסים שונים
-<br>
+  .sidebar-highlight {
+    background: linear-gradient(135deg, #1F3156 0%, #16243f 100%);
+    border: none;
+  }
 
-צד אחד עלול לא להבין על מה הוא מוותר
+  .sidebar-highlight .sidebar-card-title {
+    color: #fff;
+    border-bottom-color: rgba(200,162,74,0.4);
+  }
 
+  .sidebar-highlight p {
+    color: rgba(246,244,239,0.85);
+  }
 
-לכן, ההמלצה המקצועית הברורה היא שלכל צד יהיה ייצוג משפטי עצמאי.<br>
-זה לא נועד "להקשות", אלא להבטיח שההסכם יעמוד במבחן משפטי בעתיד.<br>
-מבחן ההוגנות - מה יקרה אם ההסכם ייבחן בבית משפט?<br>
-גם אם ההסכם עומד בכל הדרישות הפורמליות, הוא עדיין עלול להיפסל אם יימצא בלתי הוגן באופן קיצוני.<br>
-בתי המשפט בוחנים בין היתר:<br>
+  /* Gold divider accent */
+  .gold-divider {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, var(--secondary) 30%, #F0D98A 50%, var(--secondary) 70%, transparent 100%);
+    margin: 40px 0;
+    border-radius: 2px;
+  }
 
+  /* Final summary section */
+  .article-summary {
+    background: linear-gradient(135deg, #F2E7C9 0%, #EDD99A 100%);
+    border-radius: 4px;
+    padding: 40px 44px;
+    margin: 40px 0 0 0;
+    border-right: 5px solid var(--secondary);
+    position: relative;
+    overflow: hidden;
+  }
 
-האם אחד הצדדים קופח בצורה חריגה
-<br>
+  .article-summary::after {
+    content: '⚖';
+    position: absolute;
+    bottom: -20px;
+    left: 20px;
+    font-size: 100px;
+    opacity: 0.07;
+    pointer-events: none;
+  }
 
-האם ההסכם משאיר צד ללא ביטחון כלכלי בסיסי
-<br>
+  .article-summary h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 16px 0;
+  }
 
-האם נשמר איזון סביר בין הצדדים
+  .article-summary p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #3a2e1a;
+    margin: 0 0 12px 0;
+  }
 
+  .article-summary p:last-child {
+    margin: 0;
+  }
 
-חשוב להבין: לא כל אי־שוויון פוסל הסכם, אבל חוסר הוגנות קיצוני בהחלט כן.<br>
-עדכון ההסכם לאורך השנים<br>
-החיים לא נשארים סטטיים, וגם ההסכם לא אמור להיות כזה.<br>
-עם השנים מתרחשים שינויים:<br>
+  /* Info tag row */
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
 
+  .article-tag {
+    background: rgba(31,49,86,0.08);
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 2px;
+    border: 1px solid rgba(31,49,86,0.15);
+    letter-spacing: 0.05em;
+  }
 
-נולדים ילדים
-<br>
+  /* Animated entry */
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-מצבים כלכליים משתנים
-<br>
+  .article-body > * {
+    animation: fadeSlideIn 0.5s ease both;
+  }
 
-נצברים נכסים חדשים
+  .article-main-content { animation-delay: 0.1s; }
+  .article-sidebar { animation-delay: 0.2s; }
 
+  /* Responsive */
+  @media (max-width: 900px) {
+    .article-body {
+      grid-template-columns: 1fr;
+      padding: 48px 20px 60px;
+    }
+    .article-sidebar {
+      position: static;
+    }
+    .article-summary {
+      padding: 28px 24px;
+    }
+    .article-numbered-section {
+      padding: 24px 22px;
+    }
+    .article-highlight-box {
+      padding: 24px 22px;
+    }
+  }
 
-ניתן ואף מומלץ לעדכן הסכם ממון גם לאחר הנישואין, כל עוד עומדים שוב בדרישות החוק (כתב ואישור). בדיקה מחודשת אחת לכמה שנים היא צעד אחראי.<br>
+  @media (max-width: 768px) {
+    .article-hero {
+      padding-top: 100px;
+      padding-bottom: 56px;
+    }
+    .article-hero h1 {
+      font-size: 1.8rem;
+    }
+    .article-hero-lead {
+      font-size: 1rem;
+    }
+    .article-body {
+      padding-top: 36px;
+    }
+  }
+</style>
 
-בשורה התחתונה:<br>
-הסכם ממון טוב הוא לא רק מסמך משפטי, אלא כלי שמייצר ודאות, מונע סכסוכים ומגן על שני הצדדים. הדרך להגיע לשם עוברת בהבנה מלאה, גילוי אמיתי, וייעוץ מקצועי נפרד לכל אחד מבני הזוג.<br>
-מי שניגש להסכם הזה ברצינות עכשיו, חוסך לעצמו מחלוקות קשות בעתיד.&nbsp;&nbsp;</p>
-        </div>
-      </section>
+<!-- Hero Banner -->
+<div class="article-hero">
+  <div class="article-hero-inner">
+    <div class="article-gold-line"></div>
+    <div class="article-badge">דיני משפחה · הסכם ממון</div>
+    <h1>מה חשוב לבדוק <span>לפני חתימה</span> על הסכם ממון?</h1>
+    <p class="article-hero-lead">הסכם ממון הוא לא עוד מסמך טכני. מדובר בהסכם משפטי מחייב, שמסדיר את הזכויות הכלכליות בין בני זוג ויכול להשפיע באופן דרמטי על חייהם בעתיד.</p>
+  </div>
+</div>
+
+<!-- Body -->
+<div class="article-body">
+
+  <!-- Main Content -->
+  <div class="article-main-content">
+
+    <div class="article-section">
+      <p class="article-p">למרות זאת, לא מעט זוגות חותמים עליו במהירות, לעיתים מתוך לחץ זמן או רצון "לסגור פינה" לפני החתונה, מבלי להבין את המשמעות המלאה. אם ניגשים להסכם כזה, צריך להתייחס אליו כמו שכל עורך דין מנוסה בתחום דיני המשפחה היה מתייחס: בזהירות, בדיוק, ועם בדיקה יסודית של כל פרט.</p>
+    </div>
+
+    <div class="article-section">
+      <h2 class="article-section-title">מהו הסכם ממון ולמה בכלל צריך אותו?</h2>
+      <p class="article-p">הסכם ממון הוא חוזה בין בני זוג, לפני הנישואין או במהלכם, שמסדיר את חלוקת הרכוש, ההכנסות, החובות והזכויות הפיננסיות ביניהם.</p>
+      <p class="article-p">בהיעדר הסכם, חל בישראל חוק יחסי ממון בין בני זוג, התשל"ג-1973, הקובע מנגנון של איזון משאבים עם פקיעת הנישואין. המשמעות היא שבמועד פרידה או גירושין, מתבצע איזון של כלל הנכסים שנצברו במהלך החיים המשותפים, למעט חריגים מסוימים.</p>
+      <div class="article-highlight-box">
+        <p>הסכם ממון מאפשר לסטות מהברירה הזו. הוא נותן לבני הזוג שליטה: להחליט מראש מה שייך למי, איך יחולקו נכסים, ומה יקרה בתרחישים שונים.</p>
+      </div>
+    </div>
+
+    <div class="sections-counter">
+
+      <div class="article-numbered-section">
+        <h3>עמידה בדרישות החוק - תנאי בסיסי לתוקף</h3>
+        <p>כדי שהסכם ממון יהיה תקף ואכיף בישראל, עליו לעמוד בכמה דרישות פורמליות ברורות: ההסכם חייב להיות בכתב, לקבל אישור של בית המשפט לענייני משפחה או נוטריון, ועל החתימה להיות מרצון חופשי ללא לחץ, כפייה או הטעיה. בתי המשפט אינם מהססים לפסול הסכמים כאשר מתברר שאחד הצדדים לא הבין את המשמעות, או חתם תחת לחץ.</p>
+      </div>
+
+      <div class="article-numbered-section">
+        <h3>גילוי מלא של נכסים והתחייבויות</h3>
+        <p>אחת הנקודות הקריטיות ביותר היא גילוי נאות. לפני החתימה, כל צד חייב לפרט באופן מלא: נכסים (דירות, רכבים, השקעות), חשבונות בנק וחסכונות, זכויות פנסיוניות וקרנות השתלמות, חובות והתחייבויות, ונכסים עתידיים צפויים כמו ירושות. הסתרת מידע אינה רק בעיה מוסרית, אלא גם סיכון משפטי ממשי.</p>
+      </div>
+
+      <div class="article-numbered-section">
+        <h3>הבחנה ברורה בין רכוש משותף לרכוש נפרד</h3>
+        <p>הסכם טוב לא משאיר מקום לפרשנות. צריך להגדיר בצורה מדויקת מה נחשב רכוש נפרד (למשל נכסים מלפני הנישואין), מה ייחשב רכוש משותף, ומה קורה להכנסות מאותם נכסים. לדוגמה: דירה שהייתה בבעלות אחד הצדדים לפני הנישואין — מה קורה לעליית הערך שלה, ומה קורה אם שיפצו אותה מכספים משותפים?</p>
+      </div>
+
+      <div class="article-numbered-section">
+        <h3>התייחסות לנכסים עתידיים</h3>
+        <p>הסכם ממון איכותי לא עוסק רק בהווה, אלא גם בעתיד. יש לתת מענה ברור למצבים כמו הקמת עסק במהלך הנישואין, קבלת ירושה או מתנה, מענקים, אופציות או פיצויים, וזכויות פנסיוניות שנצברות עם השנים. האם ירושה תישאר תמיד רכוש אישי, או שיש מצבים שבהם תהפוך למשותפת? אין תשובה אחת נכונה, אבל חייבת להיות תשובה כתובה.</p>
+      </div>
+
+      <div class="article-numbered-section">
+        <h3>ייצוג משפטי נפרד - לא המלצה, אלא צורך אמיתי</h3>
+        <p>אחת הטעויות הנפוצות היא הסתמכות על עורך דין אחד לשני הצדדים. בפועל, לעורך הדין אין אפשרות לייצג נאמנה שני אינטרסים שונים, וצד אחד עלול לא להבין על מה הוא מוותר. ההמלצה המקצועית הברורה היא שלכל צד יהיה ייצוג משפטי עצמאי — לא כדי "להקשות", אלא להבטיח שההסכם יעמוד במבחן משפטי בעתיד.</p>
+      </div>
+
+      <div class="article-numbered-section">
+        <h3>מבחן ההוגנות - מה יקרה אם ההסכם ייבחן בבית משפט?</h3>
+        <p>גם אם ההסכם עומד בכל הדרישות הפורמליות, הוא עדיין עלול להיפסל אם יימצא בלתי הוגן באופן קיצוני. בתי המשפט בוחנים האם אחד הצדדים קופח בצורה חריגה, האם ההסכם משאיר צד ללא ביטחון כלכלי בסיסי, ואם נשמר איזון סביר. לא כל אי־שוויון פוסל הסכם, אבל חוסר הוגנות קיצוני בהחלט כן.</p>
+      </div>
+
+      <div class="article-numbered-section">
+        <h3>עדכון ההסכם לאורך השנים</h3>
+        <p>החיים לא נשארים סטטיים, וגם ההסכם לא אמור להיות כזה. עם השנים נולדים ילדים, מצבים כלכליים משתנים ונצברים נכסים חדשים. ניתן ואף מומלץ לעדכן הסכם ממון גם לאחר הנישואין, כל עוד עומדים שוב בדרישות החוק. בדיקה מחודשת אחת לכמה שנים היא צעד אחראי.</p>
+      </div>
+
+    </div>
+
+    <div class="gold-divider"></div>
+
+    <div class="article-summary">
+      <h3>בשורה התחתונה:</h3>
+      <p>הסכם ממון טוב הוא לא רק מסמך משפטי, אלא כלי שמייצר ודאות, מונע סכסוכים ומגן על שני הצדדים. הדרך להגיע לשם עוברת בהבנה מלאה, גילוי אמיתי, וייעוץ מקצועי נפרד לכל אחד מבני הזוג.</p>
+      <p>מי שניגש להסכם הזה ברצינות עכשיו, חוסך לעצמו מחלוקות קשות בעתיד.</p>
+      <div class="article-tags">
+        <span class="article-tag">הסכם ממון</span>
+        <span class="article-tag">דיני משפחה</span>
+        <span class="article-tag">גירושין</span>
+        <span class="article-tag">נישואין</span>
+        <span class="article-tag">ייעוץ משפטי</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="article-sidebar">
+
+    <div class="sidebar-card sidebar-highlight">
+      <div class="sidebar-card-title">למה זה חשוב?</div>
+      <p>הסכם ממון שנחתם ללא הבנה מלאה עלול להתבטל בבית משפט — ולהותיר את שני הצדדים ללא הגנה משפטית.</p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">דרישות תוקף בסיסיות</div>
+      <ul class="article-checklist" style="margin: 0;">
+        <li>הסכם בכתב חתום</li>
+        <li>אישור בית משפט או נוטריון</li>
+        <li>חתימה מרצון חופשי</li>
+        <li>גילוי מלא הדדי</li>
+        <li>ייצוג עצמאי לכל צד</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">נושאים לכלול בהסכם</div>
+      <ul class="article-checklist" style="margin: 0;">
+        <li>רכוש לפני הנישואין</li>
+        <li>חלוקת הכנסות שוטפות</li>
+        <li>ירושות ומתנות עתידיות</li>
+        <li>זכויות פנסיוניות</li>
+        <li>עסקים שיוקמו בעתיד</li>
+        <li>חובות קיימים ועתידיים</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card" style="background: linear-gradient(135deg, #F2E7C9 0%, #EDD99A 100%); border-color: var(--secondary);">
+      <div class="sidebar-card-title" style="color: var(--primary); border-bottom-color: rgba(31,49,86,0.2);">זכרו</div>
+      <p style="color: #3a2e1a;">ניתן לעדכן הסכם ממון גם לאחר הנישואין. בדיקה מחודשת אחת לכמה שנים היא צעד חכם ואחראי.</p>
+    </div>
+
+  </aside>
+
+</div>
+</section>
     </main> <footer class="site-footer" dir="rtl"> <div class="footer-main"> <div class="footer-container"> <div class="footer-grid"> <!-- Column 1: Company Info --> <div class="footer-col footer-col--brand"> <div class="footer-logo-wrap"> <img src="/assets/logo-1774782894048-xuck8l.webp?v=1774782894546-yv2klt" alt="ורד לוי משרד עורכי דין" class="logo" data-element-type="image" data-element-id="img-1774787134455-6shu8deq0" > </div> <p class="footer-tagline">ייעוץ משפטי מקצועי, אישי ומהימן.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>אנחנו כאן עבורכם בכל שלב.</p> <div class="footer-social"> <a href="https://facebook.com/1BVGk3N2Af" aria-label="Facebook" class="social-link"><i class="fab fa-facebook-f"></i></a> <a href="https://instagram.com/vlb_law" aria-label="Instagram" class="social-link"><i class="fab fa-instagram" data-element-type="icon" data-element-id="icon-1774787134454-cbiesvnlk" data-icon-type="fontawesome"></i></a> <a href="https://wa.me/972506479210" aria-label="WhatsApp" class="social-link"><i class="fab fa-whatsapp" data-element-type="icon" data-element-id="icon-1774787134454-m5r6l53uw" data-icon-type="fontawesome"></i></a> </div> </div> <!-- Column 2: Quick Links --> <div class="footer-col"> <h3 class="footer-heading"> <span class="footer-heading-line"></span> ניווט מהיר </h3> <ul class="footer-links"> <li><a href="/about">אודות</a></li> <li><a href="/practice-areas">תחומי עיסוק</a></li> <li><a href="/contact">צור קשר</a></li> </ul> </div> <!-- Column 3: Contact Info --> <div class="footer-col"> <h3 class="footer-heading"> <span class="footer-heading-line"></span> פרטי התקשרות </h3> <ul class="footer-contact"> <li><a href="/" style="display:flex;align-items:flex-start;gap:inherit"><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span> <span>ילדי טהרן 8, ראשון לציון, ישראל</span></a></li>           <li>
               <span class="contact-icon"><i class="fas fa-phone-alt" data-element-type="icon" data-element-id="icon-1774787134455-6sz08mu6l" data-icon-type="fontawesome"></i></span>
               <a href="tel:03-5255505">03-5255505</a>
