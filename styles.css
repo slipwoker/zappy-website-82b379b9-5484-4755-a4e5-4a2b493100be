@@ -2225,7 +2225,8 @@ main { margin-top: 0 !important; padding-top: 0 !important; }
 
 .footer-bottom {
   background-color: #172540;
-  padding-block: 0.4rem;
+  padding-block: 0.4rem 0.4rem;
+  padding-top: 0.4rem;
 }
 
 .footer-bottom-inner {
