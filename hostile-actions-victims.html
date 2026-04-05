@@ -258,61 +258,601 @@
 </head>
 <body>
  <nav class="navbar" dir="rtl"> <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"> <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"> <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path> </svg> <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;"> <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path> </svg> </button> <button class="phone-header-btn" data-phone="035255505" aria-label="Call"> <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"> <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path> </svg> </button> <div class="nav-container"> <div class="nav-right-group"><div class="nav-brand"> <a href="/" class="logo-link"> <img src="/assets/logo-1774782894048-xuck8l.webp?v=1774782894546-yv2klt" alt="ורד לוי משרד עורכי דין" class="logo"> </a> </div><ul class="nav-menu" id="navMenu"><li><a href="/practice-areas">תחומי עיסוק</a></li><li><a href="/about">אודות</a></li><li><a href="/professional-articles">מאמרים מקצועיים</a><ul class="sub-menu"><li><a href="/continuing-power-of-attorney">יפוי כח מתמשך לא למבוגרים בלבד!</a></li><li><a href="/workplace-privacy-violation">פגיעה בפרטיות במקום העבודה: גבולות הסמכות בין בית הדין לעבודה לבית המשפט האזרחי</a></li><li><a href="/prenuptial-agreement">הסכם ממון לפני החתונה?</a></li><li><a href="/divorce-costs-israel">כמה עולה להתגרש בישראל</a></li><li><a href="/business-debt-collection">גביית חוב עיסקי: צעדים משפטיים שכדאי להכיר</a></li><li><a href="/prenuptial-agreement-review">מה חשוב לבדוק לבדוק לפני חתימה על הסכם ממון?</a></li></ul></li><li style="display: none !important;" class="zappy-hidden-menu-item"><a href="/thank-you">Thank You | Vered Levy Law Office</a></li><li class="nav-cta-item-mobile"><a href="/contact">צור קשר</a></li><li><a href="/hostile-actions-victims" class="">נפגעי פעולות איבה: גם פגיעה בדרך למרחב מוגן או נזק נפשי עשויים לזכות בפיצוי</a></li></ul></div> <div class="nav-cta-container"> <a href="/contact" class="nav-cta-btn">צור קשר</a> </div> </div> </nav> <script> // Navbar Mobile Menu Toggle and Contrast Fix (function() { // Use 'load' event instead of 'DOMContentLoaded' to ensure we run AFTER all other scripts window.addEventListener('load', function() { // FIX MOBILE BUTTON CONTRAST // Detect navbar background color and apply contrasting color to mobile buttons const navbar = document.querySelector('.navbar, nav, header'); if (!navbar) { console.log('[Navbar] Navbar element not found'); return; } // DECLARE VARIABLES EARLY to avoid Temporal Dead Zone errors // These are used in multiple places below let mobileToggle = document.getElementById('mobileToggle') || document.querySelector('.mobile-toggle') || document.querySelector('.hamburger') || document.querySelector('.hamburger-menu') || document.querySelector('.menu-toggle') || document.querySelector('.burger-menu') || document.querySelector('[aria-label="Menu"]') || document.querySelector('[aria-label="תפריט"]'); const phoneBtn = document.querySelector('.phone-header-btn'); const computedStyle = window.getComputedStyle(navbar); let bgColor = computedStyle.backgroundColor; console.log('[Navbar] Initial navbar background:', bgColor); // Check if background is transparent or rgba with 0 alpha const isTransparent = bgColor === 'transparent' || bgColor === 'rgba(0, 0, 0, 0)' || (bgColor.startsWith('rgba') && bgColor.includes(', 0)')); if (isTransparent) { // Check for background-image or gradient const bgImage = computedStyle.backgroundImage; if (bgImage && bgImage !== 'none') { console.log('[Navbar] Navbar has background image/gradient, using dark text'); bgColor = 'rgb(240, 240, 240)'; // Assume light background } else { // Transparent navbar - check body background const bodyBg = window.getComputedStyle(document.body).backgroundColor; console.log('[Navbar] Navbar transparent, using body background:', bodyBg); bgColor = bodyBg; } } // Calculate luminance to determine if background is light or dark const rgb = bgColor.match(/\d+/g); if (rgb && rgb.length >= 3) { const r = parseInt(rgb[0]); const g = parseInt(rgb[1]); const b = parseInt(rgb[2]); const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255; // Mobile button colors are set by Claude's AI-generated CSS (same as .nav-menu a) // No dynamic color overrides needed - colors come from the generated navbar CSS console.log('[Navbar] Mobile button colors preserved from Claude CSS (luminance:', luminance.toFixed(2) + ')'); // FIX ICON SIZES - Ensure SVGs are properly sized and visible // INJECT CRITICAL CSS TO OVERRIDE ANY CONFLICTING RULES const criticalCSS = document.createElement('style'); criticalCSS.id = 'zappy-mobile-nav-fix'; const htmlLang = document.documentElement.lang || 'en'; const htmlDir = document.documentElement.dir || 'ltr'; // Check both dir attribute AND lang for RTL detection // dir="rtl" is the most reliable indicator const isRTL = htmlDir === 'rtl' || htmlLang === 'he' || htmlLang === 'ar'; criticalCSS.textContent = ` /* Hide mobile buttons on desktop, show only on mobile */ @media (min-width: 769px) { .mobile-toggle, .phone-header-btn { display: none !important; } } /* Show and position mobile buttons correctly on mobile */ @media (max-width: 768px) { .mobile-toggle, .phone-header-btn { position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; z-index: 1001 !important; display: flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; border-radius: 50% !important; border: none !important; cursor: pointer !important; padding: 6px !important; background: none !important; color: var(--nav-text, var(--text-light)) !important; } /* LTR positioning (default): hamburger LEFT, phone RIGHT */ html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle, html[dir="ltr"] .mobile-toggle { left: 12px !important; right: auto !important; } html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn, html[dir="ltr"] .phone-header-btn { right: 12px !important; left: auto !important; } /* RTL positioning: hamburger RIGHT, phone LEFT */ html[dir="rtl"] .mobile-toggle, html[lang="he"] .mobile-toggle, html[lang="ar"] .mobile-toggle { right: 12px !important; left: auto !important; } html[dir="rtl"] .phone-header-btn, html[lang="he"] .phone-header-btn, html[lang="ar"] .phone-header-btn { left: 12px !important; right: auto !important; } /* CRITICAL: Ensure nav-container has min-height on mobile */ /* All children are positioned absolutely/fixed on mobile, so height:auto collapses to 0 */ .nav-container { min-height: 70px !important; position: relative !important; } /* Ensure SVG icons are properly sized and inherit color */ .mobile-toggle svg, .phone-header-btn svg { width: 24px !important; height: 24px !important; /* Don't force display - let JavaScript control hamburger/close toggle */ } /* Reset nav-cta-container on mobile - remove desktop box-shadow/padding */ /* that creates a visible ghost box when CTA button is hidden */ .nav-cta-container { box-shadow: none !important; padding: 0 !important; } /* Hide nav-cta-container entirely on mobile when there's no lang-switcher */ /* (only the CTA button is inside, and it's hidden on mobile) */ .nav-cta-container:not(:has(.lang-switcher)) { display: none !important; } /* CRITICAL: Prevent hero image fade gradient from bleeding over headline text */ /* The .image-fade-gradient has bottom: -30px (extends below parent) */ /* On mobile stacked layout, this overlaps the h1 text below the image */ .hero-image-column { overflow: hidden !important; } .image-fade-gradient { bottom: 0 !important; } /* Hide desktop language switcher on mobile - hamburger menu handles it */ /* High specificity to override stored CSS */ .lang-switcher, .nav-cta-container .lang-switcher, .nav-container .lang-switcher, .navbar .lang-switcher, .navbar .nav-cta-container .lang-switcher { display: none !important; } } `; // Remove existing fix if present and inject new one const existing = document.getElementById('zappy-mobile-nav-fix'); if (existing) existing.remove(); document.head.appendChild(criticalCSS); console.log('[Navbar] Critical CSS injected for mobile nav positioning'); // ONLY apply inline positioning styles on mobile viewport // On desktop, the CSS handles hiding these buttons with display: none // Inline styles were breaking desktop layout by overriding CSS const isMobileViewport = window.innerWidth <= 768; if (mobileToggle) { // Icon sizing applies to all viewports for consistency const hamburgerIcon = mobileToggle.querySelector('.hamburger-icon'); const closeIcon = mobileToggle.querySelector('.close-icon'); if (hamburgerIcon) { hamburgerIcon.style.setProperty('width', '24px', 'important'); hamburgerIcon.style.setProperty('height', '24px', 'important'); hamburgerIcon.style.setProperty('display', 'block', 'important'); // Show hamburger by default } if (closeIcon) { closeIcon.style.setProperty('width', '24px', 'important'); closeIcon.style.setProperty('height', '24px', 'important'); closeIcon.style.setProperty('display', 'none', 'important'); // Hide close icon by default } // ONLY set positioning inline styles on mobile if (isMobileViewport) { mobileToggle.style.setProperty('position', 'absolute', 'important'); mobileToggle.style.setProperty('top', '50%', 'important'); mobileToggle.style.setProperty('transform', 'translateY(-50%)', 'important'); mobileToggle.style.setProperty('z-index', '1001', 'important'); // Clear any inline left/right so CSS can take over based on html[dir] mobileToggle.style.removeProperty('left'); mobileToggle.style.removeProperty('right'); console.log('[Navbar] Mobile toggle positioning applied (mobile viewport)'); } else { // On desktop, clear any positioning styles to let CSS handle it mobileToggle.style.removeProperty('position'); mobileToggle.style.removeProperty('top'); mobileToggle.style.removeProperty('transform'); mobileToggle.style.removeProperty('z-index'); mobileToggle.style.removeProperty('left'); mobileToggle.style.removeProperty('right'); console.log('[Navbar] Desktop viewport - cleared mobile toggle inline positioning'); } } if (phoneBtn) { // Icon sizing applies to all viewports const phoneIcon = phoneBtn.querySelector('svg'); if (phoneIcon) { phoneIcon.style.width = '24px'; phoneIcon.style.height = '24px'; phoneIcon.setAttribute('width', '24'); phoneIcon.setAttribute('height', '24'); } // ONLY set positioning inline styles on mobile if (isMobileViewport) { phoneBtn.style.setProperty('position', 'absolute', 'important'); phoneBtn.style.setProperty('top', '50%', 'important'); phoneBtn.style.setProperty('transform', 'translateY(-50%)', 'important'); phoneBtn.style.setProperty('z-index', '1001', 'important'); // Clear any inline left/right so CSS can take over based on html[dir] phoneBtn.style.removeProperty('left'); phoneBtn.style.removeProperty('right'); console.log('[Navbar] Phone button positioning applied (mobile viewport)'); } else { // On desktop, clear any positioning styles to let CSS handle it phoneBtn.style.removeProperty('position'); phoneBtn.style.removeProperty('top'); phoneBtn.style.removeProperty('transform'); phoneBtn.style.removeProperty('z-index'); phoneBtn.style.removeProperty('left'); phoneBtn.style.removeProperty('right'); console.log('[Navbar] Desktop viewport - cleared phone button inline positioning'); } } } else { console.log('[Navbar] Could not parse background color:', bgColor); } // MOBILE MENU TOGGLE // Re-query in case DOM changed (mobileToggle already declared at top of function) mobileToggle = document.getElementById('mobileToggle') || document.querySelector('.mobile-toggle') || document.querySelector('.hamburger') || document.querySelector('.hamburger-menu') || document.querySelector('.menu-toggle') || document.querySelector('.burger-menu') || document.querySelector('[aria-label="Menu"]') || document.querySelector('[aria-label="תפריט"]'); // EXPANDED SEARCH: Find nav menu by ID or class const navMenu = document.getElementById('navMenu') || document.querySelector('.nav-menu') || document.querySelector('.nav-links') || document.querySelector('nav ul:not(.submenu)'); if (!mobileToggle || !navMenu) { console.log('[Navbar] Mobile toggle or menu not found:', { toggle: !!mobileToggle, menu: !!navMenu }); return; } // Ensure navMenu has ID for CSS targeting if (!navMenu.id) { navMenu.id = 'navMenu'; } console.log('[Navbar] Initializing mobile menu...'); // Remove any existing event listeners by cloning the button const newToggle = mobileToggle.cloneNode(true); mobileToggle.parentNode.replaceChild(newToggle, mobileToggle); // Toggle menu on button click - use newToggle now newToggle.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); const hamburgerIcon = this.querySelector('.hamburger-icon'); const closeIcon = this.querySelector('.close-icon'); const isActive = navMenu.classList.contains('active'); if (isActive) { // Close menu navMenu.classList.remove('active'); if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important'); if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important'); document.body.style.overflow = ''; console.log('[Navbar] Menu closed'); } else { // Open menu navMenu.classList.add('active'); if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'none', 'important'); if (closeIcon) closeIcon.style.setProperty('display', 'block', 'important'); document.body.style.overflow = 'hidden'; console.log('[Navbar] Menu opened'); } }); // Close menu when clicking nav links (but NOT dropdown toggles) const navLinks = navMenu.querySelectorAll('a'); navLinks.forEach(function(link) { link.addEventListener('click', function() { // Don't close if it's a dropdown child (unless it's a real navigation link) if (this.getAttribute('href') === '#') return; const hamburgerIcon = newToggle.querySelector('.hamburger-icon'); const closeIcon = newToggle.querySelector('.close-icon'); navMenu.classList.remove('active'); if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important'); if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important'); document.body.style.overflow = ''; console.log('[Navbar] Menu closed (link clicked)'); }); }); // DROPDOWN MENU TOGGLE (for mobile and touch devices) var dropdownToggles = navMenu.querySelectorAll('.dropdown-toggle'); dropdownToggles.forEach(function(toggle) { toggle.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); var parent = this.closest('.nav-dropdown'); if (!parent) return; // Close other open dropdowns at the same level var siblings = parent.parentNode.querySelectorAll('.nav-dropdown.open'); siblings.forEach(function(sib) { if (sib !== parent) sib.classList.remove('open'); }); parent.classList.toggle('open'); console.log('[Navbar] Dropdown toggled:', parent.classList.contains('open') ? 'open' : 'closed'); }); }); // Close dropdowns when clicking outside document.addEventListener('click', function(e) { if (!e.target.closest('.nav-dropdown')) { var openDropdowns = document.querySelectorAll('.nav-dropdown.open'); openDropdowns.forEach(function(dd) { dd.classList.remove('open'); }); } }); console.log('[Navbar] Dropdown handlers initialized for ' + dropdownToggles.length + ' dropdowns'); // Phone button functionality (phoneBtn already declared at top of function) if (phoneBtn) { phoneBtn.addEventListener('click', function() { // Get phone number from placeholder in page or use default const phoneLinks = document.querySelectorAll('a[href^="tel:"]'); const phoneNumber = phoneLinks.length > 0 ? phoneLinks[0].getAttribute('href').replace('tel:', '') : ' 03-5255505 </li> <li class="zappy-editable"> <a href="tel:035255505" style="display:flex;align-items:flex-start;gap:inherit" class="zappy-editable"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> 050-6479210'; window.location.href = 'tel:' + phoneNumber; console.log('[Navbar] Phone button clicked'); }); } console.log('[Navbar] Mobile menu initialized successfully'); // === WHATSAPP BUTTON VISIBILITY FIX === // Ensure WhatsApp floating button is hidden on desktop and visible on mobile // IMPORTANT: Only target the floating button by its class, NOT generic wa.me links const handleWhatsAppVisibility = function() { const whatsappBtn = document.querySelector('.whatsapp-float'); if (whatsappBtn) { const isDesktop = window.innerWidth >= 769; if (isDesktop) { whatsappBtn.style.setProperty('display', 'none', 'important'); whatsappBtn.style.setProperty('visibility', 'hidden', 'important'); whatsappBtn.style.setProperty('opacity', '0', 'important'); whatsappBtn.style.setProperty('pointer-events', 'none', 'important'); console.log('[WhatsApp] Button hidden on desktop'); } else { whatsappBtn.style.removeProperty('display'); whatsappBtn.style.removeProperty('visibility'); whatsappBtn.style.removeProperty('opacity'); whatsappBtn.style.removeProperty('pointer-events'); console.log('[WhatsApp] Button visible on mobile'); } } }; // Run on load handleWhatsAppVisibility(); // Run on resize with debouncing let resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(handleWhatsAppVisibility, 100); }); }); })(); </script> <main>
-      <section id="layout-1775405279992" class="py-16 md:py-24 bg-white layout-section" data-zappy-component="true" style="width: 100%; padding: 60px 0;">
-        <div class="container mx-auto px-4 md:px-8 text-center">
-          <h1 class="text-3xl md:text-4xl font-bold mb-4" >
+      <section style="direction: rtl; font-family: system-ui, sans-serif; background: var(--bg-light, #F6F4EF); max-width: 100%; box-sizing: border-box; position: relative; overflow: visible;" data-zappy-section="true" class="section" id="layout-1775405279992">
+<style>
+  :root {
+    --primary: #1F3156;
+    --secondary: #C8A24A;
+    --accent: #F2E7C9;
+    --bg-light: #F6F4EF;
+    --bg-dark: #1F3156;
+    --text-dark: #1A1A1A;
+    --text-light: #F6F4EF;
+    --text-muted: #6E6A61;
+    --border-light: #E6DED0;
+    --border-dark: #3C4F78;
+    --radius-card: 2px;
+    --shadow-card: 0 18px 42px rgba(15,27,49,0.14);
+    --shadow-elevated: 0 28px 70px rgba(15,27,49,0.2);
+    --gradient-primary: linear-gradient(180deg, #E0BE68 0%, #C89F47 52%, #A97822 100%);
+    --gradient-gold-shine: linear-gradient(90deg, #9E7426 0%, #D8B865 22%, #F0D98A 50%, #C79D44 78%, #8D6722 100%);
+    --gradient-secondary: linear-gradient(180deg, #1C2946 0%, #101A2F 100%);
+    --gradient-dark-section: linear-gradient(180deg, #16223A 0%, #0F1B31 100%);
+  }
 
-נפגעי פעולות איבה: גם פגיעה בדרך למרחב מוגן או נזק נפשי עשויים לזכות בפיצוי
+  .article-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px 100px;
+    box-sizing: border-box;
+  }
 
-</h1>
-          <p class="text-gray-600 text-lg" >&nbsp; במציאות הביטחונית בישראל, רבים סבורים כי רק מי שנפגע ישירות מפגיעת טיל או פיגוע זכאי לפיצוי. בפועל, החוק בישראל רחב בהרבה, והוא מכיר גם בפגיעות עקיפות - פיזיות ונפשיות - כתוצאה מאירועי איבה.<br>
-המשמעות ברורה: גם מי שלא נפגע ישירות, אך נפצע או נפגע נפשית בעקבות האירוע, עשוי להיות זכאי להכרה כנפגע פעולת איבה ולקבלת פיצוי מהמדינה.<br>
-מה נחשב פגיעה בפעולת איבה<br>
-החוק בישראל אינו מצמצם את הזכאות רק לפגיעה ישירה. פגיעה מפעולת איבה כוללת גם מצבים שבהם אדם נפגע עקב האירוע, גם אם לא היה במוקד הפגיעה עצמה.<br>
-למשל:<br>
-פגיעה מטילים, ירי או פיצוץ<br>
-פגיעה שנגרמה במהלך ניסיון להתגונן<br>
-פגיעה שנגרמה עקב פחד ממשי או מצב חירום<br>
-כל עוד קיים קשר בין האירוע הביטחוני לבין הפגיעה, קיימת אפשרות ממשית להכרה.<br>
-ריצה למרחב מוגן - לא מקרה "רגיל"<br>
-אחת הסיטואציות הנפוצות היא פציעה בזמן ריצה למרחב מוגן. אנשים נופלים, נחבלים, שוברים איברים או מחמירים מצב רפואי קיים.<br>
-מבחינה משפטית, זו אינה "תאונה רגילה". אם הפגיעה נגרמה בגלל אזעקה או ירי, והיא חלק מהתגובה הסבירה לאירוע, ניתן להכיר בה כפגיעת איבה.<br>
-במילים פשוטות: אם לא הייתה אזעקה - לא הייתה פציעה. וזה בדיוק הקשר שהחוק בוחן.<br>
-נזק נפשי - פגיעה לכל דבר<br>
-היום כבר ברור כי פגיעות נפשיות הן חלק בלתי נפרד מאירועי איבה.<br>
-חרדה, התקפי פחד, פוסט טראומה, דיכאון או הפרעות שינה - כל אלו יכולים להיחשב כפגיעה מוכרת, גם ללא פגיעה פיזית.<br>
-בתנאי שיש תיעוד רפואי וקשר לאירוע, ניתן לקבל:<br>
-טיפול נפשי במימון המדינה<br>
-תשלום בתקופה שבה לא ניתן לעבוד<br>
-ואף קצבה במקרה של נכות<br>
-מה מקבלים בפועל<br>
-המדינה מעניקה לנפגעי פעולות איבה זכויות כלכליות ממשיות, ולא מדובר רק בהכרה "על הנייר".<br>
-בפועל ניתן לקבל:<br>
-תשלום כספי זמני אם לא ניתן לעבוד בעקבות הפגיעה<br>
-תשלום חד פעמי במקרה של פגיעה קלה יחסית<br>
-קצבה חודשית במקרה של נכות משמעותית<br>
-מימון טיפולים רפואיים ונפשיים<br>
-סיוע בשיקום ובחזרה לשגרה<br>
-ככל שהפגיעה חמורה ומתמשכת יותר, כך גם הזכויות גדלות.<br>
-יתרון משמעותי מול תביעות רגילות<br>
-בשונה מתביעת נזיקין רגילה, כאן אין צורך להוכיח שמישהו התרשל או אשם.<br>
-מספיק להוכיח שהנזק נגרם כתוצאה מאירוע איבה.<br>
-זהו הבדל מהותי שמקל מאוד על הנפגעים, אך מצד שני מחייב התנהלות נכונה מול הביטוח הלאומי.<br>
-איפה אנשים טועים<br>
-מניסיון, רבים לא פונים כלל למימוש זכויות, כי הם בטוחים ש"זה לא נחשב".<br>
-הטעויות הנפוצות:<br>
-לא פונים כי לא הייתה פגיעה ישירה<br>
-לא מתעדים את הפגיעה בזמן אמת<br>
-ממעיטים בערך של פגיעה נפשית<br>
-מחכים יותר מדי זמן<br>
-בפועל, דווקא במקרים האלו קיימת לא פעם זכאות משמעותית.<br>
-סיכום<br>
-החוק בישראל מכיר בכך שפגיעות מאירועי איבה אינן תמיד ישירות.<br>
-גם ריצה למרחב מוגן, נפילה בדרך, או פגיעה נפשית בעקבות אזעקות - עשויות להקים זכאות לפיצוי.<br>
-מי שנפגע, אפילו באופן שנראה "שולי", לא צריך למהר לוותר.<br>
-בדיקה משפטית נכונה יכולה לעשות את ההבדל בין ויתור על זכויות לבין קבלת פיצוי משמעותי.&nbsp;&nbsp;</p>
+  /* HEADER BAND */
+  .article-header-band {
+    background: var(--gradient-secondary);
+    position: relative;
+    overflow: hidden;
+    padding: 70px 24px 80px;
+    text-align: center;
+  }
+  .article-header-band::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,162,74,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .article-header-band::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,162,74,0.13) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  .article-tag {
+    display: inline-block;
+    background: var(--gradient-primary);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+  .article-h1 {
+    font-size: clamp(1.55rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    color: var(--text-light);
+    line-height: 1.38;
+    margin: 0 0 24px;
+  }
+  .article-h1 span {
+    background: var(--gradient-gold-shine);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .header-gold-bar {
+    width: 60px;
+    height: 4px;
+    background: var(--gradient-primary);
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+
+  /* BODY LAYOUT */
+  .article-body {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* MAIN CONTENT COLUMN */
+  .article-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* SIDEBAR */
+  .article-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    position: sticky;
+    top: 90px;
+  }
+
+  /* PARAGRAPHS */
+  .article-prose p {
+    font-size: 1.06rem;
+    line-height: 1.85;
+    color: var(--text-dark);
+    margin: 0 0 20px;
+  }
+
+  /* SECTION CARDS */
+  .content-section {
+    background: #fff;
+    border-radius: 2px;
+    border-right: 4px solid var(--secondary);
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .content-section::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle at top right, rgba(200,162,74,0.09) 0%, transparent 70%);
+  }
+  .content-section:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elevated);
+  }
+  .section-title {
+    font-size: 1.18rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 3px;
+    background: var(--gradient-primary);
+    flex-shrink: 0;
+    border-radius: 2px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #1F3156 0%, #0F1B31 100%);
+    color: #fff;
+    border-radius: 2px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-elevated);
+  }
+  .highlight-box::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: -30px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    border: 2px solid rgba(200,162,74,0.2);
+    pointer-events: none;
+  }
+  .highlight-box .section-title {
+    color: var(--secondary);
+  }
+  .highlight-box p {
+    color: rgba(246,244,239,0.9);
+    font-size: 1.04rem;
+    line-height: 1.8;
+    margin: 0 0 16px;
+  }
+  .highlight-box p:last-child { margin-bottom: 0; }
+
+  /* BULLET ITEMS */
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .bullet-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 1.01rem;
+    line-height: 1.65;
+    color: var(--text-dark);
+  }
+  .bullet-list li::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .highlight-box .bullet-list li {
+    color: rgba(246,244,239,0.88);
+  }
+  .highlight-box .bullet-list li::before {
+    background: var(--secondary);
+  }
+
+  /* SIDEBAR WIDGETS */
+  .sidebar-card {
+    background: #fff;
+    border-radius: 2px;
+    padding: 28px;
+    box-shadow: var(--shadow-card);
+    border-top: 3px solid var(--secondary);
+    transition: transform 0.3s ease;
+  }
+  .sidebar-card:hover {
+    transform: translateY(-3px);
+  }
+  .sidebar-card-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 14px;
+  }
+  .sidebar-card p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .sidebar-accent-card {
+    background: var(--gradient-primary);
+    border-radius: 2px;
+    padding: 30px;
+    box-shadow: var(--shadow-elevated);
+    text-align: center;
+  }
+  .sidebar-accent-card .num {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .sidebar-accent-card p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.88);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .sidebar-checklist {
+    background: #fff;
+    border-radius: 2px;
+    padding: 28px;
+    box-shadow: var(--shadow-card);
+  }
+  .sidebar-checklist .sidebar-card-title {
+    border-bottom: 2px solid var(--border-light);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 0.92rem;
+    color: var(--text-dark);
+    line-height: 1.55;
+  }
+  .checklist-item:last-child { margin-bottom: 0; }
+  .check-icon {
+    width: 18px;
+    height: 18px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .check-icon::after {
+    content: '✓';
+    font-size: 0.62rem;
+    color: #fff;
+    font-weight: 900;
+  }
+
+  /* DIAGONAL DIVIDER inside content */
+  .diagonal-break {
+    height: 24px;
+    background: var(--bg-light);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%);
+    margin: 0 -36px;
+  }
+
+  /* ERRORS SECTION */
+  .errors-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .error-item {
+    background: rgba(31,49,86,0.05);
+    border-radius: 2px;
+    padding: 16px 18px;
+    border-right: 3px solid var(--secondary);
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    line-height: 1.6;
+    transition: background 0.25s ease;
+  }
+  .error-item:hover {
+    background: rgba(200,162,74,0.1);
+  }
+
+  /* SUMMARY SECTION */
+  .summary-band {
+    background: var(--gradient-dark-section);
+    border-radius: 2px;
+    padding: 48px 40px;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-elevated);
+  }
+  .summary-band::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,162,74,0.15);
+  }
+  .summary-band::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,162,74,0.1);
+  }
+  .summary-band .section-title {
+    color: var(--secondary);
+    font-size: 1.3rem;
+  }
+  .summary-band p {
+    color: rgba(246,244,239,0.88);
+    font-size: 1.05rem;
+    line-height: 1.82;
+    margin: 0 0 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .summary-band p:last-child { margin-bottom: 0; }
+  .summary-band .section-title { position: relative; z-index: 2; }
+
+  /* INTRO PARAGRAPH */
+  .intro-block {
+    background: linear-gradient(135deg, #F2E7C9 0%, #F6F4EF 100%);
+    border-radius: 2px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    border-right: 4px solid var(--primary);
+    box-shadow: 0 4px 20px rgba(31,49,86,0.07);
+  }
+  .intro-block p {
+    font-size: 1.08rem;
+    line-height: 1.85;
+    color: var(--text-dark);
+    margin: 0 0 16px;
+  }
+  .intro-block p:last-child { margin-bottom: 0; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .article-body {
+      grid-template-columns: 1fr;
+    }
+    .article-sidebar {
+      position: static;
+      order: -1;
+    }
+    .errors-grid {
+      grid-template-columns: 1fr;
+    }
+    .article-header-band {
+      padding: 100px 24px 70px;
+    }
+  }
+  @media (max-width: 600px) {
+    .article-wrapper {
+      padding: 48px 16px 70px;
+    }
+    .content-section {
+      padding: 24px 20px;
+    }
+    .highlight-box {
+      padding: 24px 20px;
+    }
+    .summary-band {
+      padding: 32px 24px;
+    }
+    .intro-block {
+      padding: 24px 20px;
+    }
+    .article-header-band {
+      padding: 100px 20px 60px;
+    }
+    .article-h1 {
+      font-size: 1.4rem;
+    }
+  }
+</style>
+
+<!-- HEADER BAND -->
+<div class="article-header-band">
+  <div class="header-inner">
+    <div class="article-tag">משפט ביטחוני · זכויות נפגעים</div>
+    <h1 class="article-h1">נפגעי פעולות איבה: גם פגיעה בדרך למרחב מוגן או <span>נזק נפשי</span> עשויים לזכות בפיצוי</h1>
+    <div class="header-gold-bar"></div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="article-wrapper">
+  <div class="article-body">
+
+    <!-- MAIN COLUMN -->
+    <main class="article-main">
+
+      <!-- INTRO -->
+      <div class="intro-block">
+        <p>במציאות הביטחונית בישראל, רבים סבורים כי רק מי שנפגע ישירות מפגיעת טיל או פיגוע זכאי לפיצוי. בפועל, החוק בישראל רחב בהרבה, והוא מכיר גם בפגיעות עקיפות - פיזיות ונפשיות - כתוצאה מאירועי איבה.</p>
+        <p>המשמעות ברורה: גם מי שלא נפגע ישירות, אך נפצע או נפגע נפשית בעקבות האירוע, עשוי להיות זכאי להכרה כנפגע פעולת איבה ולקבלת פיצוי מהמדינה.</p>
+      </div>
+
+      <!-- WHAT IS -->
+      <div class="content-section">
+        <h2 class="section-title">מה נחשב פגיעה בפעולת איבה</h2>
+        <p style="font-size:1.04rem;line-height:1.82;color:var(--text-dark);margin:0 0 16px;">החוק בישראל אינו מצמצם את הזכאות רק לפגיעה ישירה. פגיעה מפעולת איבה כוללת גם מצבים שבהם אדם נפגע עקב האירוע, גם אם לא היה במוקד הפגיעה עצמה.</p>
+        <p style="font-size:1rem;color:var(--text-muted);margin:0 0 12px;">למשל:</p>
+        <ul class="bullet-list">
+          <li>פגיעה מטילים, ירי או פיצוץ</li>
+          <li>פגיעה שנגרמה במהלך ניסיון להתגונן</li>
+          <li>פגיעה שנגרמה עקב פחד ממשי או מצב חירום</li>
+        </ul>
+        <p style="font-size:1.01rem;line-height:1.78;color:var(--text-dark);margin:16px 0 0;">כל עוד קיים קשר בין האירוע הביטחוני לבין הפגיעה, קיימת אפשרות ממשית להכרה.</p>
+      </div>
+
+      <!-- SHELTER RUN -->
+      <div class="highlight-box">
+        <h2 class="section-title">ריצה למרחב מוגן - לא מקרה "רגיל"</h2>
+        <p>אחת הסיטואציות הנפוצות היא פציעה בזמן ריצה למרחב מוגן. אנשים נופלים, נחבלים, שוברים איברים או מחמירים מצב רפואי קיים.</p>
+        <p>מבחינה משפטית, זו אינה "תאונה רגילה". אם הפגיעה נגרמה בגלל אזעקה או ירי, והיא חלק מהתגובה הסבירה לאירוע, ניתן להכיר בה כפגיעת איבה.</p>
+        <p>במילים פשוטות: אם לא הייתה אזעקה - לא הייתה פציעה. וזה בדיוק הקשר שהחוק בוחן.</p>
+      </div>
+
+      <!-- MENTAL INJURY -->
+      <div class="content-section">
+        <h2 class="section-title">נזק נפשי - פגיעה לכל דבר</h2>
+        <p style="font-size:1.04rem;line-height:1.82;color:var(--text-dark);margin:0 0 14px;">היום כבר ברור כי פגיעות נפשיות הן חלק בלתי נפרד מאירועי איבה.</p>
+        <p style="font-size:1.04rem;line-height:1.82;color:var(--text-dark);margin:0 0 14px;">חרדה, התקפי פחד, פוסט טראומה, דיכאון או הפרעות שינה - כל אלו יכולים להיחשב כפגיעה מוכרת, גם ללא פגיעה פיזית.</p>
+        <p style="font-size:1rem;color:var(--text-muted);margin:0 0 12px;">בתנאי שיש תיעוד רפואי וקשר לאירוע, ניתן לקבל:</p>
+        <ul class="bullet-list">
+          <li>טיפול נפשי במימון המדינה</li>
+          <li>תשלום בתקופה שבה לא ניתן לעבוד</li>
+          <li>ואף קצבה במקרה של נכות</li>
+        </ul>
+      </div>
+
+      <!-- WHAT YOU GET -->
+      <div class="content-section">
+        <h2 class="section-title">מה מקבלים בפועל</h2>
+        <p style="font-size:1.04rem;line-height:1.82;color:var(--text-dark);margin:0 0 14px;">המדינה מעניקה לנפגעי פעולות איבה זכויות כלכליות ממשיות, ולא מדובר רק בהכרה "על הנייר".</p>
+        <p style="font-size:1rem;color:var(--text-muted);margin:0 0 12px;">בפועל ניתן לקבל:</p>
+        <ul class="bullet-list">
+          <li>תשלום כספי זמני אם לא ניתן לעבוד בעקבות הפגיעה</li>
+          <li>תשלום חד פעמי במקרה של פגיעה קלה יחסית</li>
+          <li>קצבה חודשית במקרה של נכות משמעותית</li>
+          <li>מימון טיפולים רפואיים ונפשיים</li>
+          <li>סיוע בשיקום ובחזרה לשגרה</li>
+        </ul>
+        <p style="font-size:1.01rem;line-height:1.78;color:var(--text-dark);margin:16px 0 0;">ככל שהפגיעה חמורה ומתמשכת יותר, כך גם הזכויות גדלות.</p>
+      </div>
+
+      <!-- ADVANTAGE -->
+      <div class="content-section">
+        <h2 class="section-title">יתרון משמעותי מול תביעות רגילות</h2>
+        <p style="font-size:1.04rem;line-height:1.82;color:var(--text-dark);margin:0 0 14px;">בשונה מתביעת נזיקין רגילה, כאן אין צורך להוכיח שמישהו התרשל או אשם.</p>
+        <p style="font-size:1.04rem;line-height:1.82;color:var(--text-dark);margin:0 0 14px;">מספיק להוכיח שהנזק נגרם כתוצאה מאירוע איבה.</p>
+        <p style="font-size:1.04rem;line-height:1.82;color:var(--text-dark);margin:0;">זהו הבדל מהותי שמקל מאוד על הנפגעים, אך מצד שני מחייב התנהלות נכונה מול הביטוח הלאומי.</p>
+      </div>
+
+      <!-- MISTAKES -->
+      <div class="content-section">
+        <h2 class="section-title">איפה אנשים טועים</h2>
+        <p style="font-size:1.04rem;line-height:1.82;color:var(--text-dark);margin:0 0 16px;">מניסיון, רבים לא פונים כלל למימוש זכויות, כי הם בטוחים ש"זה לא נחשב".</p>
+        <p style="font-size:1rem;color:var(--text-muted);margin:0 0 12px;">הטעויות הנפוצות:</p>
+        <div class="errors-grid">
+          <div class="error-item">לא פונים כי לא הייתה פגיעה ישירה</div>
+          <div class="error-item">לא מתעדים את הפגיעה בזמן אמת</div>
+          <div class="error-item">ממעיטים בערך של פגיעה נפשית</div>
+          <div class="error-item">מחכים יותר מדי זמן</div>
         </div>
-      </section>
+        <p style="font-size:1.01rem;line-height:1.78;color:var(--text-dark);margin:16px 0 0;">בפועל, דווקא במקרים האלו קיימת לא פעם זכאות משמעותית.</p>
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="summary-band">
+        <h2 class="section-title">סיכום</h2>
+        <p>החוק בישראל מכיר בכך שפגיעות מאירועי איבה אינן תמיד ישירות.</p>
+        <p>גם ריצה למרחב מוגן, נפילה בדרך, או פגיעה נפשית בעקבות אזעקות - עשויות להקים זכאות לפיצוי.</p>
+        <p>מי שנפגע, אפילו באופן שנראה "שולי", לא צריך למהר לוותר.</p>
+        <p>בדיקה משפטית נכונה יכולה לעשות את ההבדל בין ויתור על זכויות לבין קבלת פיצוי משמעותי.</p>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="article-sidebar">
+
+      <div class="sidebar-accent-card">
+        <span class="num">3</span>
+        <p>סוגי פיצוי עיקריים: זמני, חד-פעמי, וקצבה חודשית לנפגעי איבה</p>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">עיקרון מרכזי</div>
+        <p>אין צורך להוכיח רשלנות. מספיק קשר בין הנזק לאירוע הביטחוני - וזהו יתרון משמעותי על פני תביעות נזיקין רגילות.</p>
+      </div>
+
+      <div class="sidebar-checklist">
+        <div class="sidebar-card-title">לתשומת לבכם - אל תטעו</div>
+        <div class="checklist-item">
+          <div class="check-icon"></div>
+          <span>תעדו כל פגיעה מיד לאחר האירוע</span>
+        </div>
+        <div class="checklist-item">
+          <div class="check-icon"></div>
+          <span>גם פגיעה נפשית מוכרת - אל תזלזלו בה</span>
+        </div>
+        <div class="checklist-item">
+          <div class="check-icon"></div>
+          <span>פגיעה בריצה למרחב מוגן - לא תאונה "רגילה"</span>
+        </div>
+        <div class="checklist-item">
+          <div class="check-icon"></div>
+          <span>אל תחכו - פנו לבדיקה משפטית בהקדם</span>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">מה מגיע לכם?</div>
+        <p>טיפול נפשי ממומן, תשלום בתקופת אי-כושר, קצבת נכות, שיקום - כל אלו זכויות אמיתיות שהחוק מעניק לנפגעי פעולות איבה.</p>
+      </div>
+
+    </aside>
+
+  </div>
+</div>
+
+</section>
     </main> <footer class="site-footer" dir="rtl"> <div class="footer-main"> <div class="footer-container"> <div class="footer-grid"> <!-- Column 1: Company Info --> <div class="footer-col footer-col--brand"> <div class="footer-logo-wrap"> <img src="/assets/logo-1774782894048-xuck8l.webp?v=1774782894546-yv2klt" alt="ורד לוי משרד עורכי דין" class="logo" data-element-type="image" data-element-id="img-1774787134455-6shu8deq0" > </div> <p class="footer-tagline" >ייעוץ משפטי מקצועי, אישי ומהימן.
 אנחנו כאן עבורכם בכל שלב.</p> <div class="footer-social"> <a href="https://facebook.com/1BVGk3N2Af" aria-label="Facebook" class="social-link"><i class="fab fa-facebook-f"></i></a> <a href="https://instagram.com/vlb_law" aria-label="Instagram" class="social-link"><i class="fab fa-instagram" data-element-type="icon" data-element-id="icon-1774787134454-cbiesvnlk" data-icon-type="fontawesome"></i></a> <a href="https://wa.me/972506479210" aria-label="WhatsApp" class="social-link"><i class="fab fa-whatsapp" data-element-type="icon" data-element-id="icon-1774787134454-m5r6l53uw" data-icon-type="fontawesome"></i></a> </div> </div> <!-- Column 2: Quick Links --> <div class="footer-col"> <h3 class="footer-heading"> <span class="footer-heading-line"></span> ניווט מהיר </h3> <ul class="footer-links"> <li><a href="/about">אודות</a></li> <li><a href="/practice-areas">תחומי עיסוק</a></li> <li><a href="/contact">צור קשר</a></li> </ul> </div> <!-- Column 3: Contact Info --> <div class="footer-col"> <h3 class="footer-heading"> <span class="footer-heading-line"></span> פרטי התקשרות </h3> <ul class="footer-contact"> <li><a href="/" style="display:flex;align-items:flex-start;gap:inherit"><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span> <span>ילדי טהרן 8, ראשון לציון, ישראל</span></a></li>           <li>
               <span class="contact-icon"><i class="fas fa-phone-alt" data-element-type="icon" data-element-id="icon-1774787134455-6sz08mu6l" data-icon-type="fontawesome"></i></span>
