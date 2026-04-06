@@ -8119,7 +8119,7 @@ nav.navbar .sub-menu li a:hover { color: #C8A24A !important; background-color: r
 
 /* Legal Pages Content Styles */
 .legal-page-content {
-  padding: 60px 0;
+  padding: 120px 0 60px;
   min-height: 60vh;
 }
 
