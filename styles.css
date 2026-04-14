@@ -8116,11 +8116,10 @@ nav.navbar .sub-menu li a:hover { color: #C8A24A !important; background-color: r
 /* === NAVBAR STYLE OVERRIDES END === */
 
 /* Legal Pages Content Styles */
-
-/* Legal Pages Content Styles */
 .legal-page-content {
   padding: 120px 0 60px;
   min-height: 60vh;
+  color: inherit;
 }
 
 .legal-page-content .container {
@@ -8168,20 +8167,39 @@ nav.navbar .sub-menu li a:hover { color: #C8A24A !important; background-color: r
   line-height: 1.6;
 }
 
-.legal-page-content .contact-box {
+.legal-page-content .contact-box,
+.legal-page-content .contact-info {
   background: rgba(0, 0, 0, 0.03);
   padding: 1.5rem;
   border-radius: 8px;
   margin-top: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.legal-page-content .contact-box a {
+.legal-page-content .contact-box a,
+.legal-page-content .contact-info a {
   color: inherit;
   text-decoration: underline;
 }
 
-.legal-page-content .contact-box a:hover {
+.legal-page-content .contact-box a:hover,
+.legal-page-content .contact-info a:hover {
   opacity: 0.8;
+}
+
+.legal-page-content .important-notice,
+.legal-page-content .legal-reference {
+  background: rgba(0, 0, 0, 0.03);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  border-left: 4px solid currentColor;
+}
+
+[dir="rtl"] .legal-page-content .important-notice,
+[dir="rtl"] .legal-page-content .legal-reference {
+  border-left: none;
+  border-right: 4px solid currentColor;
 }
 
 /* Cookie Consent Styles */
@@ -9274,6 +9292,20 @@ body.accessibility-widget-visible ._access-menu {
   color: #1F3156;
 }
 
+/* ========== EMPTY SUBMENU HIDING (Auto-added by Zappy) ========== */
+.sub-menu:empty,
+.dropdown-menu:empty,
+.sub-menu.zappy-empty-submenu,
+.dropdown-menu.zappy-empty-submenu,
+.nav-menu .sub-menu.zappy-empty-submenu,
+nav .sub-menu.zappy-empty-submenu,
+.navbar .sub-menu.zappy-empty-submenu,
+#navMenu .sub-menu.zappy-empty-submenu,
+#navMenu .dropdown-menu.zappy-empty-submenu {
+  display: none !important;
+}
+
+
 /* ========== RTL MOBILE NAVBAR FIX (zappy-rtl-mobile-fix) ========== */
 /* High-specificity rules to ensure RTL positioning wins over any [lang="en"] conflicts */
 /* For RTL sites: hamburger on RIGHT, phone on LEFT (mirror of LTR layout) */
@@ -9570,7 +9602,8 @@ body.accessibility-widget-visible ._access-menu {
   }
   
   /* Fix zoom wrapper images on mobile - make responsive */
-  [data-zappy-zoom-wrapper="true"] img {
+  /* Exclude images with mobile overrides — those are handled by JS to honor user settings */
+  [data-zappy-zoom-wrapper="true"] img:not([data-zappy-mobile-object-position]):not([data-zappy-mobile-zoom]) {
     position: relative !important;
     width: 100% !important;
     height: auto !important;
@@ -9885,6 +9918,12 @@ section[data-hero-type] {
 form.contact-form, .contact-form { flex-direction: column !important; align-items: stretch !important; }
 form.contact-form > .contact-form-field, .contact-form > .contact-form-field { width: 100% !important; align-self: stretch !important; }
 form.contact-form .contact-input, form.contact-form .contact-textarea { width: 100% !important; box-sizing: border-box !important; }
+
+
+/* ZAPPY_NAVBAR_CTA_ALIGNMENT_FIX */
+.nav-cta-container .zappy-search-container,
+.zappy-search-container { align-self: center; }
+.nav-cta-container p { margin: 0 !important; }
 
 
 /* ZAPPY_SECTION_BG_TYPE_FIX */

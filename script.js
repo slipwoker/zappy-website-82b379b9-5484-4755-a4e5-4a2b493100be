@@ -1056,6 +1056,68 @@ window.onload = function() {
 
       var isMobile = window.innerWidth <= 768;
       if (isMobile) {
+        var mSrc = img.getAttribute('data-zappy-mobile-src');
+        var mPos = img.getAttribute('data-zappy-mobile-object-position');
+        var mZoomStr = img.getAttribute('data-zappy-mobile-zoom');
+        var mZoom = parseFloat(mZoomStr);
+        var hasMobileOverrides = mPos || mZoomStr;
+        if (mSrc) img.src = mSrc;
+
+        if (hasMobileOverrides) {
+          // User configured mobile zoom/position — apply zoom/crop math
+          // to match what the editor mobile preview shows.
+          wrapper.style.setProperty('width', '100%', 'important');
+          wrapper.style.setProperty('max-width', '100%', 'important');
+          wrapper.style.setProperty('overflow', 'hidden', 'important');
+          wrapper.style.setProperty('position', 'relative', 'important');
+          var _sW = parseFloat(wrapper.getAttribute('data-zappy-zoom-wrapper-width')) || 0;
+          var _sH = parseFloat(wrapper.getAttribute('data-zappy-zoom-wrapper-height')) || 0;
+          if (_sW > 0 && _sH > 0) {
+            wrapper.style.setProperty('aspect-ratio', _sW + '/' + _sH, 'important');
+            wrapper.style.setProperty('height', 'auto', 'important');
+          }
+          var effZoom = (isFinite(mZoom) && mZoom > 0) ? mZoom : zoom;
+          var effPos = mPos || '50% 50%';
+
+          function applyMobileZoomCrop(_img, _wrapper, _effPos, _effZoom) {
+            var rect = _wrapper.getBoundingClientRect();
+            if (!rect || !rect.width || !rect.height) return;
+            var nW = _img.naturalWidth || 0, nH = _img.naturalHeight || 0;
+            if (!(nW > 0 && nH > 0)) return;
+            var imgA = nW / nH;
+            var contA = rect.width / rect.height;
+            var cover = coverPercents(imgA, contA);
+            var wP = 100, hP = 100;
+            if (_effZoom >= 1) { wP = cover.w * _effZoom; hP = cover.h * _effZoom; }
+            else { var t2 = (_effZoom - 0.5) / 0.5; if (!isFinite(t2)) t2 = 0; t2 = Math.max(0, Math.min(1, t2)); wP = 100 + t2 * (cover.w - 100); hP = 100 + t2 * (cover.h - 100); }
+            var p2 = parseObjPos(_effPos);
+            var lP = (100 - wP) * (p2.x / 100);
+            var tP = (100 - hP) * (p2.y / 100);
+            _img.style.setProperty('position', 'absolute', 'important');
+            _img.style.setProperty('left', lP + '%', 'important');
+            _img.style.setProperty('top', tP + '%', 'important');
+            _img.style.setProperty('width', wP + '%', 'important');
+            _img.style.setProperty('height', hP + '%', 'important');
+            _img.style.setProperty('max-width', 'none', 'important');
+            _img.style.setProperty('max-height', 'none', 'important');
+            _img.style.setProperty('display', 'block', 'important');
+            _img.style.setProperty('object-fit', _effZoom < 1 ? 'fill' : 'cover', 'important');
+            _img.style.setProperty('margin', '0', 'important');
+          }
+
+          applyMobileZoomCrop(img, wrapper, effPos, effZoom);
+
+          // If src changed, the image may not be loaded yet (naturalWidth=0).
+          // Re-apply after it loads so the zoom math uses correct dimensions.
+          if (mSrc && !(img.complete && img.naturalWidth > 0)) {
+            img.addEventListener('load', function _onLoad() {
+              img.removeEventListener('load', _onLoad);
+              try { applyMobileZoomCrop(img, wrapper, effPos, effZoom); } catch(e) {}
+            });
+          }
+          return;
+        }
+
         img.style.setProperty('position', 'relative', 'important');
         img.style.setProperty('width', '100%', 'important');
         img.style.setProperty('height', 'auto', 'important');
@@ -1065,16 +1127,6 @@ window.onload = function() {
         img.style.removeProperty('left');
         img.style.removeProperty('top');
         img.style.setProperty('margin', '0', 'important');
-        var mSrc = img.getAttribute('data-zappy-mobile-src');
-        var mPos = img.getAttribute('data-zappy-mobile-object-position');
-        var mZoom = parseFloat(img.getAttribute('data-zappy-mobile-zoom'));
-        if (mSrc) img.src = mSrc;
-        if (mPos) img.style.setProperty('object-position', mPos, 'important');
-        if (mZoom > 1) {
-          img.style.setProperty('transform', 'scale(' + mZoom + ')', 'important');
-          img.style.setProperty('transform-origin', mPos || '50% 50%', 'important');
-          wrapper.style.setProperty('overflow', 'hidden', 'important');
-        }
         return;
       }
 
@@ -1160,14 +1212,16 @@ window.onload = function() {
 
       if (widthMode === 'px' && storedW) {
         var curW = (wrapper.style.width || '').replace(/s*!importants*/g, '').trim();
-        if (!curW || curW === '100%' || curW.indexOf('%') !== -1) {
+        var storedWNorm = storedW.replace(/s*!importants*/g, '').trim();
+        if (!curW || curW === '100%' || curW.indexOf('%') !== -1 || curW !== storedWNorm) {
           wrapper.style.setProperty('width', storedW, 'important');
           wrapper.style.setProperty('max-width', '100%', 'important');
         }
       }
       if (storedH) {
         var curH = (wrapper.style.height || '').replace(/s*!importants*/g, '').trim();
-        if (!curH || curH === 'auto' || curH === '100%' || curH.indexOf('%') !== -1) {
+        var storedHNorm = storedH.replace(/s*!importants*/g, '').trim();
+        if (!curH || curH === 'auto' || curH === '100%' || curH.indexOf('%') !== -1 || curH !== storedHNorm) {
           wrapper.style.setProperty('height', storedH, 'important');
         }
       }
@@ -1867,3 +1921,35 @@ window.onload = function() {
     });
   } catch(e) {}
 })();
+
+
+/* ZAPPY_SECTION_ID_FROM_CLASS */
+(function(){
+  function assignIds(){
+    document.querySelectorAll('section').forEach(function(s){
+      if(s.id)return;
+      var cls=(s.className||'').split(/\s+/)[0];
+      if(cls && !document.getElementById(cls)){s.id=cls;}
+    });
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',assignIds,{once:true});}
+  else{assignIds();}
+})();
+/* END ZAPPY_SECTION_ID_FROM_CLASS */
+
+
+/* ZAPPY_EMPTY_SUBMENU_HIDDEN */
+(function(){
+  function markEmpty(){
+    document.querySelectorAll('.sub-menu, .dropdown-menu').forEach(function(ul){
+      var hasVisible=false;
+      for(var i=0;i<ul.children.length;i++){
+        if(window.getComputedStyle(ul.children[i]).display!=='none'){hasVisible=true;break;}
+      }
+      ul.classList.toggle('zappy-empty-submenu',!hasVisible);
+    });
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',markEmpty,{once:true});}
+  else{markEmpty();}
+})();
+/* END ZAPPY_EMPTY_SUBMENU_HIDDEN */
