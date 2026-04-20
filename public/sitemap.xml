@@ -91,6 +91,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://vlb-law.com/international-data-transfer</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://vlb-law.com/privacy</loc>
     <lastmod>2026-04-20</lastmod>
     <changefreq>monthly</changefreq>
