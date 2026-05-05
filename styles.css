@@ -9832,6 +9832,10 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
     padding: 3px 8px;
   }
 }
+
+.index-cta-section .index-cta-contact-item:nth-child(2) a.index-cta-contact-link {
+  color: var(--text-light) !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
