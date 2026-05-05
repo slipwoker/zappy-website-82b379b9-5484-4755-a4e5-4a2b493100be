@@ -9836,6 +9836,18 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
 .index-cta-section .index-cta-contact-item:nth-child(2) a.index-cta-contact-link {
   color: var(--text-light) !important;
 }
+
+@media (max-width: 768px) {
+#zappy-element-1777362364428-fyqbeoka9 {
+  margin-top: 150px !important;
+}
+}
+
+@media (max-width: 768px) {
+.index-hero-section #zappy-element-1777362364428-fyqbeoka9 {
+  margin-top: 150px !important;
+}
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
