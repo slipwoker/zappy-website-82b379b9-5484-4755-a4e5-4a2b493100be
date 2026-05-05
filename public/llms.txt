@@ -1,4 +1,6 @@
-# Business — Generative Engine Optimization Map
+# ורד לוי משרד עורכי דין — Generative Engine Optimization Map
+
+> A law firm specializing in privacy policy law and family law — including divorce, wills, inheritances, lasting power of attorney, guardianship, prenuptial agreements, parenting agreements, common-law partnerships, and LGBTQ+ family matters. The firm also handles debt collection and enforcement proceedings for both corporate and individual creditors. The attorney provides a personal, professional image and has supplied a logo and personal photo to be integrated into the site. The desired website structure includes: About, Practice Areas, Articles, and Contact sections.
 
 ---
 
@@ -78,12 +80,56 @@ Information about WCAG compliance and accessibility features.
 
 ---
 
-# Business Context (for LLM understanding)
+## How to Contact Us
 
-## About Business
+- Email: Office@vlb-law.com
+- Phone: 03-5255505
+- Phone (tel): tel:035255505
+- Address: ילדי טהרן 8, ראשון לציון, ישראל
+
+### Contact form
+- URL: https://vlb-law.com/contact
+- Endpoint: https://vlb-law.com/api/email/contact-form
+- Method: POST
+- Content-Type: application/json
+- Fields:
+  - `name` (text, required)
+  - `phone` (tel, required)
+  - `email` (email, required)
+  - `subject` (text)
+  - `contact_pref` (text)
+  - `message` (textarea)
+  - `privacy_consent` (checkbox, required)
+
 ---
 
-# Additional Resources
+# Business Context (for LLM understanding)
 
-- **Sitemap**: https://vlb-law.com/sitemap.xml
-- **Robots.txt**: https://vlb-law.com/robots.txt
+## About ורד לוי משרד עורכי דין
+A law firm specializing in privacy policy law and family law — including divorce, wills, inheritances, lasting power of attorney, guardianship, prenuptial agreements, parenting agreements, common-law partnerships, and LGBTQ+ family matters. The firm also handles debt collection and enforcement proceedings for both corporate and individual creditors. The attorney provides a personal, professional image and has supplied a logo and personal photo to be integrated into the site. The desired website structure includes: About, Practice Areas, Articles, and Contact sections.
+
+## Services/Products
+- מדיניות פרטיות
+- דיני משפחה - גירושין
+- צוואות וירושות
+- יפוי כח מתמשך
+- אפוטרופוס
+- הסכמי ממון
+- הסכמי הורות
+- ידועים בציבור
+- משפחה חדשה (להט"ב)
+- הוצאה לפועל - נושים (חברות ויחידים)
+
+## Target Audience
+יחידים, משפחות, חברות, נושים
+
+## Industry
+משפטי / לגאל
+
+---
+
+# Machine-readable feeds
+
+- Sitemap (XML): https://vlb-law.com/sitemap.xml
+- Robots: https://vlb-law.com/robots.txt
+- Flattened page text (for LLMs): https://vlb-law.com/llms-full.txt
