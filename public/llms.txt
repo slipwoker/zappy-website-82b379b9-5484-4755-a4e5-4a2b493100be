@@ -64,15 +64,9 @@ https://vlb-law.com/international-data-transfer
 https://vlb-law.com/professional-articles/ai-privacy-privilege-evidence
 ורד לוי משרד עורכי דין - מלכודת הבינה המלאכותית – פרטיות, חיסיון וראיות בעידן הדיגיטלי
 
-### Page
-https://vlb-law.com/copy
-
 ### הצעד הראשון לפתרון מתחיל בשיחה אחת — ורד לוי משרד עורכי דין
 https://vlb-law.com/contact
 רוצים לדבר על יפוי כח מתמשך, הסכם ממון או כל עניין משפטי אחר? צרו קשר עם ורד לוי עוד היום לייעוץ ראשוני אישי ומקצועי — אנחנו כאן בשבילכם.
-
-### Page
-https://vlb-law.com/ai-trap-column
 
 ## Legal & Policy
 
@@ -103,13 +97,13 @@ Information about WCAG compliance and accessibility features.
 - Method: POST
 - Content-Type: application/json
 - Fields:
-  - `name` (text)
-  - `phone` (tel)
-  - `email` (email)
+  - `name` (text, required)
+  - `phone` (tel, required)
+  - `email` (email, required)
   - `subject` (text)
   - `contact_pref` (text)
   - `message` (textarea)
-  - `privacy_consent` (checkbox)
+  - `privacy_consent` (checkbox, required)
 
 ---
 
