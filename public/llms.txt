@@ -64,6 +64,10 @@ https://vlb-law.com/international-data-transfer
 העברת מידע לחו״ל כבר אינה עניין טכני. כך תימנעו מחשיפה משפטית ותעמדו בדרישות הרשות להגנת הפרטיות
 כולל הסבר פרקטי לעסקים שעובדים עם מערכות ענן וספקים בינלאומיים
 
+### בינה מלאכותית
+https://vlb-law.com/professional-articles/ai-privacy-privilege-evidence
+ורד לוי משרד עורכי דין - מלכודת הבינה המלאכותית – פרטיות, חיסיון וראיות בעידן הדיגיטלי
+
 ## Legal & Policy
 
 ### Privacy Policy
@@ -93,13 +97,13 @@ Information about WCAG compliance and accessibility features.
 - Method: POST
 - Content-Type: application/json
 - Fields:
-  - `name` (text, required)
-  - `phone` (tel, required)
-  - `email` (email, required)
+  - `name` (text)
+  - `phone` (tel)
+  - `email` (email)
   - `subject` (text)
   - `contact_pref` (text)
   - `message` (textarea)
-  - `privacy_consent` (checkbox, required)
+  - `privacy_consent` (checkbox)
 
 ---
 
