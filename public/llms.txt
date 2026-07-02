@@ -48,28 +48,28 @@ https://vlb-law.com/war-victims-claims
 https://vlb-law.com/war-damage-compensation
 נפגעתם בפעולת איבה? האם עדיף פיצוי מביטוח לאומי או תביעה נזיקית? מדריך ברור שמסביר את ההבדלים ומה יכול להגדיל את הפיצוי.
 
-### מה חשוב לבדוק לבדוק לפני חתימה על הסכם ממון?
+### Page
 https://vlb-law.com/prenuptial-agreement-advice
 
 ### Thank You | Vered Levy Law Office
 https://vlb-law.com/thank-you
 ורד לוי משרד עורכי דין - Thank You | Vered Levy Law Office
 
-### הצעד הראשון לפתרון מתחיל בשיחה אחת — ורד לוי משרד עורכי דין
-https://vlb-law.com/contact
-רוצים לדבר על יפוי כח מתמשך, הסכם ממון או כל עניין משפטי אחר? צרו קשר עם ורד לוי עוד היום לייעוץ ראשוני אישי ומקצועי — אנחנו כאן בשבילכם.
-
 ### העברת מידע לחו״ל: הסיכון המשפטי שרוב העסקים לא מודעים אליו
 https://vlb-law.com/international-data-transfer
 העברת מידע לחו״ל כבר אינה עניין טכני. כך תימנעו מחשיפה משפטית ותעמדו בדרישות הרשות להגנת הפרטיות
 כולל הסבר פרקטי לעסקים שעובדים עם מערכות ענן וספקים בינלאומיים
 
-### בינה מלאכותית
+### מלכודת הבינה המלאכותית – פרטיות, חיסיון וראיות בעידן הדיגיטלי
 https://vlb-law.com/professional-articles/ai-privacy-privilege-evidence
 ורד לוי משרד עורכי דין - מלכודת הבינה המלאכותית – פרטיות, חיסיון וראיות בעידן הדיגיטלי
 
 ### Page
 https://vlb-law.com/copy
+
+### הצעד הראשון לפתרון מתחיל בשיחה אחת — ורד לוי משרד עורכי דין
+https://vlb-law.com/contact
+רוצים לדבר על יפוי כח מתמשך, הסכם ממון או כל עניין משפטי אחר? צרו קשר עם ורד לוי עוד היום לייעוץ ראשוני אישי ומקצועי — אנחנו כאן בשבילכם.
 
 ## Legal & Policy
 
@@ -100,13 +100,13 @@ Information about WCAG compliance and accessibility features.
 - Method: POST
 - Content-Type: application/json
 - Fields:
-  - `name` (text, required)
-  - `phone` (tel, required)
-  - `email` (email, required)
+  - `name` (text)
+  - `phone` (tel)
+  - `email` (email)
   - `subject` (text)
   - `contact_pref` (text)
   - `message` (textarea)
-  - `privacy_consent` (checkbox, required)
+  - `privacy_consent` (checkbox)
 
 ---
 
