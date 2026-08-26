@@ -10117,6 +10117,32 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
     max-width: 320px;
   }
 }
+
+.index-cta-section {
+  background-color: #101A2F !important;
+  background-image: radial-gradient(ellipse at 80% 50%, rgba(200,162,74,0.10) 0%, transparent 60%), radial-gradient(ellipse at 10% 80%, rgba(31,49,86,0.6) 0%, transparent 55%), linear-gradient(160deg, #16223A 0%, #0F1B31 100%) !important;
+  color: #F6F4EF !important;
+}
+
+.index-cta-section .index-cta-contact-item:nth-child(2) a.index-cta-contact-link {
+  color: #F6F4EF !important;
+}
+
+.index-services-section .index-services-card-title {
+  color: #F6F4EF !important;
+}
+
+.index-services-section .index-services-card-text {
+  color: rgba(246,244,239,0.72) !important;
+}
+
+.index-services-section .index-services-title {
+  color: #F6F4EF !important;
+}
+
+.index-services-section .index-services-subtitle {
+  color: rgba(246,244,239,0.72) !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
