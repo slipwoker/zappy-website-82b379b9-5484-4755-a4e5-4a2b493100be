@@ -10378,7 +10378,7 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
 }
 
 .index-cta-section h1 {
-  color: var(--background-color, var(--background, var(--bg-light, #1F3156))) !important;
+  color: #1F3156 !important;
 }
 
 .index-cta-section .index-cta-eyebrow-text {
