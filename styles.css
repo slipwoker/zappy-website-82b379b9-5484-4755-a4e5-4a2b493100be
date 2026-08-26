@@ -10303,6 +10303,65 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
 .index-services-section .index-services-subtitle {
   color: rgba(246,244,239,0.72) !important;
 }
+
+.index-services-section {
+  background-color: #FBF8F2 !important;
+  background-image: linear-gradient(180deg, #FBF8F2 0%, #F2EBDD 100%) !important;
+  color: #1A1A1A !important;
+}
+
+.index-services-section .index-services-title {
+  color: #1A1A1A !important;
+}
+
+.index-services-section .index-services-subtitle {
+  color: #6E6A61 !important;
+}
+
+.index-services-section .index-services-eyebrow {
+  color: var(--secondary-color, var(--secondary, #C8A24A)) !important;
+  border-color: rgba(200,162,74,0.35) !important;
+  background: rgba(200,162,74,0.07) !important;
+}
+
+.index-services-section .index-services-card {
+  background: #FFFFFF !important;
+  border-color: #E6DED0 !important;
+}
+
+.index-services-section .index-services-card-title {
+  color: var(--background-color, var(--background, var(--bg-light, #1F3156))) !important;
+}
+
+.index-services-section .index-services-card-text {
+  color: #6E6A61 !important;
+}
+
+.index-services-section .index-services-card-icon-wrap {
+  background: rgba(200,162,74,0.12) !important;
+  border-color: rgba(200,162,74,0.28) !important;
+  color: var(--secondary-color, var(--secondary, #C8A24A)) !important;
+}
+
+.index-services-section .index-services-bg-pattern {
+  display: none !important;
+}
+
+.index-services-section .index-services-card-title {
+  color: #1A1A1A !important;
+}
+
+.index-services-section .index-services-card-text {
+  color: #1A1A1A !important;
+}
+
+.index-services-section .index-services-title {
+  color: #1A1A1A !important;
+}
+
+.index-services-section .index-services-subtitle {
+  color: #1A1A1A !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
