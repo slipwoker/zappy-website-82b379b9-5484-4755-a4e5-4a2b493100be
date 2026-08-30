@@ -10422,6 +10422,13 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
 .index-cta-section .index-cta-contact-item:nth-child(2) a.index-cta-contact-link {
   color: #1A1A1A !important;
 }
+
+@media (max-width: 768px) {
+.index-hero-section .index-hero-portrait {
+  object-fit: cover !important;
+  object-position: 30% 20% !important;
+}
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
