@@ -10807,7 +10807,7 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
 
 .vl-comparison-section .vl-row {
   display: grid;
-  grid-template-columns: 1.1fr 1fr 1.2fr;
+  grid-template-columns: 0.9fr 1.3fr 1.3fr;
   border-bottom: 1px solid #EDE6D8;
 }
 
@@ -10840,8 +10840,8 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
 }
 
 .vl-comparison-section .vl-cell {
-  padding: 18px 16px;
-  font-size: 15px;
+  padding: 20px 22px;
+  font-size: 16px;
   line-height: 1.6;
   color: #1A1A1A;
   display: flex;
@@ -10974,11 +10974,11 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
 }
 .vl-comparison-section .vl-row {
   display: grid !important;
-  grid-template-columns: 1.1fr 1fr 1.2fr;
+  grid-template-columns: 0.9fr 1.3fr 1.3fr;
 }
 .vl-comparison-section .vl-row {
   border-bottom: 1px solid #EDE6D8 !important;
-  grid-template-columns: 1.1fr 1fr 1.2fr;
+  grid-template-columns: 0.9fr 1.3fr 1.3fr;
 }
 
 /* zappy-self-heal */
@@ -11141,7 +11141,8 @@ html body .vl-comparison-section .vl-row { display: grid !important; }
 }
 
 .vl-comparison-section .vl-cell {
-  padding: 18px 20px;
+  padding: 20px 22px;
+  font-size: 16px;
 }
 
 .vl-comparison-section .vl-row-header .vl-cell {
@@ -11159,8 +11160,10 @@ html body .vl-comparison-section .vl-row { display: grid !important; }
 .vl-comparison-section .vl-row:hover {
   background-color: #FDF9EF;
 }
-/* zappy-self-heal */
-.vl-comparison-section .vl-cell { padding: 18px 20px !important; }
+.vl-comparison-section .vl-cell {
+  padding: 20px 22px;
+  font-size: 16px;
+}
 
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
