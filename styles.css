@@ -11248,6 +11248,50 @@ html body .vl-comparison-section .vl-row { display: grid !important; }
   justify-content: center;
   line-height: 1;
 }
+
+#layout-1775389519460 .domain-card-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #E0BE68 0%, #C89F47 52%, #A97822 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin: 0 0 16px 0;
+  box-shadow: 0 8px 20px rgba(169,120,34,0.3);
+}
+
+#layout-1775389519460 .domain-card-icon i {
+  color: #ffffff !important;
+  font-size: 24px;
+}
+
+#layout-1775389519460 .domain-card-title {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 0 0 10px 0;
+  text-align: right;
+}
+
+#layout-1775389519460 .domain-card p {
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0 0 12px 0;
+  text-align: right;
+}
+
+#layout-1775389519460 .domain-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: right;
+  padding: 28px 24px;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
