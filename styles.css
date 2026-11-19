@@ -11134,6 +11134,34 @@ html body .vl-comparison-section .vl-row { display: grid !important; }
 /* zappy-self-heal */
 #layout-1775389519460 .vl-form-row { flex-direction: row !important; }
 
+
+.vl-comparison-section .vl-table-wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.vl-comparison-section .vl-cell {
+  padding: 18px 20px;
+}
+
+.vl-comparison-section .vl-row-header .vl-cell {
+  padding: 20px;
+}
+
+.vl-comparison-section .vl-cell-text {
+  line-height: 1.7;
+}
+
+.vl-comparison-section .vl-icon {
+  margin-top: 3px;
+}
+
+.vl-comparison-section .vl-row:hover {
+  background-color: #FDF9EF;
+}
+/* zappy-self-heal */
+.vl-comparison-section .vl-cell { padding: 18px 20px !important; }
+
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
