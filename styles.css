@@ -10975,6 +10975,10 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
 html body .vl-comparison-section .vl-table-wrapper { -webkit-overflow-scrolling: touch !important; }
 html body .vl-comparison-section .vl-row { display: grid !important; }
 
+
+.nav-menu .sub-menu li:has(a[href="/durable-power-of-attorney"]) {
+  display: none !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
