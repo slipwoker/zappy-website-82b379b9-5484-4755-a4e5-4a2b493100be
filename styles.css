@@ -10807,7 +10807,7 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
 
 .vl-comparison-section .vl-row {
   display: grid;
-  grid-template-columns: 1.1fr 1fr 1fr 1.2fr;
+  grid-template-columns: 1.1fr 1fr 1.2fr;
   border-bottom: 1px solid #EDE6D8;
 }
 
@@ -10972,8 +10972,14 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
   -webkit-overflow-scrolling: touch !important;
   overflow-x: visible;
 }
-.vl-comparison-section .vl-row { display: grid !important; }
-.vl-comparison-section .vl-row { border-bottom: 1px solid #EDE6D8 !important; }
+.vl-comparison-section .vl-row {
+  display: grid !important;
+  grid-template-columns: 1.1fr 1fr 1.2fr;
+}
+.vl-comparison-section .vl-row {
+  border-bottom: 1px solid #EDE6D8 !important;
+  grid-template-columns: 1.1fr 1fr 1.2fr;
+}
 
 /* zappy-self-heal */
 html body .vl-comparison-section .vl-table-wrapper { -webkit-overflow-scrolling: touch !important; }
